@@ -6,9 +6,9 @@ class Day(db.Model):
     notes = db.Column(db.Text, nullable=True)
 
     week_id = db.Column(db.Integer, db.ForeignKey("weeks.id"), nullable=False)
-    week = db.relationship("Week", back_populates="week")
+    week = db.relationship("Week", back_populates="days")
 
-    exercises = db.relationship("Exercise", back_populates="day")
+    exercises = db.relationship("Exercise", back_populates="day", cascade="all, delete-orphan")
 
     def to_dict(self):
         return {

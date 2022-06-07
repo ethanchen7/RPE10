@@ -9,7 +9,7 @@ class Week(db.Model):
     block_id = db.Column(db.Integer, db.ForeignKey("blocks.id"), nullable=False)
     block = db.relationship("Block", back_populates="weeks")
 
-    days = db.relationship("Week", back_populates="week")
+    days = db.relationship("Day", back_populates="week", cascade="all, delete-orphan")
 
     def to_dict(self):
         return {
