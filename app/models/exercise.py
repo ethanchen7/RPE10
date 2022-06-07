@@ -15,7 +15,10 @@ class Exercise(db.Model):
     def to_dict(self):
         return {
             "id":self.id,
-            "notes": self.notes,
-            "week_id": self.week_id,
+            "name": self.name,
+            "weight": self.weight,
+            "sets": self.sets,
+            "reps": self.reps,
+            "rpe": self.rpe,
             "day_id": self.day_id
         }

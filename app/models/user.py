@@ -32,5 +32,7 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'first_name': self.first_name,
             'last_name': self.last_name,
-            'email': self.email
+            'email': self.email,
+            "blocks": {block.id: block.to_dict() for block in self.blocks},
+            "rooms": {room.id: room.to_dict() for room in self.rooms}
         }
