@@ -1,0 +1,8 @@
+.page-container {
+  position: absolute;
+  left: 150px;
+  height: 100%;
+  width: calc(100% - 257px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
