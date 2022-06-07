@@ -21,6 +21,7 @@ def user(id):
     return user.to_dict()
 
 @user_routes.route('/<int:id>/block', methods=["POST"])
+@login_required
 def create_block(id):
     form = BlockForm()
     form['csrf_token'].data = request.cookies['csrf_token']

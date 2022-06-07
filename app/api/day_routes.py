@@ -16,6 +16,15 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
+@day_routes.route('/<int:id>', methods=["GET"])
+@login_required
+def get_day(id):
+    day = Day.query.get(id)
+    if day:
+        return day.to_dict()
+    else:
+        return {'errors': "The requested day was not found."}, 404
+
 @day_routes.route('/<int:id>', methods=["PUT"])
 @login_required
 def update_day(id):

@@ -15,6 +15,15 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
+@week_routes.route('/<int:id>', methods=["GET"])
+@login_required
+def get_week(id):
+    week = Week.query.get(id)
+    if week:
+        return week.to_dict()
+    else:
+        return {'errors': "The requested week was not found."}, 404
+
 @week_routes.route('/<int:id>', methods=["DELETE"])
 # @login_required
 def delete_week(id):

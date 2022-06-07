@@ -14,7 +14,6 @@ class Week(db.Model):
     def to_dict(self):
         return {
             "id":self.id,
-            "name": self.name,
             "block_id": self.block.id,
             "days": {day.id: day.to_dict() for day in self.days}
         }

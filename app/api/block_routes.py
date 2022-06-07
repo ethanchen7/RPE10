@@ -17,7 +17,7 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 @block_routes.route('/<int:id>')
-# @login_required
+@login_required
 def get_block(id):
     block = Block.query.get(id)
     if block:

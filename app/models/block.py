@@ -15,5 +15,5 @@ class Block(db.Model):
             "id":self.id,
             "name": self.name,
             "user_id": self.user.id,
-            "weeks": {week.id: week.todict() for week in self.weeks}
+            "weeks": {week.id: week.to_dict() for week in self.weeks}
         }
