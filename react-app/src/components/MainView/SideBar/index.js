@@ -1,9 +1,8 @@
-import "./index.css";
 import { NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../store/session";
-
 import logo from "../../../assets/images/rpelogo.png";
+import "./index.css";
 
 const SideBar = () => {
   const history = useHistory();
@@ -39,7 +38,7 @@ const SideBar = () => {
           <span>
             <i className="fa-regular fa-circle-check fa-lg"></i>
           </span>
-          <NavLink to="/" exact={true} activeClassName="selected">
+          <NavLink to="/program" exact={true} activeClassName="selected">
             Program
           </NavLink>
         </div>

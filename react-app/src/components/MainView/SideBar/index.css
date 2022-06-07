@@ -5,9 +5,8 @@
   width: 150px;
   height: 100vh;
   border-radius: 0px;
-  background-color: rgba(45, 45, 45, 88%);
-  box-shadow: 0px 0px 1px #1d1e1e, 0px 0px 2px #171818;
-  z-index: 1000;
+  background: rgba(225, 0, 0, 0);
+  box-shadow: 0px 0px 1px #a4a8a8, 0px 0px 2px #515353;
 }
 
 .sidebar-logo-container {
@@ -24,7 +23,7 @@
 .sidebar-menu {
   position: absolute;
   left: 0px;
-  width: 256px;
+  width: 100%;
   height: 240px;
   display: flex;
   flex-direction: column;
@@ -73,18 +72,6 @@
   position: relative;
   top: 5px;
   bottom: 0;
-}
-
-.divider {
-  position: absolute;
-  top: 340px;
-  left: 0px;
-  width: 256px;
-  height: 0px;
-  border-width: 0.5px;
-  border-color: rgb(230, 232, 235);
-  border-style: solid;
-  transform: rotate(0.22deg);
 }
 
 .sidebar-footer {

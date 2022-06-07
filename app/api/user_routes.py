@@ -18,7 +18,29 @@ def users():
 @login_required
 def user(id):
     user = User.query.get(id)
-    return user.to_dict()
+    user_dict = user.to_dict()
+
+    blocks_dict = {block.id: block.to_dict() for block in user.blocks}
+    blocks = list(blocks_dict.values())
+    
+    weeks = {}
+    for block in blocks:
+        weeks.update(block["weeks"])
+
+    days = {}
+    weeks_list = list(weeks.values())
+    for week in weeks_list:
+        days.update(week['days'])
+    
+    exercises = {}
+    days_list = list(days.values())
+    for day in days_list:
+        exercises.update(day['exercises'])
+
+    user_dict['weeks'] = weeks
+    user_dict['days'] = days
+    user_dict['exercises'] = exercises
+    return user_dict
 
 @user_routes.route('/<int:id>/block', methods=["POST"])
 @login_required

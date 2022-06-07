@@ -5,15 +5,37 @@ import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import HomePage from "./components/MainView/Dashboard";
 import SplashPage from "./components/SplashPage";
+import Program from "./components/MainView/Program";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
-//delete later
+import { setBlocks } from "./store/block";
+import { setWeeks } from "./store/week";
+import { setDays } from "./store/day";
+import { setExercises } from "./store/exercise";
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const session = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    (async () => {
+      if (session) {
+        const res = await fetch(`/api/users/${session.id}`);
+        if (res.ok) {
+          const data = await res.json();
+          console.log(data);
+          dispatch(setBlocks(data.blocks));
+          dispatch(setWeeks(data.weeks));
+          dispatch(setDays(data.days));
+          dispatch(setExercises(data.exercises));
+        }
+      }
+      setLoaded(true);
+    })();
+  }, [dispatch, session]);
 
   useEffect(() => {
     (async () => {
@@ -38,15 +60,18 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path="/users" exact={true}>
+        <ProtectedRoute path="/program" exact={true} loaded={loaded}>
+          <Program />
+        </ProtectedRoute>
+        <ProtectedRoute path="/users" exact={true} loaded={loaded}>
           <UsersList />
         </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true}>
+        <ProtectedRoute path="/users/:userId" exact={true} loaded={loaded}>
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true}>
+        {/* <ProtectedRoute path="/" exact={true}>
           <h1>My Home Page</h1>
-        </ProtectedRoute>
+        </ProtectedRoute> */}
       </Switch>
     </BrowserRouter>
   );

@@ -2,7 +2,8 @@
   position: absolute;
   left: 150px;
   height: 100%;
-  width: calc(100% - 257px);
+  width: calc(100% - 150px);
   overflow-y: auto;
   overflow-x: hidden;
+  background-color: #191919;
 }
