@@ -1,11 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import SideBar from "../../SideBar";
 import WeekContainer from "./WeekContainer";
 import { addWeek } from "../../../../store/week";
 
-const BlockCreation = () => {
+const BlockCreation = (state) => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const { blockId } = useParams();
   //   const allBlockObjects = useSelector((state) => state.block);
   //   const currentBlock = allBlockObjects[blockId];
@@ -13,6 +14,7 @@ const BlockCreation = () => {
   const blockWeeks = Object.values(weekObjects).filter(
     (week) => week.block_id === parseInt(blockId)
   );
+  const blockNumber = location.state.blockNumber;
 
   const handleAddWeek = () => {
     dispatch(addWeek(blockId));
@@ -23,7 +25,7 @@ const BlockCreation = () => {
       <SideBar />
       <div className="page-container">
         <div className="page-container-header">
-          <h1>{`Editing Block ${blockId}`}</h1>
+          <h1>{`Editing Block ${blockNumber}`}</h1>
         </div>
         <button onClick={handleAddWeek}>Add Week</button>
         {blockWeeks
