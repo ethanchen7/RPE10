@@ -17,7 +17,7 @@ const DayContainer = ({ day, number }) => {
         <input placeholder="Enter exercise name" />
       </div>
       <div className="exercise-weight-input">
-        <input type="number" />
+        <input type="number" placeholder="(LBs)" />
       </div>
       <div className="exercise-sets-input">
         <input type="number" />

@@ -3,5 +3,78 @@
 }
 .day-row {
   display: grid;
-  grid-template-columns: 0.2fr 0.5fr 1fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  grid-template-columns: 0.2fr 0.3fr 1fr 0.3fr 0.3fr 0.3fr 0.3fr;
+  height: 50px;
+  align-items: center;
+}
+
+.exercise-name-input,
+.exercise-weight-input,
+.exercise-sets-input,
+.exercise-reps-input,
+.exercise-rpe-input {
+  position: relative;
+}
+
+.exercise-name-input > input,
+.exercise-weight-input > input,
+.exercise-sets-input > input,
+.exercise-reps-input > input,
+.exercise-rpe-input > input {
+  /* height: 100%; */
+  padding-block: 5px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid rgb(236, 236, 236);
+  color: white;
+  outline: none;
+  transition: border-bottom 0.5s;
+}
+
+.exercise-name-input > input {
+  width: 90%;
+}
+
+.exercise-weight-input > input,
+.exercise-sets-input > input,
+.exercise-reps-input > input,
+.exercise-rpe-input > input {
+  width: 30%;
+  text-align: center;
+}
+
+.exercise-name-input > input::placeholder,
+.exercise-weight-input > input::placeholder,
+.exercise-sets-input > input::placeholder,
+.exercise-reps-input > input::placeholder,
+.exercise-rpe-input > input::placeholder {
+  color: inherit;
+  transition: opacity 0.25s;
+}
+
+.exercise-name-input > input:focus::placeholder,
+.exercise-weight-input > input:focus::placeholder,
+.exercise-sets-input > input:focus::placeholder,
+.exercise-reps-input > input:focus::placeholder,
+.exercise-rpe-input > input:focus::placeholder {
+  opacity: 0;
+}
+
+.exercise-name-input > input:focus,
+.exercise-weight-input > input:focus,
+.exercise-sets-input > input:focus,
+.exercise-reps-input > input:focus,
+.exercise-rpe-input > input:focus {
+  border-bottom: 2px solid teal;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }

@@ -1,0 +1,25 @@
+.program-page-container {
+  position: absolute;
+  left: 150px;
+  height: 100%;
+  width: calc(100% - 150px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: rgb(18, 18, 18);
+  box-sizing: border-box;
+  padding: 50px;
+}
+
+.add-week-btn {
+  color: #01dac5;
+  background-color: rgb(18, 18, 18);
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  position: absolute;
+  right: 60px;
+}
+
+.add-week-btn:hover {
+  cursor: pointer;
+}
