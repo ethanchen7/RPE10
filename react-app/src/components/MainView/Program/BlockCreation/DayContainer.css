@@ -1,0 +1,7 @@
+.day-container {
+  width: 100%;
+}
+.day-row {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 0.5fr 0.5fr 0.5fr 0.5fr;
+}

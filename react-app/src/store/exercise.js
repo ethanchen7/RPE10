@@ -1,4 +1,4 @@
-const SET_EXERCISES = "block/SET_EXERCISES";
+const SET_EXERCISES = "exercise/SET_EXERCISES";
 
 export const setExercises = (exercises) => {
   return {

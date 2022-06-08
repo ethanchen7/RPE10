@@ -1,4 +1,4 @@
-const SET_WEEKS = "block/SET_WEEKS";
+const SET_WEEKS = "week/SET_WEEKS";
 
 export const setWeeks = (weeks) => {
   return {
