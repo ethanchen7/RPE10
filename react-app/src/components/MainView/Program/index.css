@@ -2,14 +2,19 @@
   width: 100%;
 }
 
-.divider {
-  position: absolute;
-  top: 340px;
-  left: 0px;
-  width: 256px;
-  height: 0px;
-  border-width: 0.5px;
-  border-color: rgb(230, 232, 235);
-  border-style: solid;
-  transform: rotate(0.22deg);
+.program-block-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 90%;
+}
+
+.program-block-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  column-gap: 30px;
+  row-gap: 30px;
 }

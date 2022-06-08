@@ -1,4 +1,5 @@
 import { useHistory } from "react-router-dom";
+import "./BlockCard.css";
 
 const BlockCard = ({ block, number }) => {
   const history = useHistory();

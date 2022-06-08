@@ -1,0 +1,19 @@
+.block-create-btn {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 24px;
+  color: black;
+  background-color: #03dac5;
+  border: 1px solid #03dac5;
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.block-create-btn:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}

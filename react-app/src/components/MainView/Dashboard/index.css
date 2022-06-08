@@ -5,5 +5,5 @@
   width: calc(100% - 150px);
   overflow-y: auto;
   overflow-x: hidden;
-  background-color: #191919;
+  background-color: rgb(18, 18, 18);
 }
