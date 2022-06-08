@@ -48,7 +48,7 @@ def delete_day(id):
     if day:
         db.session.delete(day)
         db.session.commit()
-        return {'message': f'Day {id} was deleted successfully.'}
+        return day.to_dict()
     else:
         return {'errors': ['Day not found.']}, 404
 

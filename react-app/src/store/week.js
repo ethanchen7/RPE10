@@ -1,5 +1,6 @@
 const SET_WEEKS = "week/SET_WEEKS";
 const CREATE_WEEK = "week/CREATE_WEEK";
+const DELETE_WEEK = "week/DELETE_WEEK";
 
 export const setWeeks = (weeks) => {
   return {
@@ -15,8 +16,14 @@ export const createWeek = (week) => {
   };
 };
 
+export const deleteWeek = (weekId) => {
+  return {
+    type: DELETE_WEEK,
+    weekId,
+  };
+};
+
 export const addWeek = (blockId) => async (dispatch) => {
-  console.log(blockId);
   const response = await fetch(`/api/block/${blockId}/weeks`, {
     method: "POST",
     headers: {
@@ -26,6 +33,24 @@ export const addWeek = (blockId) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(createWeek(data));
+    return data;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return "An error occurred. Please try again.";
+  }
+};
+
+export const removeWeek = (weekId) => async (dispatch) => {
+  const response = await fetch(`/api/week/${weekId}`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(deleteWeek(weekId));
     return data;
   } else if (response.status < 500) {
     const data = await response.json();
@@ -51,6 +76,12 @@ const weekReducer = (state = initialState, action) => {
         ...state,
         [action.week.id]: action.week,
       };
+    case DELETE_WEEK:
+      const newState = {
+        ...state,
+      };
+      delete newState[action.weekId];
+      return newState;
     default:
       return state;
   }

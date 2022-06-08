@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import DayContainer from "./DayContainer";
 import { addDay } from "../../../../store/day";
+import { removeWeek } from "../../../../store/week";
+import { MdOutlineClear } from "react-icons/md";
 import "./WeekContainer.css";
 
 const WeekContainer = ({ week, number }) => {
@@ -14,11 +16,17 @@ const WeekContainer = ({ week, number }) => {
     e.preventDefault();
     dispatch(addDay(week.id));
   };
-  console.log(weekDays, "***weekdays***");
+
+  const handleDeleteWeek = () => {
+    dispatch(removeWeek(week.id));
+  };
+
   return (
     <div className="week-container">
+      <MdOutlineClear onClick={handleDeleteWeek} />
       <div className="week-label">{`Week ${number}`}</div>
       <div className="week-table-header">
+        <p></p>
         <p>Day</p>
         <p>Exercise Name</p>
         <p>Weight</p>
