@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MdOutlineClear } from "react-icons/md";
 import { putExercise } from "../../../../store/exercise";
 
@@ -10,20 +10,29 @@ const DayContainer = ({ day, number }) => {
   const dispatch = useDispatch();
 
   const exercises = useSelector((state) => state.exercise);
-  const exerciseInfo = Object.values(exercises).filter(
+  const exerciseInfo = Object.values(exercises).find(
     (exercise) => exercise.day_id === parseInt(day.id)
   );
   console.log(exerciseInfo);
+  console.log(exerciseInfo?.name);
 
   const [exerciseName, setExerciseName] = useState(
-    exerciseInfo ? exerciseInfo[0]?.name : ""
+    exerciseInfo ? exerciseInfo.name : ""
   );
-  const [weight, setWeight] = useState(
-    exerciseInfo ? exerciseInfo[0]?.weight : 0
-  );
-  const [sets, setSets] = useState(exerciseInfo ? exerciseInfo[0]?.sets : 0);
-  const [reps, setReps] = useState(exerciseInfo ? exerciseInfo[0]?.reps : 0);
-  const [rpe, setRPE] = useState(exerciseInfo ? exerciseInfo[0]?.rpe : 0);
+  const [weight, setWeight] = useState(exerciseInfo ? exerciseInfo.weight : 0);
+  const [sets, setSets] = useState(exerciseInfo ? exerciseInfo.sets : 0);
+  const [reps, setReps] = useState(exerciseInfo ? exerciseInfo.reps : 0);
+  const [rpe, setRPE] = useState(exerciseInfo ? exerciseInfo.rpe : 0);
+
+  useEffect(() => {
+    if (exerciseInfo) {
+      setExerciseName(exerciseInfo.name);
+      setWeight(exerciseInfo.weight);
+      setSets(exerciseInfo.sets);
+      setReps(exerciseInfo.reps);
+      setRPE(exerciseInfo.rpe);
+    }
+  }, [exercises]);
 
   const handleDeleteBtn = () => {
     dispatch(removeDay(day.id));
@@ -37,7 +46,7 @@ const DayContainer = ({ day, number }) => {
       reps,
       rpe,
     };
-    dispatch(putExercise(exerciseInfo[0].id, payload));
+    dispatch(putExercise(exerciseInfo.id, payload));
   };
   console.log("component rendering");
   return (
@@ -58,6 +67,7 @@ const DayContainer = ({ day, number }) => {
           placeholder="(LBs)"
           value={weight}
           onChange={(e) => setWeight(e.target.value)}
+          onBlur={handleUpdate}
         />
       </div>
       <div className="exercise-sets-input">
@@ -65,6 +75,7 @@ const DayContainer = ({ day, number }) => {
           type="number"
           value={sets}
           onChange={(e) => setSets(e.target.value)}
+          onBlur={handleUpdate}
         />
       </div>
       <div className="exercise-reps-input">
@@ -72,6 +83,7 @@ const DayContainer = ({ day, number }) => {
           type="number"
           value={reps}
           onChange={(e) => setReps(e.target.value)}
+          onBlur={handleUpdate}
         />
       </div>
       <div className="exercise-rpe-input">
@@ -79,6 +91,7 @@ const DayContainer = ({ day, number }) => {
           type="number"
           value={rpe}
           onChange={(e) => setRPE(e.target.value)}
+          onBlur={handleUpdate}
         />
       </div>
     </div>
