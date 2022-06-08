@@ -16,7 +16,11 @@ const Program = () => {
         <div className="program-block-container">
           <div className="program-block-grid">
             {allBlocks?.map((blockId, id) => (
-              <BlockCard block={blockObjects[blockId]} number={id + 1} />
+              <BlockCard
+                block={blockObjects[blockId]}
+                number={id + 1}
+                key={`block-${id + 1}`}
+              />
             ))}
           </div>
         </div>

@@ -13,28 +13,33 @@ const DayContainer = ({ day, number }) => {
   const exerciseInfo = Object.values(exercises).filter(
     (exercise) => exercise.day_id === parseInt(day.id)
   );
+  console.log(exerciseInfo);
 
-  const [exerciseName, setExerciseName] = useState(exerciseInfo.name);
-  const [weight, setWeight] = useState(exerciseInfo.weight);
-  const [sets, setSets] = useState(exerciseInfo.sets);
-  const [reps, setReps] = useState(exerciseInfo.reps);
-  const [rpe, setRPE] = useState(exerciseInfo.rpe);
+  const [exerciseName, setExerciseName] = useState(
+    exerciseInfo ? exerciseInfo[0]?.name : ""
+  );
+  const [weight, setWeight] = useState(
+    exerciseInfo ? exerciseInfo[0]?.weight : 0
+  );
+  const [sets, setSets] = useState(exerciseInfo ? exerciseInfo[0]?.sets : 0);
+  const [reps, setReps] = useState(exerciseInfo ? exerciseInfo[0]?.reps : 0);
+  const [rpe, setRPE] = useState(exerciseInfo ? exerciseInfo[0]?.rpe : 0);
 
   const handleDeleteBtn = () => {
     dispatch(removeDay(day.id));
   };
 
   const handleUpdate = () => {
-    // const payload = {
-    //   exerciseName,
-    //   weight,
-    //   sets,
-    //   reps,
-    //   rpe,
-    // };
-    // dispatch(putExercise(exerciseInfo.id, payload));
+    const payload = {
+      name: exerciseName,
+      weight,
+      sets,
+      reps,
+      rpe,
+    };
+    dispatch(putExercise(exerciseInfo[0].id, payload));
   };
-  console.log(exerciseInfo);
+  console.log("component rendering");
   return (
     <div className="day-row">
       <MdOutlineClear onClick={handleDeleteBtn} />

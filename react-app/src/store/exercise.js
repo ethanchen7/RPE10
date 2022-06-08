@@ -58,6 +58,7 @@ const exerciseReducer = (state = initialState, action) => {
         [action.exercise.id]: action.exercise,
       };
     case UPDATE_EXERCISE:
+      console.log(action.exercise);
       return {
         ...state,
         [action.exercise.id]: action.exercise,
