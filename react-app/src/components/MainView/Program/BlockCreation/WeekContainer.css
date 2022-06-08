@@ -1,6 +1,54 @@
+.week-container {
+  background-color: rgb(55, 55, 55);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 15px;
+}
+
+.week-label-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.week-label-container > h1 {
+  line-height: 20px;
+}
+.week-label-container > svg {
+  margin-left: 15px;
+  width: 25px;
+  height: auto;
+}
+
+.week-label-container > svg:hover {
+  cursor: pointer;
+  color: rgba(194, 41, 41, 0.858);
+  transition: 0.4s;
+}
+
 .week-table-header {
   display: grid;
-  grid-template-columns: 0.2fr 0.3fr 1fr 0.3fr 0.3fr 0.3fr 0.3fr;
+  grid-template-columns: 0.1fr 0.3fr 1fr 0.3fr 0.3fr 0.3fr 0.3fr;
   border-top: 1px solid white;
   border-bottom: 1px solid white;
+}
+
+.week-table-header > h3 {
+  line-height: 10px;
+}
+
+.add-day-btn {
+  background: transparent;
+  border: none;
+  color: #01dac5;
+  font-size: 14px;
+  font-weight: 600;
+  position: relative;
+  margin-top: 10px;
+  left: 2%;
+}
+
+.add-day-btn:hover {
+  cursor: pointer;
+  color: #00a796;
+  transition: 0.4s;
 }

@@ -3,9 +3,20 @@
 }
 .day-row {
   display: grid;
-  grid-template-columns: 0.2fr 0.3fr 1fr 0.3fr 0.3fr 0.3fr 0.3fr;
+  grid-template-columns: 0.1fr 0.3fr 1fr 0.3fr 0.3fr 0.3fr 0.3fr;
   height: 50px;
   align-items: center;
+}
+
+.day-row > svg {
+  width: 20px;
+  height: auto;
+}
+
+.day-row > svg:hover {
+  cursor: pointer;
+  color: rgba(194, 41, 41, 0.858);
+  transition: 0.4s;
 }
 
 .exercise-name-input,
