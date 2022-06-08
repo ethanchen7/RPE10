@@ -36,7 +36,7 @@ def delete_week(id):
 def create_day(id):
     form = DayForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print(form['csrf_token'].data)
+
     if form.validate_on_submit():
         
         week = Week.query.get(id)

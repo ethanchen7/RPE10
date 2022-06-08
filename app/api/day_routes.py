@@ -71,6 +71,6 @@ def create_exercise(id):
         db.session.add(exercise)
         db.session.commit()
         return exercise.to_dict()
-    
+
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     
