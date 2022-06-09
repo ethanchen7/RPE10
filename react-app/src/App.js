@@ -27,7 +27,6 @@ function App() {
         const res = await fetch(`/api/users/${session.id}`);
         if (res.ok) {
           const data = await res.json();
-          console.log(data);
           dispatch(setBlocks(data.blocks));
           dispatch(setWeeks(data.weeks));
           dispatch(setDays(data.days));

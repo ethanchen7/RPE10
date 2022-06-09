@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useLocation } from "react-router-dom";
 import SideBar from "../../SideBar";
@@ -11,6 +11,7 @@ import "./index.css";
 const BlockCreation = () => {
   const dispatch = useDispatch();
   const location = useLocation();
+  const addWeekBtn = useRef();
 
   const { blockId } = useParams();
 
@@ -31,6 +32,20 @@ const BlockCreation = () => {
       setBlockName(currentBlock.name);
     }
   }, [blockObjects]);
+
+  useEffect(() => {
+    window.addEventListener(
+      "scroll",
+      (e) => {
+        if (window.scrollY > 85) {
+          addWeekBtn?.current?.classList.add("add-week-sticky");
+        } else {
+          addWeekBtn?.current?.classList.remove("add-week-sticky");
+        }
+      },
+      true
+    );
+  }, []);
 
   const handleAddWeek = () => {
     dispatch(addWeek(blockId));
@@ -59,7 +74,11 @@ const BlockCreation = () => {
           {/* <BsPencil /> */}
         </div>
 
-        <button className="add-week-btn" onClick={handleAddWeek}>
+        <button
+          className="add-week-btn"
+          onClick={handleAddWeek}
+          ref={addWeekBtn}
+        >
           Add Week
         </button>
 

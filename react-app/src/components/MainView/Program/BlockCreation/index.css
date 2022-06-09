@@ -1,7 +1,7 @@
 .program-page-container {
   position: absolute;
   left: 150px;
-  height: 100%;
+  /* height: 100%; */
   width: calc(100% - 150px);
   overflow-y: auto;
   overflow-x: hidden;
@@ -42,11 +42,22 @@
   font-weight: 600;
   position: absolute;
   top: 80px;
-  right: 60px;
+  right: 50px;
+  height: 40px;
+  transition: all 0.5s;
 }
 
 .add-week-btn:hover {
   cursor: pointer;
   color: #00a796;
   transition: 0.4s;
+}
+.add-week-sticky {
+  position: fixed;
+  top: 0px;
+  right: 50px;
+  background-color: #01dac5 !important;
+  color: black;
+  border-radius: 5px;
+  z-index: 1000;
 }
