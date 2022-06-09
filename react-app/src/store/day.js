@@ -36,23 +36,7 @@ export const addDay = (weekId) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(createDay(data));
-    const res = await fetch(`/api/day/${data.id}/exercises`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: "",
-        weight: 0,
-        sets: 0,
-        reps: 0,
-        rpe: 0,
-      }),
-    });
-    if (res.ok) {
-      const exercise = await res.json();
-      dispatch(createExercise(exercise));
-    }
+    return data;
   } else if (response.status < 500) {
     const data = await response.json();
     if (data.errors) {

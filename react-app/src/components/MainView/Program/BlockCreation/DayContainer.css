@@ -89,3 +89,20 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+.add-exercise-btn {
+  background: transparent;
+  border: none;
+  color: #01dac5;
+  font-size: 14px;
+  font-weight: 600;
+  position: relative;
+  margin-top: 10px;
+  left: 15%;
+}
+
+.add-exercise-btn:hover {
+  cursor: pointer;
+  color: #00a796;
+  transition: 0.4s;
+}

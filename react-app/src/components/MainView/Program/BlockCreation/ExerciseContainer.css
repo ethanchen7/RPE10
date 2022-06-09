@@ -1,0 +1,17 @@
+.exercise-row {
+  display: grid;
+  grid-template-columns: 0.1fr 0.3fr 1fr 0.3fr 0.3fr 0.3fr 0.3fr;
+  height: 50px;
+  align-items: center;
+}
+
+.exercise-row > svg {
+  width: 20px;
+  height: auto;
+}
+
+.exercise-row > svg:hover {
+  cursor: pointer;
+  color: rgba(194, 41, 41, 0.858);
+  transition: 0.4s;
+}

@@ -31,6 +31,26 @@ export const deleteExercise = (exercise) => {
   };
 };
 
+export const addExercise = (dayId) => async (dispatch) => {
+  const response = await fetch(`/api/day/${dayId}/exercises`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: "",
+      weight: 0,
+      sets: 0,
+      reps: 0,
+      rpe: 0,
+    }),
+  });
+  if (response.ok) {
+    const exercise = await response.json();
+    dispatch(createExercise(exercise));
+  }
+};
+
 export const putExercise = (exerciseId, payload) => async (dispatch) => {
   const response = await fetch(`/api/exercise/${exerciseId}`, {
     method: "PUT",
