@@ -45,7 +45,7 @@ const SideBar = () => {
           </NavLink>
           <ReactTooltip
             className="tool-tip-cls"
-            place="bottom"
+            place="right"
             type="dark"
             effect="solid"
           />
@@ -61,7 +61,7 @@ const SideBar = () => {
           ></i>
           <ReactTooltip
             className="tool-tip-cls"
-            place="bottom"
+            place="right"
             type="dark"
             effect="solid"
           />
@@ -86,7 +86,7 @@ const SideBar = () => {
           </NavLink>
           <ReactTooltip
             className="tool-tip-cls"
-            place="bottom"
+            place="right"
             type="dark"
             effect="solid"
           />
@@ -101,7 +101,7 @@ const SideBar = () => {
           </NavLink>
           <ReactTooltip
             className="tool-tip-cls"
-            place="bottom"
+            place="right"
             type="dark"
             effect="solid"
           />
