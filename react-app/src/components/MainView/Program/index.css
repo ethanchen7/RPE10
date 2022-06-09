@@ -10,6 +10,7 @@
   justify-content: center;
   align-items: center;
   min-height: 90%;
+  margin-top: 30px;
   /* z-index: 1; */
 }
 
@@ -19,4 +20,16 @@
   grid-template-rows: auto;
   column-gap: 30px;
   row-gap: 30px;
+}
+
+@media only screen and (min-width: 1200px) {
+  .program-block-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .program-block-grid {
+    grid-template-columns: 1fr;
+  }
 }

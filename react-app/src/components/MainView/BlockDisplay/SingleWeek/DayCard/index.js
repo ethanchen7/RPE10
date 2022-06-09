@@ -1,5 +1,5 @@
 import "./index.css";
-const DayCard = () => {
+const DayCard = ({ day, number }) => {
   return (
     <div className="day-note-parent-container">
       <div className="day-card-container">
