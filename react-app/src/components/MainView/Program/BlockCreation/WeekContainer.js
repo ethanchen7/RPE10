@@ -55,7 +55,7 @@ const WeekContainer = ({ week, number }) => {
             >
               + Add Day
             </button>
-            <ReactTooltip place="bottom" type="dark" effect="solid" />
+            <ReactTooltip place="bottom" type="error" effect="solid" />
           </>
         )}
       </div>

@@ -9,6 +9,30 @@
   box-sizing: border-box;
   padding: 30px;
 }
+.page-container-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.page-container-header > input {
+  font-size: 32px;
+  font-weight: 600;
+  margin-left: 10px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-style: italic;
+  height: 40px;
+  width: fit-content;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.5s;
+}
+
+.page-container-header > input:focus {
+  outline: none;
+  border-bottom: 2px solid teal;
+}
 
 .add-week-btn {
   color: #01dac5;
