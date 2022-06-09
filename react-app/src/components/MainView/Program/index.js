@@ -11,7 +11,9 @@ const Program = () => {
     <>
       <SideBar />
       <div className="page-container">
-        <div className="page-container-header">Select a block to edit.</div>
+        <div className="page-container-header">
+          <h1>Select a block to edit.</h1>
+        </div>
         <div className="program-block-container">
           <div className="program-block-grid">
             {allBlocks?.map((blockId, id) => (
