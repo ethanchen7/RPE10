@@ -37,7 +37,7 @@ const BlockCreation = () => {
           ? blockWeeks.map((week, id) => (
               <WeekContainer
                 week={week}
-                key={`week-${id + 1}`}
+                key={`week-${week.id}`}
                 number={id + 1}
               />
             ))

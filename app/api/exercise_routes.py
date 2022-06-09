@@ -48,7 +48,7 @@ def delete_exercise(id):
     exercise = Exercise.query.get(id)
     if exercise:
         db.session.delete(exercise)
-        return {'message': f'Exercise {id} was successfully deleted.'}
+        return exercise.to_dict()
     else:
         return {'errors': ["Exercise not found"]}, 404
 

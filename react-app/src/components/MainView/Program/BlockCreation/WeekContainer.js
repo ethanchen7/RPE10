@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DayContainer from "./DayContainer";
 import { addDay } from "../../../../store/day";
@@ -28,7 +29,7 @@ const WeekContainer = ({ week, number }) => {
         <MdOutlineClear onClick={handleDeleteWeek} />
       </div>
       <div className="week-table-header">
-        <h3></h3>
+        <h3>{""}</h3>
         <h3>Day</h3>
         <h3>Exercise Name</h3>
         <h3>Weight</h3>
@@ -38,7 +39,7 @@ const WeekContainer = ({ week, number }) => {
       </div>
       {weekDays
         ? weekDays.map((day, id) => (
-            <DayContainer day={day} key={`day-${id + 1}`} number={id + 1} />
+            <DayContainer day={day} key={`day-${day.id}`} number={id + 1} />
           ))
         : ""}
       <div>

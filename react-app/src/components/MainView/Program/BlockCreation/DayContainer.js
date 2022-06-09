@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { MdOutlineClear } from "react-icons/md";
 import { putExercise } from "../../../../store/exercise";
-
+import { removeExercise } from "../../../../store/exercise";
 import { removeDay } from "../../../../store/day";
 import "./DayContainer.css";
 
@@ -13,8 +13,6 @@ const DayContainer = ({ day, number }) => {
   const exerciseInfo = Object.values(exercises).find(
     (exercise) => exercise.day_id === parseInt(day.id)
   );
-  console.log(exerciseInfo);
-  console.log(exerciseInfo?.name);
 
   const [exerciseName, setExerciseName] = useState(
     exerciseInfo ? exerciseInfo.name : ""
@@ -36,6 +34,7 @@ const DayContainer = ({ day, number }) => {
 
   const handleDeleteBtn = () => {
     dispatch(removeDay(day.id));
+    dispatch(removeExercise(exerciseInfo.id));
   };
 
   const handleUpdate = () => {
@@ -48,7 +47,7 @@ const DayContainer = ({ day, number }) => {
     };
     dispatch(putExercise(exerciseInfo.id, payload));
   };
-  console.log("component rendering");
+
   return (
     <div className="day-row">
       <MdOutlineClear onClick={handleDeleteBtn} />

@@ -1,6 +1,7 @@
 const SET_EXERCISES = "exercise/SET_EXERCISES";
 const CREATE_EXERCISE = "exercise/CREATE_EXERCISE";
 const UPDATE_EXERCISE = "exercise/UPDATE_EXERCISE";
+const DELETE_EXERCISE = "exercise/DELETE_EXERCISE";
 
 export const setExercises = (exercises) => {
   return {
@@ -23,6 +24,13 @@ export const updateExercise = (exercise) => {
   };
 };
 
+export const deleteExercise = (exercise) => {
+  return {
+    type: DELETE_EXERCISE,
+    exercise,
+  };
+};
+
 export const putExercise = (exerciseId, payload) => async (dispatch) => {
   const response = await fetch(`/api/exercise/${exerciseId}`, {
     method: "PUT",
@@ -32,6 +40,24 @@ export const putExercise = (exerciseId, payload) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(updateExercise(data));
+    return data;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return "An error occurred. Please try again.";
+  }
+};
+
+export const removeExercise = (exerciseId) => async (dispatch) => {
+  const response = await fetch(`/api/exercise/${exerciseId}`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(deleteExercise(data));
     return data;
   } else if (response.status < 500) {
     const data = await response.json();
@@ -63,6 +89,12 @@ const exerciseReducer = (state = initialState, action) => {
         ...state,
         [action.exercise.id]: action.exercise,
       };
+    case DELETE_EXERCISE:
+      const newState = {
+        ...state,
+      };
+      delete newState[action.exercise.id];
+      return newState;
     default:
       return state;
   }
