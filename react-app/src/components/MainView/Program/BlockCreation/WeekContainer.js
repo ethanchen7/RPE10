@@ -1,9 +1,9 @@
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DayContainer from "./DayContainer";
 import { addDay } from "../../../../store/day";
 import { removeWeek } from "../../../../store/week";
 import { MdOutlineClear } from "react-icons/md";
+import ReactTooltip from "react-tooltip";
 import "./WeekContainer.css";
 
 const WeekContainer = ({ week, number }) => {
@@ -43,9 +43,21 @@ const WeekContainer = ({ week, number }) => {
           ))
         : ""}
       <div>
-        <form onSubmit={(e) => handleSubmit(e)}>
-          <input type="submit" value="+ Add Day" className="add-day-btn" />
-        </form>
+        {weekDays.length < 7 ? (
+          <form onSubmit={(e) => handleSubmit(e)}>
+            <input type="submit" value="+ Add Day" className="add-day-btn" />
+          </form>
+        ) : (
+          <>
+            <button
+              className="add-day-btn"
+              data-tip="Unable to add more than 7 days a week."
+            >
+              + Add Day
+            </button>
+            <ReactTooltip place="bottom" type="dark" effect="solid" />
+          </>
+        )}
       </div>
     </div>
   );
