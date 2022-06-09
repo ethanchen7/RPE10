@@ -21,3 +21,8 @@ a:hover {
   color: inherit;
   text-emphasis: none;
 }
+
+svg {
+  stroke: transparent;
+  stroke-width: 0px;
+}
