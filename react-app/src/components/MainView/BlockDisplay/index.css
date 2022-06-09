@@ -1,0 +1,40 @@
+.block-page-container {
+  position: absolute;
+  left: 150px;
+  width: calc(100% - 150px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: rgb(18, 18, 18);
+  box-sizing: border-box;
+  padding: 30px;
+}
+
+.block-page-container-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+
+.header-left > h1 {
+  font-size: 41px;
+  line-height: 10px;
+}
+
+.header-left > p {
+  font-size: 24px;
+  font-style: italic;
+  line-height: 10px;
+}
+
+.header-right {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  /* margin-left: 20px; */
+  padding-bottom: 17px;
+}

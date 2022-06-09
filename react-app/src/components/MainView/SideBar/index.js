@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../store/session";
 import logo from "../../../assets/images/rpelogo.png";
@@ -68,18 +68,19 @@ const SideBar = () => {
         </div>
         <div className={`blocks-nav-container${openBlock ? " open" : ""}`}>
           {blocks.map((block, idx) => (
-            <NavLink
-              to={`/${block.id}`}
-              exact={true}
-              activeClassName="selected"
+            <Link
+              to={{
+                pathname: `/block/${block.id}`,
+                state: { number: idx + 1 },
+              }}
               key={`nav-to-${block.id}`}
-            >{`Block ${idx + 1}`}</NavLink>
+            >{`Block ${idx + 1}`}</Link>
           ))}
         </div>
         <div className="sidebar-menu-item">
           <NavLink to="/program" exact={true} activeClassName="selected">
             <i
-              class="fa-solid fa-flask fa-2xl"
+              className="fa-solid fa-flask fa-2xl"
               style={{ color: "#a4a8a8" }}
               data-tip="Program"
             ></i>
@@ -94,7 +95,7 @@ const SideBar = () => {
         <div className="sidebar-menu-item">
           <NavLink to="/" exact={true} activeClassName="selected">
             <i
-              class="fa-regular fa-message fa-2xl"
+              className="fa-regular fa-message fa-2xl"
               style={{ color: "#a4a8a8" }}
               data-tip="Chat"
             ></i>

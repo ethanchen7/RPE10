@@ -7,6 +7,7 @@ import HomePage from "./components/MainView/Dashboard";
 import SplashPage from "./components/SplashPage";
 import Program from "./components/MainView/Program";
 import BlockCreation from "./components/MainView/Program/BlockCreation";
+import BlockDisplay from "./components/MainView/BlockDisplay";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
@@ -60,6 +61,9 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
+        <ProtectedRoute path="/block/:blockId" exact={true} loaded={loaded}>
+          <BlockDisplay />
+        </ProtectedRoute>
         <ProtectedRoute path="/program" exact={true} loaded={loaded}>
           <Program />
         </ProtectedRoute>

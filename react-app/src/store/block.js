@@ -1,6 +1,7 @@
 const SET_BLOCKS = "block/SET_BLOCKS";
 const CREATE_BLOCK = "block/CREATE_BLOCK";
 const EDIT_BLOCK = "block/EDIT_BLOCK";
+const GET_CURRENT_BLOCK = "block/GET_CURRENT_BLOCK";
 
 export const setBlocks = (blocks) => {
   return {
@@ -21,6 +22,31 @@ export const editBlock = (block) => {
     type: EDIT_BLOCK,
     block,
   };
+};
+
+export const getCurrentBlock = (block) => {
+  return {
+    type: GET_CURRENT_BLOCK,
+    block,
+  };
+};
+
+export const getBlock = (blockId) => async (dispatch) => {
+  const response = await fetch(`/api/block/${blockId}`, {
+    method: "GET",
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(getCurrentBlock(data));
+    return data;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return "An error occurred. Please try again.";
+  }
 };
 
 export const addBlock = (userId, payload) => async (dispatch) => {
@@ -65,7 +91,7 @@ export const putBlock = (blockId, payload) => async (dispatch) => {
   }
 };
 
-const initialState = {};
+const initialState = { currentBlock: {} };
 
 const blockReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -83,6 +109,14 @@ const blockReducer = (state = initialState, action) => {
       return {
         ...state,
         [action.block.id]: action.block,
+      };
+    case GET_CURRENT_BLOCK:
+      return {
+        ...state,
+        currentBlock: {
+          ...state.currentBlock,
+          [action.block.id]: action.block,
+        },
       };
     default:
       return state;
