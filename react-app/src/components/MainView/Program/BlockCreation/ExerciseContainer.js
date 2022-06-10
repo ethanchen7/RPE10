@@ -4,6 +4,7 @@ import { MdOutlineClear } from "react-icons/md";
 import { putExercise } from "../../../../store/exercise";
 import { removeExercise } from "../../../../store/exercise";
 import "./ExerciseContainer.css";
+import { setDays } from "../../../../store/day";
 
 const calculateTotalVolume = (weight, sets, reps) => {
   let totalVolume;
@@ -22,6 +23,7 @@ const calculateTotalVolume = (weight, sets, reps) => {
 
 const ExerciseContainer = ({ day, exercise }) => {
   const dispatch = useDispatch();
+  const session = useSelector((state) => state.session.user);
 
   const [exerciseName, setExerciseName] = useState(
     exercise ? exercise.name : ""
@@ -45,7 +47,7 @@ const ExerciseContainer = ({ day, exercise }) => {
     dispatch(removeExercise(exercise.id));
   };
 
-  const handleUpdate = () => {
+  const handleUpdate = async () => {
     const totalVol = calculateTotalVolume(weight, sets, reps);
     const payload = {
       name: exerciseName,
@@ -56,6 +58,11 @@ const ExerciseContainer = ({ day, exercise }) => {
       total_vol: totalVol,
     };
     dispatch(putExercise(exercise.id, payload));
+    const response = await fetch(`/api/users/${session.id}`);
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(setDays(data.days));
+    }
   };
 
   return (

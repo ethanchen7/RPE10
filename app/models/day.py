@@ -23,7 +23,8 @@ class Day(db.Model):
     def total_vol(self):
         total = 0
         for exercise in self.exercises:
-            total += exercise.total_vol
+            if exercise.total_vol is not None:
+                total += exercise.total_vol
         return total
 
     @hybrid_method
