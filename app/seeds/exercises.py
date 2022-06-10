@@ -87,6 +87,11 @@ def seed_exercises():
 
     exercise69 = Exercise(name="Barbell Bench Press", weight=225, sets=3, reps=4, rpe=7.5, day_id=14)
     exercise70 = Exercise(name="Dumbbell Seated Shoulder Press", weight=60, sets=3, reps=10, rpe=7, day_id=14)
+    exercise71 = Exercise(name = "Weighted Dip", weight=0, sets=3, reps=10, rpe=7, day_id=14)
+    exercise72 = Exercise(name="Low-to-High Cable Fly", weight=0, sets=3, reps=15, rpe=8, day_id=14)
+    exercise73 = Exercise(name="Dumbbell Isolateral Skull Crusher", weight=40, sets=3, reps=12, rpe=8, day_id=14)
+    exercise74 = Exercise(name="Dumbbell Lateral Raise", weight=25, sets=3, reps=15, rpe=8, day_id=14)
+    exercise75 = Exercise(name="Ab Wheel Rollout", weight=0, sets=3, reps=6, rpe=7, day_id=14)
 
     db.session.add(exercise1)
     db.session.add(exercise2)
