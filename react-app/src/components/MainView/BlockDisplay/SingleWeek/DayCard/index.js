@@ -31,7 +31,7 @@ const DayCard = ({ day, number }) => {
           </div>
           <div className="day-card-footer">
             <VolumeTag volume={Math.floor(day.total_vol / 100)} />
-            <RPETag rpe={Math.floor(0)} />
+            <RPETag rpe={Math.floor(day.avg_rpe)} />
           </div>
         </div>
       </div>
