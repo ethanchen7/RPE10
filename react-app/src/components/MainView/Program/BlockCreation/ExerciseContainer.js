@@ -6,15 +6,14 @@ import { removeExercise } from "../../../../store/exercise";
 import "./ExerciseContainer.css";
 
 const calculateTotalVolume = (weight, sets, reps) => {
-  let totalVolume = 1;
-
+  let totalVolume;
   // if sets or reps are 0, the exercise is incomplete, and we will omit it
   if (sets !== 0 || reps !== 0) {
     // accessory work defaults to 80 lb average
     if (weight !== 0) {
-      totalVolume *= weight * sets * reps;
+      totalVolume = weight * sets * reps;
     } else {
-      totalVolume *= 80 * sets * reps;
+      totalVolume = 80 * sets * reps;
     }
   }
 
