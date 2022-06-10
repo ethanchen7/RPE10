@@ -76,6 +76,18 @@ def seed_exercises():
     exercise60 = Exercise(name="Tempo Bench 3/1/3", weight=240, sets=8, reps=1, rpe=7, day_id=12)
     exercise61 = Exercise(name="Planks", weight=0, sets=3, reps=10, rpe=10, day_id=12)
 
+
+    exercise62 = Exercise(name="Back Squat", weight=335, sets=4, reps=5, rpe=7, day_id=13)
+    exercise63 = Exercise(name="Deadlift", weight=345, sets=2, reps=8, rpe=6.5, day_id=13)
+    exercise64 = Exercise(name="Barbell Hip Thrust", weight=275, sets=3, reps=12, rpe=6, day_id=13)
+    exercise65 = Exercise(name="Dumbbell Walking Lunge", weight=0, sets=2, reps=40, rpe=10, day_id=13)
+    exercise66 = Exercise(name="Leg Extensions", weight=0, sets=3, reps=15, rpe=7, day_id=13)
+    exercise67 = Exercise(name="Seated Leg Curl", weight=0, sets=3, reps=15, rpe=7, day_id=13)
+    exercise68 = Exercise(name="Standing Calf Raise", weight=0, sets=3, reps=10 ,rpe=7, day_id=13)
+
+    exercise69 = Exercise(name="Barbell Bench Press", weight=225, sets=3, reps=4, rpe=7.5, day_id=14)
+    exercise70 = Exercise(name="Dumbbell Seated Shoulder Press", weight=60, sets=3, reps=10, rpe=7, day_id=14)
+
     db.session.add(exercise1)
     db.session.add(exercise2)
     db.session.add(exercise3)
