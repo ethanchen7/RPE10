@@ -17,7 +17,7 @@ const SingleWeek = ({ currentWeek }) => {
   return (
     <div className="day-cards-container">
       {dayObjects?.map((day, idx) => (
-        <DayCard number={idx + 1} day={day} />
+        <DayCard number={idx + 1} day={day} key={`day-${day.id}`} />
       ))}
     </div>
   );
