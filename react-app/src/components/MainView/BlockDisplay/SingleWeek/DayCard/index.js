@@ -1,3 +1,5 @@
+import VolumeTag from "../../Tags/Volume";
+import RPETag from "../../Tags/RPE";
 import "./index.css";
 const DayCard = ({ day, number }) => {
   console.log(day);
@@ -14,16 +16,18 @@ const DayCard = ({ day, number }) => {
           <div className={`day-card-exercises length-${exerciseArr.length}`}>
             {exerciseArr.map((exercise) => {
               return (
-                <p>
+                <>
                   <span>{`${exercise.name}`}</span>
-                  {` ${exercise.weight}lbs ${exercise.sets}x${exercise.reps} @${exercise.rpe}`}
-                </p>
+                  <span>{` ${exercise.weight}lbs`}</span>
+                  <span>{` ${exercise.sets}x${exercise.reps}`}</span>
+                  <span>{` @${exercise.rpe}`}</span>
+                </>
               );
             })}
           </div>
           <div className="day-card-footer">
-            <p>Volume Component</p>
-            <p>RPE Component</p>
+            <VolumeTag />
+            <RPETag />
           </div>
         </div>
       </div>

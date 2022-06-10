@@ -1,0 +1,27 @@
+.tag {
+  position: absolute;
+  text-align: center;
+  height: 25px;
+  width: 80px;
+  font-size: 12px;
+  border-radius: 5px;
+  border: none;
+  margin-right: 10px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.volume {
+  bottom: 5px;
+  left: 1px;
+  color: black;
+  background: rgba(187, 134, 252, 0.4);
+}
+
+.rpe {
+  bottom: 5px;
+  left: 100px;
+  color: black;
+  background: rgba(187, 134, 252, 0.4);
+}
