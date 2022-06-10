@@ -1,6 +1,7 @@
 const SET_BLOCKS = "block/SET_BLOCKS";
 const CREATE_BLOCK = "block/CREATE_BLOCK";
 const EDIT_BLOCK = "block/EDIT_BLOCK";
+const DELETE_BLOCK = "block/DELETE_BLOCK";
 const GET_CURRENT_BLOCK = "block/GET_CURRENT_BLOCK";
 
 export const setBlocks = (blocks) => {
@@ -20,6 +21,13 @@ export const createBlock = (block) => {
 export const editBlock = (block) => {
   return {
     type: EDIT_BLOCK,
+    block,
+  };
+};
+
+export const deleteBlock = (block) => {
+  return {
+    type: DELETE_BLOCK,
     block,
   };
 };
@@ -91,7 +99,25 @@ export const putBlock = (blockId, payload) => async (dispatch) => {
   }
 };
 
-const initialState = { currentBlock: {} };
+export const removeBlock = (blockId) => async (dispatch) => {
+  const response = await fetch(`/api/block/${blockId}`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(deleteBlock(data));
+    return data;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return "An error occurred. Please try again.";
+  }
+};
+
+const initialState = {};
 
 const blockReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -110,14 +136,12 @@ const blockReducer = (state = initialState, action) => {
         ...state,
         [action.block.id]: action.block,
       };
-    case GET_CURRENT_BLOCK:
-      return {
+    case DELETE_BLOCK:
+      const newState = {
         ...state,
-        currentBlock: {
-          ...state.currentBlock,
-          [action.block.id]: action.block,
-        },
       };
+      delete newState[action.block.id];
+      return newState;
     default:
       return state;
   }

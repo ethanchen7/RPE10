@@ -61,3 +61,18 @@
   border-radius: 5px;
   z-index: 1000;
 }
+
+.delete-block-btn {
+  color: #a9243d;
+  background-color: rgb(18, 18, 18);
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.5s;
+}
+
+.delete-block-btn:hover {
+  cursor: pointer;
+  color: #ae485a;
+  transition: 0.4s;
+}

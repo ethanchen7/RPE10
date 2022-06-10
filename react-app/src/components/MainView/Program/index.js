@@ -7,6 +7,7 @@ import "./index.css";
 const Program = () => {
   const blockObjects = useSelector((state) => state.block);
   const allBlocks = Object.keys(blockObjects);
+  console.log(allBlocks);
   return (
     <>
       <SideBar />

@@ -51,7 +51,7 @@ def delete_block(id):
     if block:
         db.session.delete(block)
         db.session.commit()
-        return {'message': f'Block {id} successfully deleted.'}
+        return block.to_dict()
     
     else:
         return {'errors': 'Project not found.'}, 404

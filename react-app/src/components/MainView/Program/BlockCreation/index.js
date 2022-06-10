@@ -1,16 +1,18 @@
 import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useHistory } from "react-router-dom";
 import SideBar from "../../SideBar";
 import WeekContainer from "./WeekContainer";
 import { addWeek } from "../../../../store/week";
 import { putBlock } from "../../../../store/block";
+import { removeBlock } from "../../../../store/block";
 // import { BsPencil } from "react-icons/bs";
 import "./index.css";
 
 const BlockCreation = () => {
   const dispatch = useDispatch();
   const location = useLocation();
+  const history = useHistory();
   const addWeekBtn = useRef();
 
   const { blockId } = useParams();
@@ -58,6 +60,11 @@ const BlockCreation = () => {
     dispatch(putBlock(blockId, payload));
   };
 
+  const handleDeleteBlock = () => {
+    dispatch(removeBlock(blockId));
+    history.push("/program");
+  };
+
   return (
     <>
       <SideBar />
@@ -71,6 +78,9 @@ const BlockCreation = () => {
             placeholder="Unnamed"
             onBlur={handleUpdateBlock}
           />
+          <button className="delete-block-btn" onClick={handleDeleteBlock}>
+            Delete Block
+          </button>
           {/* <BsPencil /> */}
         </div>
 
