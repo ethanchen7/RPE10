@@ -8,9 +8,7 @@ const DayCard = ({ day, number }) => {
   const exerciseArr = exerciseObjects.filter(
     (exercise) => exercise.day_id === parseInt(day.id)
   );
-  console.log("ALL EXERCISES", exerciseArr);
-  // const exerciseArr = Object.values(day.exercises);
-  console.log(day);
+
   return (
     <div className="day-note-parent-container">
       <div className="day-card-container">

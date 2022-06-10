@@ -19,11 +19,6 @@ const BlockDisplay = () => {
   const weekArr = Object.values(allWeeks);
   const weeks = weekArr.filter((week) => week.block_id === parseInt(blockId));
 
-  // let weeks;
-  // if (block) {
-  //   weeks = Object.values(block.weeks);
-  // }
-
   const [currentWeek, setCurrentWeek] = useState(0);
 
   useEffect(() => {
@@ -34,7 +29,6 @@ const BlockDisplay = () => {
     }
   }, [blockId, allWeeks]);
 
-  // console.log(blockWeeks);
   return (
     <>
       <SideBar />

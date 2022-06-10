@@ -9,16 +9,6 @@ const SingleWeek = ({ currentWeek }) => {
   const currentWeekDays = currentWeekDaysArr.filter(
     (day) => day.week_id === parseInt(currentWeek)
   );
-  console.log("Single WEEK", currentWeekDays);
-  // let week;
-  // if (currentWeek !== 0) {
-  //   week = weeks[currentWeek];
-  // }
-  // console.log(currentWeek);
-  // let dayObjects;
-  // if (week) {
-  //   dayObjects = Object.values(week.days);
-  // }
 
   return (
     <div className="day-cards-container">
