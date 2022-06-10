@@ -12,6 +12,7 @@
 .block-page-container-header {
   display: flex;
   flex-direction: row;
+  border-bottom: 1px solid gray;
 }
 
 .header-left {
@@ -28,13 +29,27 @@
 .header-left > p {
   font-size: 24px;
   font-style: italic;
-  line-height: 10px;
+  line-height: 1px;
 }
 
 .header-right {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  /* margin-left: 20px; */
-  padding-bottom: 17px;
+  padding-bottom: 10px;
+}
+
+.week-tab-label {
+  font-size: 14px;
+  margin-right: 30px;
+  transition: 0.4s;
+}
+
+.week-tab-label:hover {
+  cursor: pointer;
+  color: #03dac5;
+}
+
+.week-tab-label.active {
+  color: #03dac5;
 }

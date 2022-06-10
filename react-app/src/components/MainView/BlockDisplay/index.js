@@ -43,6 +43,9 @@ const BlockDisplay = () => {
               <div
                 onClick={() => setCurrentWeek(week.id)}
                 key={`week-${week.id}`}
+                className={`week-tab-label${
+                  currentWeek == week.id ? " active" : ""
+                }`}
               >{`Week ${idx + 1}`}</div>
             ))}
           </div>
