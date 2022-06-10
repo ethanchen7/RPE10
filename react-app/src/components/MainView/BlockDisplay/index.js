@@ -32,7 +32,7 @@ const BlockDisplay = () => {
     } else {
       setCurrentWeek(0);
     }
-  }, [allWeeks]);
+  }, [blockId, allWeeks]);
 
   // console.log(blockWeeks);
   return (
