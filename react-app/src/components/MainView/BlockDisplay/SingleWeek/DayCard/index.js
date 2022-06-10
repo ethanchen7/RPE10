@@ -2,9 +2,10 @@ import VolumeTag from "../../Tags/Volume";
 import RPETag from "../../Tags/RPE";
 import "./index.css";
 const DayCard = ({ day, number }) => {
-  console.log(day);
   const exerciseArr = Object.values(day.exercises);
-  console.log(exerciseArr);
+  let totalVolume = 0;
+  let totalRPE = 0;
+
   return (
     <div className="day-note-parent-container">
       <div className="day-card-container">
@@ -15,6 +16,12 @@ const DayCard = ({ day, number }) => {
         <div className="day-card-right">
           <div className={`day-card-exercises length-${exerciseArr.length}`}>
             {exerciseArr.map((exercise) => {
+              totalVolume +=
+                exercise.sets *
+                exercise.reps *
+                (exercise.weight > 0 ? exercise.weight : 80);
+              totalRPE += exercise.rpe;
+
               return (
                 <>
                   <span>{`${exercise.name}`}</span>
@@ -26,8 +33,8 @@ const DayCard = ({ day, number }) => {
             })}
           </div>
           <div className="day-card-footer">
-            <VolumeTag />
-            <RPETag />
+            <VolumeTag volume={Math.floor(totalVolume / 100)} />
+            <RPETag rpe={Math.floor(totalRPE / exerciseArr.length)} />
           </div>
         </div>
       </div>

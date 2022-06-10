@@ -2,7 +2,7 @@
   position: absolute;
   text-align: center;
   height: 25px;
-  width: 80px;
+
   font-size: 12px;
   border-radius: 5px;
   border: none;
@@ -10,18 +10,21 @@
   align-items: center;
   display: flex;
   justify-content: center;
+  font-weight: 700;
 }
 
 .volume {
   bottom: 5px;
   left: 1px;
   color: #fff;
+  min-width: 100px;
   background: rgba(179, 147, 217, 0.4);
 }
 
 .rpe {
+  position: relative;
   bottom: 5px;
-  left: 100px;
   color: #fff;
+  min-width: 80px;
   background: rgba(179, 147, 217, 0.4);
 }

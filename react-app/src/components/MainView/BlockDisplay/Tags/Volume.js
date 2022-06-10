@@ -1,8 +1,8 @@
 import "./index.css";
-const VolumeTag = () => {
+const VolumeTag = ({ volume }) => {
   return (
     <div className="tag volume">
-      <p>Volume: 80</p>
+      <p>{`Volume: ${volume}`}</p>
     </div>
   );
 };

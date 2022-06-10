@@ -1,8 +1,8 @@
 import "./index.css";
-const RPETag = () => {
+const RPETag = ({ rpe }) => {
   return (
     <div className="tag rpe">
-      <p>RPE: 8</p>
+      <p>{`RPE: ${rpe}`}</p>
     </div>
   );
 };
