@@ -19,7 +19,7 @@ ChartJS.register(
   Legend
 );
 
-const VolumeChart = () => {
+const VolumeChart = ({ weeks }) => {
   const options = {
     responsive: true,
     plugins: {
@@ -28,32 +28,20 @@ const VolumeChart = () => {
       },
       title: {
         display: true,
-        text: "Chart.js Bar Chart",
+        text: "Average Volume per Week",
       },
     },
   };
 
-  const labels = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-  ];
+  const labels = weeks.map((week, idx) => `Week ${idx + 1}`);
+
   const data = {
     labels,
     datasets: [
       {
-        label: "Dataset 1",
-        data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
-      },
-      {
-        label: "Dataset 2",
-        data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-        backgroundColor: "rgba(53, 162, 235, 0.5)",
+        label: "Average Volume",
+        data: weeks.map((week) => Math.floor(week.avg_vol / 100)),
+        backgroundColor: ["#03dac5"],
       },
     ],
   };
