@@ -1,11 +1,7 @@
-.page-container {
-  position: relative;
-  left: 150px;
-  height: 100%;
-  width: calc(100% - 150px);
-  overflow-y: auto;
-  overflow-x: hidden;
-  background-color: rgb(18, 18, 18);
+.dash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .dashboard-header {
@@ -14,4 +10,14 @@
   width: 100%;
   align-items: center;
   padding-top: 30px;
+}
+
+.page-container {
+  position: relative;
+  left: 150px;
+  height: 100%;
+  width: calc(100% - 150px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: rgb(18, 18, 18);
 }

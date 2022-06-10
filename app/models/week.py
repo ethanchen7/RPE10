@@ -27,11 +27,20 @@ class Week(db.Model):
             return (total // self.day_count)
         return 0
 
+    @hybrid_method
+    def avg_rpe(self):
+        rpe_total = 0
+        for day in self.days:
+            rpe_total += day.avg_rpe()
+        if self.day_count:
+            return (rpe_total // self.day_count)
+        return 0
+
     def to_dict(self):
         return {
             "id":self.id,
             "block_id": self.block.id,
             "days": {day.id: day.to_dict() for day in self.days},
             "avg_vol": self.avg_vol(),
-            # "avg_rpe": self.avg_rpe,
+            "avg_rpe": self.avg_rpe()
         }

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setWeeks } from "../../../store/week";
 import SideBar from "../SideBar";
 import VolumeChart from "./VolumeChart";
+import RPEChart from "./RPEChart";
 import "./index.css";
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -25,12 +26,16 @@ const Dashboard = () => {
   return (
     <div>
       <SideBar />
-      <div className="page-container">
+      <div className="page-container dash">
         <div className="dashboard-header">
           <h1>Welcome Demo Athlete!</h1>
           <p>Here are your training stats:</p>
         </div>
-        <VolumeChart weeks={allWeekObj} />
+        <div style={{ width: "1000px" }}>
+          <VolumeChart weeks={allWeekObj} />
+
+          <RPEChart weeks={allWeekObj} />
+        </div>
       </div>
     </div>
   );
