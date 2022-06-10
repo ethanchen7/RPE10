@@ -1,6 +1,7 @@
 const SET_WEEKS = "week/SET_WEEKS";
 const CREATE_WEEK = "week/CREATE_WEEK";
 const DELETE_WEEK = "week/DELETE_WEEK";
+const UPDATE_WEEK = "week/UPDATE_WEEK";
 
 export const setWeeks = (weeks) => {
   return {
@@ -20,6 +21,13 @@ export const deleteWeek = (weekId) => {
   return {
     type: DELETE_WEEK,
     weekId,
+  };
+};
+
+export const updateWeek = (week) => {
+  return {
+    type: UPDATE_WEEK,
+    week,
   };
 };
 
@@ -51,6 +59,28 @@ export const removeWeek = (weekId) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(deleteWeek(weekId));
+    return data;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return "An error occurred. Please try again.";
+  }
+};
+
+export const editWeek = (payload, weekId) => async (dispatch) => {
+  const response = await fetch(`/api/week/${weekId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(updateWeek(data));
     return data;
   } else if (response.status < 500) {
     const data = await response.json();

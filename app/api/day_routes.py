@@ -73,4 +73,17 @@ def create_exercise(id):
         return exercise.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-    
+
+# @day_routes.route('/<int:id>/vol', methods=["PUT"])
+# @login_required
+# def update_day_volume(id):
+
+#     day = Day.query.get(id)
+#     form = ExerciseForm()
+
+#     if day:
+#         day.total_vol = day.total_vol + form.data['total_vol']    
+#         db.session.commit()
+#         return day.to_dict()
+#     else:
+#         return {'errors': ['Day not found.']}, 404

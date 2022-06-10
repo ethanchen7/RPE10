@@ -1,8 +1,14 @@
+import { useSelector } from "react-redux";
 import VolumeTag from "../../Tags/Volume";
 import RPETag from "../../Tags/RPE";
 import "./index.css";
 const DayCard = ({ day, number }) => {
-  const exerciseArr = Object.values(day.exercises);
+  const allExercises = useSelector((state) => state.exercise);
+  const exerciseObjects = Object.values(allExercises);
+  const exerciseArr = exerciseObjects.filter(
+    (exercise) => exercise.day_id === parseInt(day.id)
+  );
+  // const exerciseArr = Object.values(day.exercises);
   let totalVolume = 0;
   let totalRPE = 0;
 
