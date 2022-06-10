@@ -4,20 +4,16 @@ import "./index.css";
 
 const SingleWeek = ({ currentWeek }) => {
   const weeks = useSelector((state) => state.week);
-  let week;
-  if (currentWeek !== 0) {
-    week = weeks[currentWeek];
-  }
-  console.log(currentWeek);
-  let dayObjects;
-  if (week) {
-    dayObjects = Object.values(week.days);
-  }
+  const allDays = useSelector((state) => state.day);
+  const currentWeekDaysArr = Object.values(allDays);
+  const currentWeekDays = currentWeekDaysArr.filter(
+    (day) => day.week_id === parseInt(currentWeek)
+  );
 
   return (
     <div className="day-cards-container">
-      {dayObjects?.map((day, idx) => (
-        <DayCard number={idx + 1} day={day} key={`day-${day.id}`} />
+      {currentWeekDays?.map((day, idx) => (
+        <DayCard number={idx + 1} day={allDays[day.id]} key={`day-${day.id}`} />
       ))}
     </div>
   );

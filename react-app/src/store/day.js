@@ -2,6 +2,7 @@ import { createExercise } from "./exercise";
 const SET_DAYS = "day/SET_DAYS";
 const CREATE_DAY = "day/CREATE_DAY";
 const DELETE_DAY = "day/DELETE_DAY";
+const UPDATE_DAY_VOL = "day/UPDATE_DAY_VOL";
 
 export const setDays = (days) => {
   return {
@@ -20,6 +21,13 @@ export const createDay = (day) => {
 export const deleteDay = (day) => {
   return {
     type: DELETE_DAY,
+    day,
+  };
+};
+
+export const updateDayVol = (day) => {
+  return {
+    type: UPDATE_DAY_VOL,
     day,
   };
 };
@@ -64,6 +72,28 @@ export const removeDay = (dayId) => async (dispatch) => {
     return "An error occurred. Please try again.";
   }
 };
+
+// export const editDayVol = (dayId) => async (dispatch) => {
+//   const response = await fetch(`/api/day/${dayId}/vol`, {
+//     method: "PUT",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(payload),
+//   });
+//   if (response.ok) {
+//     const data = await response.json();
+//     dispatch(updateDayVol(data));
+//     return data;
+//   } else if (response.status < 500) {
+//     const data = await response.json();
+//     if (data.errors) {
+//       return data.errors;
+//     }
+//   } else {
+//     return "An error occurred. Please try again.";
+//   }
+// };
 
 const initialState = {};
 

@@ -12,6 +12,8 @@ class Exercise(db.Model):
     day_id = db.Column(db.Integer, db.ForeignKey("days.id"), nullable=False)
     day = db.relationship("Day", back_populates="exercises")
 
+    total_vol = db.Column(db.Integer, default=0, nullable=True)
+
     def to_dict(self):
         return {
             "id":self.id,
@@ -20,5 +22,6 @@ class Exercise(db.Model):
             "sets": self.sets,
             "reps": self.reps,
             "rpe": self.rpe,
-            "day_id": self.day_id
+            "day_id": self.day_id,
+            "total_vol": self.total_vol
         }

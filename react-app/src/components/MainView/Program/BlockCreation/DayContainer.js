@@ -19,7 +19,6 @@ const DayContainer = ({ day, number }) => {
   };
 
   const handleAddExercise = (e) => {
-    console.log("clicked");
     e.preventDefault();
     dispatch(addExercise(day.id));
   };
@@ -34,6 +33,7 @@ const DayContainer = ({ day, number }) => {
         ? dayExercises.map((exercise) => (
             <ExerciseContainer
               exercise={exercise}
+              day={day}
               key={`exercise-${exercise.id}`}
             />
           ))

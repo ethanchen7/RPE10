@@ -9,3 +9,5 @@ class ExerciseForm(FlaskForm):
     sets = IntegerField('sets')
     reps = IntegerField('reps')
     rpe = IntegerField('rpe')
+
+    total_vol = IntegerField("total_vol")

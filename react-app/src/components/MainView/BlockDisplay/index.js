@@ -8,15 +8,16 @@ import "./index.css";
 const BlockDisplay = () => {
   const { blockId } = useParams();
   const location = useLocation();
-  const currentBlockNumber = location.state.number;
 
+  // block info
+  const currentBlockNumber = location.state.number;
   const blockObj = useSelector((state) => state.block);
   const block = blockObj[parseInt(blockId)];
 
-  let weeks;
-  if (block) {
-    weeks = Object.values(block.weeks);
-  }
+  // week info
+  const allWeeks = useSelector((state) => state.week);
+  const weekArr = Object.values(allWeeks);
+  const weeks = weekArr.filter((week) => week.block_id === parseInt(blockId));
 
   const [currentWeek, setCurrentWeek] = useState(0);
 
@@ -26,16 +27,7 @@ const BlockDisplay = () => {
     } else {
       setCurrentWeek(0);
     }
-  }, [block]);
-
-  // useEffect(() => {
-  //   document
-  //     .querySelector("block-page-container")
-  //     .addEventListener("click", (e) => {
-  //       console.log("clickedddd");
-  //       document.querySelector(".menu").classList.remove("active");
-  //     });
-  // });
+  }, [blockId, allWeeks]);
 
   return (
     <>

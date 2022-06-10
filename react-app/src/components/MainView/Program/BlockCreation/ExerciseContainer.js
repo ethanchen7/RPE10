@@ -3,11 +3,27 @@ import { useState, useEffect } from "react";
 import { MdOutlineClear } from "react-icons/md";
 import { putExercise } from "../../../../store/exercise";
 import { removeExercise } from "../../../../store/exercise";
-import { removeDay } from "../../../../store/day";
 import "./ExerciseContainer.css";
+import { setDays } from "../../../../store/day";
 
-const ExerciseContainer = ({ exercise }) => {
+const calculateTotalVolume = (weight, sets, reps) => {
+  let totalVolume;
+  // if sets or reps are 0, the exercise is incomplete, and we will omit it
+  if (sets !== 0 || reps !== 0) {
+    // accessory work defaults to 80 lb average
+    if (weight !== 0) {
+      totalVolume = weight * sets * reps;
+    } else {
+      totalVolume = 80 * sets * reps;
+    }
+  }
+
+  return totalVolume;
+};
+
+const ExerciseContainer = ({ day, exercise }) => {
   const dispatch = useDispatch();
+  const session = useSelector((state) => state.session.user);
 
   const [exerciseName, setExerciseName] = useState(
     exercise ? exercise.name : ""
@@ -31,15 +47,22 @@ const ExerciseContainer = ({ exercise }) => {
     dispatch(removeExercise(exercise.id));
   };
 
-  const handleUpdate = () => {
+  const handleUpdate = async () => {
+    const totalVol = calculateTotalVolume(weight, sets, reps);
     const payload = {
       name: exerciseName,
       weight,
       sets,
       reps,
       rpe,
+      total_vol: totalVol,
     };
     dispatch(putExercise(exercise.id, payload));
+    const response = await fetch(`/api/users/${session.id}`);
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(setDays(data.days));
+    }
   };
 
   return (
