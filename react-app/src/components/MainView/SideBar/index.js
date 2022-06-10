@@ -21,6 +21,21 @@ const SideBar = () => {
   const [menuToggle, setMenuToggle] = useState(false);
   const [openBlock, setOpenBlock] = useState(false);
 
+  const handleClick = (e) => {
+    console.log("clicked");
+    e.stopPropagation();
+    console.log(e.target);
+    if (e.target.id === "menu-toggler" || e.target.id === "menu-toggler-text") {
+      setMenuToggle(true);
+    }
+  };
+  window.onclick = function (event) {
+    event.stopPropagation();
+    if (event.target.id !== "menu-toggler") {
+      setMenuToggle(false);
+    }
+  };
+
   const onLogout = async (e) => {
     history.push("/");
     await dispatch(logout());
@@ -113,9 +128,11 @@ const SideBar = () => {
         <div className="person-icon">
           <div
             className={`person-circle-icon`}
-            onClick={() => setMenuToggle(!menuToggle)}
+            id={`menu-toggler`}
+            onClick={handleClick}
+            onBlur={() => setMenuToggle(false)}
           >
-            <p>{`${sessionUser?.first_name
+            <p id={`menu-toggler-text`}>{`${sessionUser?.first_name
               .charAt(0)
               .toUpperCase()}${sessionUser?.last_name
               .charAt(0)

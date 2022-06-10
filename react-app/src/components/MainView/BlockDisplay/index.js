@@ -2,10 +2,9 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useLocation } from "react-router-dom";
 import SideBar from "../SideBar";
-import WeekTabs from "./WeekTabs";
 import SingleWeek from "./SingleWeek";
 import "./index.css";
-import { getBlock } from "../../../store/block";
+
 const BlockDisplay = () => {
   const { blockId } = useParams();
   const location = useLocation();
@@ -28,6 +27,15 @@ const BlockDisplay = () => {
       setCurrentWeek(0);
     }
   }, [block]);
+
+  // useEffect(() => {
+  //   document
+  //     .querySelector("block-page-container")
+  //     .addEventListener("click", (e) => {
+  //       console.log("clickedddd");
+  //       document.querySelector(".menu").classList.remove("active");
+  //     });
+  // });
 
   return (
     <>
