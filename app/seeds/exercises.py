@@ -46,6 +46,36 @@ def seed_exercises():
     exercise36 = Exercise(name="Lat Pulldowns", weight=145, sets=3, reps=10, rpe=7, day_id=7)
     exercise37 = Exercise(name="Tricep Accessory", weight=0, sets=3, reps=10, rpe=7, day_id=7)
 
+    exercise38 = Exercise(name="Competition Squat", weight=363, sets=1, reps=4, rpe=7, day_id=8)
+    exercise39 = Exercise(name="Competition Squat", weight=300, sets=3, reps=8, rpe=8, day_id=8)
+    exercise40 = Exercise(name="Tempo Bench 3/1/3", weight=220, sets=6, reps=3, rpe=7, day_id=8)
+    exercise41 = Exercise(name="Planks", weight=0, sets=3, reps=10, rpe=10, day_id=8)
+
+    exercise42 = Exercise(name="Tempo Squat 3 Sec", weight=308, sets=4, reps=7, rpe=7, day_id=9)
+    exercise43 = Exercise(name="2ct Pause Bench", weight=235, sets=4, reps=2, rpe=7, day_id=9)
+    exercise44 = Exercise(name="Flat Dumbbell Press", weight=75, sets=4, reps=15, rpe=8, day_id=9)
+    exercise45 = Exercise(name="Tricep Accessory", weight=0, sets=4, reps=15, rpe=7, day_id=9)
+    exercise46= Exercise(name="Leg Extensions", weight=0, sets=4, reps=15, rpe=7, day_id=9)
+
+    exercise47 = Exercise(name="Progressive Highbar Squats", weight=335, sets=3, reps=5, rpe=7, day_id=10)
+    exercise48 = Exercise(name="Competition Deadlift", weight=375, sets=4, reps=2, rpe=8, day_id=10)
+    exercise49 = Exercise(name="Pull-ups AMRAP", weight=0, sets=3, reps=15, rpe=10, day_id=10)
+    exercise50 = Exercise(name="Romanian Deadlifts", weight=235, sets=3, reps=10, rpe=7, day_id=10)
+    exercise51 = Exercise(name="BB/DB Rows", weight=80, sets=4, reps=15, rpe=7, day_id=10)
+    exercise52 = Exercise(name="Lat Pulldowns", weight=140, sets=4, reps=15, rpe=7, day_id=10)
+    
+    exercise53 = Exercise(name="Competition Bench", weight=265, sets=1, reps=2, rpe=8, day_id=11)
+    exercise53 = Exercise(name="Competition Bench", weight=215, sets=3, reps=8, rpe=7.5, day_id=11)
+    exercise54 = Exercise(name="Incline Dumbbell Press", weight=80, sets=3, reps=15, rpe=7, day_id=11)
+    exercise55 = Exercise(name='Cable Flys', weight=0, sets=3, reps=10, rpe=7, day_id=11)
+    exercise56 = Exercise(name="Lat Pulldowns", weight=145, sets=3, reps=10, rpe=7, day_id=11)
+    exercise57 = Exercise(name="Tricep Accessory", weight=0, sets=3, reps=10, rpe=7, day_id=11)
+
+    exercise58 = Exercise(name="Competition Squat", weight=380, sets=1, reps=2, rpe=8, day_id=12)
+    exercise59 = Exercise(name="Competition Squat", weight=325, sets=4, reps=4, rpe=7.5, day_id=12)
+    exercise60 = Exercise(name="Tempo Bench 3/1/3", weight=240, sets=8, reps=1, rpe=7, day_id=12)
+    exercise61 = Exercise(name="Planks", weight=0, sets=3, reps=10, rpe=10, day_id=12)
+
     db.session.add(exercise1)
     db.session.add(exercise2)
     db.session.add(exercise3)
@@ -89,6 +119,35 @@ def seed_exercises():
     db.session.add(exercise35)
     db.session.add(exercise36)
     db.session.add(exercise37)
+
+    db.session.add(exercise38)
+    db.session.add(exercise39)
+    db.session.add(exercise40)
+    db.session.add(exercise41)
+
+    db.session.add(exercise42)
+    db.session.add(exercise43)
+    db.session.add(exercise44)
+    db.session.add(exercise45)
+    db.session.add(exercise46)
+
+    db.session.add(exercise47)
+    db.session.add(exercise48)
+    db.session.add(exercise49)
+    db.session.add(exercise50)
+    db.session.add(exercise51)
+    db.session.add(exercise52)
+
+    db.session.add(exercise53)
+    db.session.add(exercise54)
+    db.session.add(exercise55)
+    db.session.add(exercise56)
+    db.session.add(exercise57)
+
+    db.session.add(exercise58)
+    db.session.add(exercise59)
+    db.session.add(exercise60)
+    db.session.add(exercise61)
 
     db.session.commit()
 
