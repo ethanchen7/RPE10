@@ -1,7 +1,7 @@
 .day-cards-container {
   position: relative;
   width: 100%;
-  padding: 30px;
+  padding-top: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 30px;

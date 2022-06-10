@@ -27,13 +27,13 @@ const SideBar = () => {
       e.target.id === "block-toggler" ||
       e.target.id === "block-toggler-icon"
     ) {
-      setOpenBlock(true);
+      setOpenBlock(!openBlock);
     }
   };
   const handleMenuClick = (e) => {
     e.stopPropagation();
     if (e.target.id === "menu-toggler" || e.target.id === "menu-toggler-text") {
-      setMenuToggle(true);
+      setMenuToggle(!menuToggle);
     }
   };
   window.onclick = function (event) {

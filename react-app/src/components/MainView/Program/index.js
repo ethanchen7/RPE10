@@ -26,8 +26,8 @@ const Program = () => {
             ))}
           </div>
         </div>
-        <BlockCreateModal />
       </div>
+      <BlockCreateModal />
     </>
   );
 };

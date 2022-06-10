@@ -7,3 +7,11 @@
   overflow-x: hidden;
   background-color: rgb(18, 18, 18);
 }
+
+.dashboard-header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  padding-top: 30px;
+}
