@@ -22,7 +22,7 @@ class Week(db.Model):
     def avg_vol(self):
         total = 0
         for day in self.days:
-            total += day.avg_vol()
+            total += day.total_vol()
         if self.day_count:
             return (total // self.day_count)
         return 0

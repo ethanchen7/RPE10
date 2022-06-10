@@ -27,11 +27,11 @@ class Day(db.Model):
                 total += exercise.total_vol
         return total
 
-    @hybrid_method
-    def avg_vol(self):
-        if self.exercise_count:
-            return (self.total_vol() // self.exercise_count) // 100
-        return 0
+    # @hybrid_method
+    # def avg_vol(self):
+    #     if self.exercise_count:
+    #         return (self.total_vol() // self.exercise_count) // 100
+    #     return 0
 
     def to_dict(self):
         return {
@@ -40,5 +40,5 @@ class Day(db.Model):
             "week_id": self.week_id,
             "exercises": {exercise.id: exercise.to_dict() for exercise in self.exercises},
             "total_vol": self.total_vol(),
-            "avg_vol": self.avg_vol()
+            # "avg_vol": self.avg_vol()
         }
