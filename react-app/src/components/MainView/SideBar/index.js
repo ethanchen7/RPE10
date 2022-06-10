@@ -21,17 +21,30 @@ const SideBar = () => {
   const [menuToggle, setMenuToggle] = useState(false);
   const [openBlock, setOpenBlock] = useState(false);
 
-  const handleClick = (e) => {
-    console.log("clicked");
+  const handleBlocksClick = (e) => {
     e.stopPropagation();
-    console.log(e.target);
+    if (
+      e.target.id === "block-toggler" ||
+      e.target.id === "block-toggler-icon"
+    ) {
+      setOpenBlock(true);
+    }
+  };
+  const handleMenuClick = (e) => {
+    e.stopPropagation();
     if (e.target.id === "menu-toggler" || e.target.id === "menu-toggler-text") {
       setMenuToggle(true);
     }
   };
   window.onclick = function (event) {
     event.stopPropagation();
-    if (event.target.id !== "menu-toggler") {
+    if (
+      event.target.id !== "menu-toggler" &&
+      event.target.id !== "menu-toggler-text"
+    ) {
+      setOpenBlock(false);
+    }
+    if (event.target.id !== "block-toggler") {
       setMenuToggle(false);
     }
   };
@@ -67,11 +80,13 @@ const SideBar = () => {
         </div>
         <div
           className={`sidebar-menu-item`}
-          onClick={() => setOpenBlock(!openBlock)}
+          id="block-toggler"
+          onClick={handleBlocksClick}
         >
           <i
             className="fa-solid fa-bars-progress fa-2xl"
             style={{ color: "#a4a8a8" }}
+            id="block-toggler-icon"
             data-tip="Blocks"
           ></i>
           <ReactTooltip
@@ -81,17 +96,21 @@ const SideBar = () => {
             effect="solid"
           />
         </div>
-        <div className={`blocks-nav-container${openBlock ? " open" : ""}`}>
-          {blocks.map((block, idx) => (
-            <Link
-              to={{
-                pathname: `/block/${block.id}`,
-                state: { number: idx + 1 },
-              }}
-              key={`nav-to-${block.id}`}
-            >{`Block ${idx + 1}`}</Link>
-          ))}
-        </div>
+        {blocks ? (
+          <div className={`blocks-nav-container${openBlock ? " open" : ""}`}>
+            {blocks.map((block, idx) => (
+              <Link
+                to={{
+                  pathname: `/block/${block.id}`,
+                  state: { number: idx + 1 },
+                }}
+                key={`nav-to-${block.id}`}
+              >{`Block ${idx + 1}`}</Link>
+            ))}
+          </div>
+        ) : (
+          ""
+        )}
         <div className="sidebar-menu-item">
           <NavLink to="/program" exact={true} activeClassName="selected">
             <i
@@ -129,7 +148,7 @@ const SideBar = () => {
           <div
             className={`person-circle-icon`}
             id={`menu-toggler`}
-            onClick={handleClick}
+            onClick={handleMenuClick}
             onBlur={() => setMenuToggle(false)}
           >
             <p id={`menu-toggler-text`}>{`${sessionUser?.first_name
