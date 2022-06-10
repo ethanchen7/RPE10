@@ -26,6 +26,26 @@ def seed_exercises():
     exercise20 = Exercise(name="Tempo Bench 3/1/3", weight=225, sets=5, reps=2, rpe=6, day_id = 4)
     exercise21 = Exercise(name="Planks", weight=0, sets=3, reps=10, rpe=10, day_id=4)
 
+    exercise22 = Exercise(name="Tempo Squat 3 Sec", weight=285, sets=3, reps=10, rpe=7, day_id=5)
+    exercise23 = Exercise(name="2ct Pause Bench", weight=215, sets=4, reps=3, rpe=7, day_id=5)
+    exercise24 = Exercise(name="Flat Dumbbell Press", weight=70, sets=4, reps=15, rpe=7, day_id=5)
+    exercise25 = Exercise(name="Tricep Accessory", weight=0, sets=4, reps=15, rpe=7, day_id=5)
+    exercise26= Exercise(name="Leg Extensions", weight=0, sets=4, reps=15, rpe=7, day_id=5)
+
+    exercise27 = Exercise(name="Progressive Highbar Squats", weight=330, sets=4, reps=4, rpe=6, day_id=6)
+    exercise28 = Exercise(name="Competition Deadlift", weight=365, sets=3, reps=3, rpe=8, day_id=6)
+    exercise29 = Exercise(name="Pull-ups AMRAP", weight=0, sets=4, reps=15, rpe=7, day_id=6)
+    exercise30 = Exercise(name="Romanian Deadlifts", weight=235, sets=3, reps=10, rpe=7, day_id=6)
+    exercise31 = Exercise(name="BB/DB Rows", weight=80, sets=4, reps=15, rpe=7, day_id=6)
+    exercise32 = Exercise(name="Lat Pulldowns", weight=140, sets=4, reps=15, rpe=7, day_id=6)
+    
+    exercise33 = Exercise(name="Competition Bench", weight=255, sets=1, reps=2, rpe=7.5, day_id=7)
+    exercise33 = Exercise(name="Competition Bench", weight=205, sets=3, reps=10, rpe=7, day_id=7)
+    exercise34 = Exercise(name="Incline Dumbbell Press", weight=80, sets=3, reps=15, rpe=7, day_id=7)
+    exercise35 = Exercise(name='Cable Flys', weight=0, sets=3, reps=10, rpe=7, day_id=7)
+    exercise36 = Exercise(name="Lat Pulldowns", weight=145, sets=3, reps=10, rpe=7, day_id=7)
+    exercise37 = Exercise(name="Tricep Accessory", weight=0, sets=3, reps=10, rpe=7, day_id=7)
+
     db.session.add(exercise1)
     db.session.add(exercise2)
     db.session.add(exercise3)
@@ -50,6 +70,25 @@ def seed_exercises():
     db.session.add(exercise19)
     db.session.add(exercise20)
     db.session.add(exercise21)
+
+    db.session.add(exercise22)
+    db.session.add(exercise23)
+    db.session.add(exercise24)
+    db.session.add(exercise25)
+    db.session.add(exercise26)
+
+    db.session.add(exercise27)
+    db.session.add(exercise28)
+    db.session.add(exercise29)
+    db.session.add(exercise30)
+    db.session.add(exercise31)
+    db.session.add(exercise32)
+
+    db.session.add(exercise33)
+    db.session.add(exercise34)
+    db.session.add(exercise35)
+    db.session.add(exercise36)
+    db.session.add(exercise37)
 
     db.session.commit()
 
