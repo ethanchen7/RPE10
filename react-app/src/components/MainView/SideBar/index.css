@@ -153,6 +153,7 @@
   line-height: 20px;
   cursor: pointer;
 }
+
 .menu::before {
   content: "";
   position: absolute;
@@ -183,6 +184,11 @@
   visibility: hidden;
   opacity: 0;
   z-index: 1000;
+}
+
+.blocks-nav-container > a:hover {
+  transition: 0.4s;
+  color: gray;
 }
 
 .blocks-nav-container.open {
