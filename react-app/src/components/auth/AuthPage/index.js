@@ -1,9 +1,11 @@
 import LoginForm from "../LoginForm";
-
 import rpelogo from "../../../assets/images/rpelogo.png";
 import "./index.css";
+import SignUpForm from "../SignUpForm";
 
 const AuthPage = () => {
+  const page = window.location.href.split("/").at(-1);
+
   return (
     <div className="auth-container">
       <div className="auth-header">
@@ -11,7 +13,7 @@ const AuthPage = () => {
         <p>RPE10</p>
       </div>
       <div className="auth-body">
-        <LoginForm />
+        {page === "login" ? <LoginForm /> : <SignUpForm />}
       </div>
     </div>
   );

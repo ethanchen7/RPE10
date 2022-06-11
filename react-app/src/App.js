@@ -56,9 +56,9 @@ function App() {
         <Route path="/login" exact={true}>
           <AuthPage />
         </Route>
-        {/* <Route path="/sign-up" exact={true}>
-          <SignUpForm />
-        </Route> */}
+        <Route path="/sign-up" exact={true}>
+          <AuthPage />
+        </Route>
         <ProtectedRoute path="/block/:blockId" exact={true} loaded={loaded}>
           <BlockDisplay />
         </ProtectedRoute>
