@@ -36,7 +36,7 @@ def update_exercise(id):
             exercise.sets = form.data['sets']
             exercise.reps = form.data['reps']
             exercise.rpe = form.data['rpe']
-            exercise.total_vol = form.data['total_vol']
+            # exercise.total_vol = form.data['total_vol']
             
             db.session.commit()
             return exercise.to_dict()

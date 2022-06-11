@@ -1,4 +1,5 @@
 from .db import db
+from sqlalchemy.ext.hybrid import hybrid_property, hybrid_method
 
 class Exercise(db.Model):
     __tablename__ = 'exercises'
@@ -12,7 +13,16 @@ class Exercise(db.Model):
     day_id = db.Column(db.Integer, db.ForeignKey("days.id"), nullable=False)
     day = db.relationship("Day", back_populates="exercises")
 
-    total_vol = db.Column(db.Integer, default=0, nullable=True)
+    @hybrid_method
+    def total_vol(self):
+        if self.sets != 0 or self.reps != 0:
+
+            if self.weight != 0:
+                totalVolume = self.weight * self.sets * self.reps
+            else:
+                totalVolume = 80 * self.sets * self.reps
+            return totalVolume
+        return 0
 
     def to_dict(self):
         return {
@@ -23,5 +33,5 @@ class Exercise(db.Model):
             "reps": self.reps,
             "rpe": self.rpe,
             "day_id": self.day_id,
-            "total_vol": self.total_vol
+            "total_vol": self.total_vol()
         }
