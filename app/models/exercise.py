@@ -4,7 +4,7 @@ from sqlalchemy.ext.hybrid import hybrid_property, hybrid_method
 class Exercise(db.Model):
     __tablename__ = 'exercises'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=True)
+    name = db.Column(db.String(60), nullable=True)
     weight = db.Column(db.Integer, nullable=True)
     sets = db.Column(db.Integer, nullable=True)
     reps = db.Column(db.Integer, nullable=True)

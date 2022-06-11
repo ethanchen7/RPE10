@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { MdOutlineClear } from "react-icons/md";
 import { putExercise } from "../../../../store/exercise";
 import { removeExercise } from "../../../../store/exercise";
+import ErrorMessage from "../../../ErrorMessage";
 import "./ExerciseContainer.css";
 import { setDays } from "../../../../store/day";
 
@@ -33,6 +34,8 @@ const ExerciseContainer = ({ day, exercise }) => {
   const [reps, setReps] = useState(exercise ? exercise.reps : 0);
   const [rpe, setRPE] = useState(exercise ? exercise.rpe : 0);
 
+  const [errorMessages, setErrorMessages] = useState({});
+
   useEffect(() => {
     if (exercise) {
       setExerciseName(exercise.name);
@@ -55,16 +58,29 @@ const ExerciseContainer = ({ day, exercise }) => {
       sets,
       reps,
       rpe,
-      // total_vol: totalVol,
     };
-    dispatch(putExercise(exercise.id, payload));
+    const update = await dispatch(putExercise(exercise.id, payload));
+    if (update.errors) {
+      console.log(update.errors);
+      const errors = {};
+      if (Array.isArray(update.errors)) {
+        update.errors.forEach((error) => {
+          const label = error.split(":")[0].slice(0, -1);
+          const message = error.split(":")[1].slice(1);
+          errors[label] = message;
+        });
+      } else {
+        errors.overall = update.errors;
+      }
+      setErrorMessages(errors);
+    }
     const response = await fetch(`/api/users/${session.id}`);
     if (response.ok) {
       const data = await response.json();
       dispatch(setDays(data.days));
     }
   };
-
+  // console.log(errorMessages);
   return (
     <div className="exercise-row">
       <div>{""}</div>
@@ -76,6 +92,7 @@ const ExerciseContainer = ({ day, exercise }) => {
           onChange={(e) => setExerciseName(e.target.value)}
           onBlur={handleUpdate}
         />
+        <ErrorMessage label={""} message={errorMessages.name} />
       </div>
       <div className="exercise-weight-input">
         <input
@@ -85,6 +102,7 @@ const ExerciseContainer = ({ day, exercise }) => {
           onChange={(e) => setWeight(e.target.value)}
           onBlur={handleUpdate}
         />
+        <ErrorMessage label={""} message={errorMessages.weight} />
       </div>
       <div className="exercise-sets-input">
         <input
@@ -93,6 +111,7 @@ const ExerciseContainer = ({ day, exercise }) => {
           onChange={(e) => setSets(e.target.value)}
           onBlur={handleUpdate}
         />
+        <ErrorMessage label={""} message={errorMessages.sets} />
       </div>
       <div className="exercise-reps-input">
         <input
@@ -101,6 +120,7 @@ const ExerciseContainer = ({ day, exercise }) => {
           onChange={(e) => setReps(e.target.value)}
           onBlur={handleUpdate}
         />
+        <ErrorMessage label={""} message={errorMessages.reps} />
       </div>
       <div className="exercise-rpe-input">
         <input
@@ -109,6 +129,7 @@ const ExerciseContainer = ({ day, exercise }) => {
           onChange={(e) => setRPE(e.target.value)}
           onBlur={handleUpdate}
         />
+        <ErrorMessage label={""} message={errorMessages.rpe} />
       </div>
     </div>
   );
