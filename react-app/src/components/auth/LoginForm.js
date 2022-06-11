@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { login } from "../../store/session";
+import ErrorMessage from "../ErrorMessage";
 import "./AuthForm.css";
 
 const LoginForm = () => {
@@ -75,7 +76,7 @@ const LoginForm = () => {
           <label htmlFor="email" className="input-label">
             Email
           </label>
-          {/* <ErrorMessage label={""} message={errorMessages.email} /> */}
+          <ErrorMessage label={""} message={errorMessages.email} />
         </div>
         <div className="auth-input-group">
           <input
@@ -88,7 +89,7 @@ const LoginForm = () => {
           <label htmlFor="email" className="input-label">
             Password
           </label>
-          {/* <ErrorMessage label={""} message={errorMessages.password} /> */}
+          <ErrorMessage label={""} message={errorMessages.password} />
         </div>
         <div className="submit-group">
           <button type="submit">Login</button>
