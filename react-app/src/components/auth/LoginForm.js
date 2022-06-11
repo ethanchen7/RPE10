@@ -1,20 +1,50 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { login } from '../../store/session';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { login } from "../../store/session";
+import "./AuthForm.css";
 
 const LoginForm = () => {
-  const [errors, setErrors] = useState([]);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const user = useSelector(state => state.session.user);
+  const [errorMessages, setErrorMessages] = useState({});
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
-      setErrors(data);
+      const errors = {};
+      if (Array.isArray(data)) {
+        data.forEach((error) => {
+          const label = error.split(":")[0].slice(0, -1);
+          const message = error.split(":")[1].slice(1);
+          errors[label] = message;
+        });
+      } else {
+        errors.overall = data;
+      }
+      setErrorMessages(errors);
+    }
+  };
+
+  const loginDemo = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login("demo@aa.io", "password123!"));
+    if (data) {
+      const errors = {};
+      if (Array.isArray(data)) {
+        data.forEach((error) => {
+          const label = error.split(":")[0].slice(0, -1);
+          const message = error.split(":")[1].slice(1);
+          errors[label] = message;
+        });
+      } else {
+        errors.overall = data;
+      }
+      setErrorMessages(errors);
     }
   };
 
@@ -27,38 +57,51 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to="/" />;
   }
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-      <div>
-        <label htmlFor='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type='submit'>Login</button>
-      </div>
-    </form>
+    <div className="login-signup-form-container">
+      <form onSubmit={onLogin} className="auth-form login">
+        <h1>Log in</h1>
+        <div className="auth-input-group">
+          <input
+            name="email"
+            type="text"
+            required={true}
+            value={email}
+            onChange={updateEmail}
+          />
+          <label htmlFor="email" className="input-label">
+            Email
+          </label>
+          {/* <ErrorMessage label={""} message={errorMessages.email} /> */}
+        </div>
+        <div className="auth-input-group">
+          <input
+            name="password"
+            type="password"
+            required={true}
+            value={password}
+            onChange={updatePassword}
+          />
+          <label htmlFor="email" className="input-label">
+            Password
+          </label>
+          {/* <ErrorMessage label={""} message={errorMessages.password} /> */}
+        </div>
+        <div className="submit-group">
+          <button type="submit">Login</button>
+
+          <button id="demo-btn" onClick={loginDemo}>
+            Demo User
+          </button>
+        </div>
+        <Link to="/sign-up" className="auth-form-link">
+          Don't have an account? <span>Sign Up!</span>
+        </Link>
+      </form>
+    </div>
   );
 };
 

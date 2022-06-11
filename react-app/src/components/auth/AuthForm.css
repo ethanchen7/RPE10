@@ -1,0 +1,134 @@
+.login-signup-form-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  background-color: rgb(18, 18, 18);
+  z-index: 1;
+}
+
+.login-signup-msg {
+  font-size: 14px;
+  color: #282e37ff;
+  margin-right: 5px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  /* padding: 40px; */
+  width: 350px;
+
+  /* position: absolute;
+      top: 30%;
+      right: 30%; */
+  margin: auto;
+}
+
+.auth-form > h1 {
+  font-size: 52px;
+}
+
+.auth-form.signup {
+  top: 25%;
+}
+
+.auth-form input {
+  height: 35px;
+  margin-top: 15px;
+  width: 96%;
+  padding-left: 8px;
+  border: 1px solid rgb(147, 147, 147);
+  border-radius: 6px;
+  background-color: transparent;
+  z-index: 3;
+  color: white;
+}
+
+.auth-input-group {
+  position: relative;
+  margin-top: 10px;
+}
+
+.input-label {
+  position: absolute;
+  top: 17px;
+  left: 0;
+  transform: translate(10px, 10px);
+  transform-origin: left;
+  transition: transform 0.25s;
+  color: rgb(255, 255, 255);
+  z-index: -1;
+  font-size: 12px;
+}
+
+.auth-form input:focus + .input-label,
+.auth-form input:valid + .input-label {
+  transform: translate(0, -20px) scale(0.8);
+  color: #4a4a4a;
+}
+
+.auth-form input:is(:focus, :valid) {
+  outline-color: #d1c5fc;
+}
+
+.auth-form input,
+textarea:focus {
+  outline: none;
+}
+
+.auth-form button {
+  height: 35px;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 6px;
+  border: none;
+  background-color: #a7c7ff8f;
+  color: black;
+  margin-bottom: 10px;
+  font-weight: 600;
+  transition: 0.4s;
+}
+
+.auth-form button:hover {
+  background-color: #32589b8f;
+  color: white;
+}
+.auth-form-link {
+  margin: auto;
+  margin-top: 10px;
+  font-size: 14px;
+  color: rgb(183, 183, 225);
+}
+
+.auth-form-link span {
+  color: #03dac5;
+}
+
+#demo-btn {
+  color: black;
+  background-color: #03dac5;
+  border-color: #03dac5;
+  font-weight: 600;
+  transition: 0.4s;
+}
+
+#demo-btn:hover {
+  color: rgb(252, 252, 252);
+  background-color: #1e877d;
+}
+
+.login-signup-error-container {
+  font-size: 12px;
+  padding-bottom: 15px;
+  color: red;
+}
+
+.login-signup-error-container div {
+  margin-bottom: 5px;
+  margin-left: 3px;
+}
+
+.submit-group {
+  margin-top: 20px;
+}

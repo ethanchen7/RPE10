@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import LoginForm from "./components/auth/LoginForm";
+import AuthPage from "./components/auth/AuthPage";
 import SignUpForm from "./components/auth/SignUpForm";
 import HomePage from "./components/MainView/Dashboard";
 import SplashPage from "./components/SplashPage";
@@ -9,8 +9,6 @@ import Program from "./components/MainView/Program";
 import BlockCreation from "./components/MainView/Program/BlockCreation";
 import BlockDisplay from "./components/MainView/BlockDisplay";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
-import User from "./components/User";
 import { authenticate } from "./store/session";
 import { setBlocks } from "./store/block";
 import { setWeeks } from "./store/week";
@@ -56,7 +54,7 @@ function App() {
           {session ? <HomePage /> : <SplashPage />}
         </Route>
         <Route path="/login" exact={true}>
-          <LoginForm />
+          <AuthPage />
         </Route>
         {/* <Route path="/sign-up" exact={true}>
           <SignUpForm />
@@ -73,12 +71,6 @@ function App() {
           loaded={loaded}
         >
           <BlockCreation />
-        </ProtectedRoute>
-        <ProtectedRoute path="/users" exact={true} loaded={loaded}>
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true} loaded={loaded}>
-          <User />
         </ProtectedRoute>
         {/* <ProtectedRoute path="/" exact={true}>
           <h1>My Home Page</h1>
