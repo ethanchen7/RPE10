@@ -65,7 +65,7 @@
 .auth-form input:focus + .input-label,
 .auth-form input:valid + .input-label {
   transform: translate(0, -20px) scale(0.8);
-  color: #4a4a4a;
+  color: #bfbfbf;
 }
 
 .auth-form input:is(:focus, :valid) {
