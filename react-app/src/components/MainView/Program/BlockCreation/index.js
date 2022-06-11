@@ -60,12 +60,7 @@ const BlockCreation = () => {
     };
     dispatch(putBlock(blockId, payload));
   };
-
-  const handleDeleteBlock = () => {
-    dispatch(removeBlock(blockId));
-    history.push("/program");
-  };
-
+  console.log(blockWeeks);
   return (
     <>
       <SideBar />
@@ -81,7 +76,14 @@ const BlockCreation = () => {
           />
           <DeleteConfirmationModal blockId={blockId} />
         </div>
-
+        <p>
+          Please note: Exercises that are not complete (missing exercise name,
+          sets or reps) will not be displayed on the individual Block view.
+        </p>
+        <p>
+          Bodyweight exercises or weights that may vary can be left as 0. Volume
+          calculations will be normalized for such exercises.
+        </p>
         <button
           className="add-week-btn"
           onClick={handleAddWeek}
@@ -90,15 +92,17 @@ const BlockCreation = () => {
           Add Week
         </button>
 
-        {blockWeeks
-          ? blockWeeks.map((week, id) => (
-              <WeekContainer
-                week={week}
-                key={`week-${week.id}`}
-                number={id + 1}
-              />
-            ))
-          : ""}
+        {blockWeeks.length ? (
+          blockWeeks.map((week, id) => (
+            <WeekContainer
+              week={week}
+              key={`week-${week.id}`}
+              number={id + 1}
+            />
+          ))
+        ) : (
+          <h3>Add a week to get started!</h3>
+        )}
       </div>
     </>
   );

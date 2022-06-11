@@ -19,14 +19,18 @@ const DayCard = ({ day, number }) => {
         <div className="day-card-right">
           <div className={`day-card-exercises length-${exerciseArr.length}`}>
             {exerciseArr.map((exercise) => {
-              return (
-                <>
-                  <span>{`${exercise.name}`}</span>
-                  <span>{` ${exercise.weight}lbs`}</span>
-                  <span>{` ${exercise.sets}x${exercise.reps}`}</span>
-                  <span>{` @${exercise.rpe}`}</span>
-                </>
-              );
+              if (!exercise.name || !exercise.sets || !exercise.reps) {
+                return "";
+              } else {
+                return (
+                  <>
+                    <span>{`${exercise.name}`}</span>
+                    <span>{` ${exercise.weight}lbs`}</span>
+                    <span>{` ${exercise.sets}x${exercise.reps}`}</span>
+                    <span>{` @${exercise.rpe}`}</span>
+                  </>
+                );
+              }
             })}
           </div>
           <div className="day-card-footer">

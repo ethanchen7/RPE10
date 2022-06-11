@@ -14,10 +14,13 @@ class Day(db.Model):
     
     # total_vol = db.Column(db.Integer, default=0, nullable=True)
 
-    @hybrid_property
+    @hybrid_method
     def exercise_count(self):
-        return len(self.exercises)   # @note: use when non-dynamic relationship
-        # return self.exercises.count()# @note: use when dynamic relationship
+        count = 0
+        for exercise in self.exercises:
+            if exercise.sets != 0 or exercise.reps != 0:
+                count += 1
+        return count
     
     @hybrid_method
     def total_vol(self):
@@ -31,9 +34,10 @@ class Day(db.Model):
     def avg_rpe(self):
         rpe_total = 0
         for exercise in self.exercises:
-            rpe_total += exercise.rpe
-        if self.exercise_count:
-            return rpe_total // self.exercise_count
+            if exercise.sets != 0 or exercise.reps != 0:
+                rpe_total += exercise.rpe
+        if self.exercise_count():
+            return rpe_total // self.exercise_count()
         return 0
 
     def to_dict(self):
