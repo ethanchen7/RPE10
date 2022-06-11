@@ -46,17 +46,20 @@
   font-size: 16px;
 }
 .length-4 {
-  font-size: 15px;
+  font-size: 17px;
 }
 .length-5 {
-  font-size: 14px;
+  font-size: 16px;
 }
 .length-6 {
   font-size: 14px;
 }
+.length-7 {
+  font-size: 12px;
+}
 
 .length-8 {
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .day-card-exercises {
