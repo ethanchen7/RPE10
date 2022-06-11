@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   color: rgb(255, 255, 255, 87%);
   background-color: rgb(18, 18, 18);
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 textarea,
