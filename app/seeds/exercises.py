@@ -114,7 +114,7 @@ def seed_exercises():
     exercise92 = Exercise(name="Military Press", weight=155, sets=3, reps=5, rpe=8, day_id=17)
     exercise93 = Exercise(name="Dumbbell Incline Press", weight=80, sets=3, reps=12, rpe=7, day_id=17)
     exercise94 = Exercise(name="Pec Deck", weight=0, sets=3, reps=15, rpe=7, day_id=17)
-    exercise95 = Exercise(name="Cable Lateral Raise", weight=0, sets=3, weight=8, rpe=8, day_id=17)
+    exercise95 = Exercise(name="Cable Lateral Raise", weight=0, sets=3, reps=8, rpe=8, day_id=17)
     exercise96 = Exercise(name="Cable Triceps Kickback", weight=0, sets=3, reps=20, rpe=8, day_id=17)
     exercise97 = Exercise(name="Bicycle Crunch", weight=0, sets=3, reps=12, rpe=7, day_id=17)
 

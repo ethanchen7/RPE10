@@ -6,20 +6,20 @@ import { removeExercise } from "../../../../store/exercise";
 import "./ExerciseContainer.css";
 import { setDays } from "../../../../store/day";
 
-const calculateTotalVolume = (weight, sets, reps) => {
-  let totalVolume;
-  // if sets or reps are 0, the exercise is incomplete, and we will omit it
-  if (sets !== 0 || reps !== 0) {
-    // accessory work defaults to 80 lb average
-    if (weight !== 0) {
-      totalVolume = weight * sets * reps;
-    } else {
-      totalVolume = 80 * sets * reps;
-    }
-  }
+// const calculateTotalVolume = (weight, sets, reps) => {
+//   let totalVolume;
+//   // if sets or reps are 0, the exercise is incomplete, and we will omit it
+//   if (sets !== 0 || reps !== 0) {
+//     // accessory work defaults to 80 lb average
+//     if (weight !== 0) {
+//       totalVolume = weight * sets * reps;
+//     } else {
+//       totalVolume = 80 * sets * reps;
+//     }
+//   }
 
-  return totalVolume;
-};
+//   return totalVolume;
+// };
 
 const ExerciseContainer = ({ day, exercise }) => {
   const dispatch = useDispatch();
@@ -48,14 +48,14 @@ const ExerciseContainer = ({ day, exercise }) => {
   };
 
   const handleUpdate = async () => {
-    const totalVol = calculateTotalVolume(weight, sets, reps);
+    // const totalVol = calculateTotalVolume(weight, sets, reps);
     const payload = {
       name: exerciseName,
       weight,
       sets,
       reps,
       rpe,
-      total_vol: totalVol,
+      // total_vol: totalVol,
     };
     dispatch(putExercise(exercise.id, payload));
     const response = await fetch(`/api/users/${session.id}`);
