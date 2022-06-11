@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useLocation, useHistory } from "react-router-dom";
 import SideBar from "../../SideBar";
 import WeekContainer from "./WeekContainer";
+import DeleteConfirmationModal from "../DeleteBlock";
 import { addWeek } from "../../../../store/week";
 import { putBlock } from "../../../../store/block";
 import { removeBlock } from "../../../../store/block";
@@ -78,10 +79,7 @@ const BlockCreation = () => {
             placeholder="Unnamed"
             onBlur={handleUpdateBlock}
           />
-          <button className="delete-block-btn" onClick={handleDeleteBlock}>
-            Delete Block
-          </button>
-          {/* <BsPencil /> */}
+          <DeleteConfirmationModal blockId={blockId} />
         </div>
 
         <button

@@ -6,6 +6,7 @@
   background-color: rgb(57, 57, 57);
   width: 400px;
   height: 300px;
+  border-radius: 12px;
 }
 
 .form-header {
@@ -83,4 +84,12 @@
   background-color: #01dac5;
   border: 1px solid #01dac5;
   color: black;
+  transition: 0.4s;
+}
+
+.submitBtn:hover {
+  cursor: pointer;
+  background-color: #25837a;
+  border: 1px solid #25837a;
+  color: white;
 }

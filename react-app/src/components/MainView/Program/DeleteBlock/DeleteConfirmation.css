@@ -1,0 +1,67 @@
+.delete-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  width: 450px;
+  height: 250px;
+  background-color: rgb(57, 57, 57);
+  border-radius: 12px;
+}
+
+.delete-form-header {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  height: 50%;
+}
+
+.delete-form-logo > img {
+  max-width: 100px;
+  height: auto;
+}
+
+.delete-form-header-text {
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.delete-footer {
+  margin-top: 20px;
+}
+.delete-footer > button {
+  width: 100px;
+  height: 40px;
+}
+
+.delete-button {
+  color: white;
+  background: rgb(117, 76, 76);
+  border: none;
+  border-radius: 5px;
+  margin-right: 5px;
+  transition: 0.4s;
+}
+
+.delete-button:hover {
+  cursor: pointer;
+  background-color: rgb(183, 51, 51);
+  color: black;
+}
+
+.cancel-button {
+  margin-bottom: 10px;
+  margin-left: 5px;
+  border-radius: 5px;
+  border: none;
+  transition: 0.4s;
+}
+
+.cancel-button:hover {
+  background-color: rgb(178, 178, 178);
+  cursor: pointer;
+}
