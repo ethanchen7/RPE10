@@ -20,6 +20,7 @@ const SignUpForm = () => {
     if (password === repeatPassword) {
       const data = await dispatch(signUp(firstName, lastName, email, password));
       if (data.errors) {
+        console.log(data.errors);
         const errors = {};
         if (Array.isArray(data.errors)) {
           data.errors.forEach((error) => {
