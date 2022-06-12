@@ -15,14 +15,29 @@ const EditNameForm = ({ setShowModal, blockId }) => {
   const [lastName, setLastName] = useState(session.last_name);
   const [errorMessages, setErrorMessages] = useState({});
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const payload = {
       userId: session.id,
       first_name: firstName,
       last_name: lastName,
     };
-    dispatch(editName(payload));
-    setShowModal(false);
+    const update = await dispatch(editName(payload));
+    if (update.errors) {
+      console.log(update.errors);
+      const errors = {};
+      if (Array.isArray(update.errors)) {
+        update.errors.forEach((error) => {
+          const label = error.split(":")[0].slice(0, -1);
+          const message = error.split(":")[1].slice(1);
+          errors[label] = message;
+        });
+      } else {
+        errors.overall = update.errors;
+      }
+      setErrorMessages(errors);
+    } else {
+      setShowModal(false);
+    }
   };
 
   return (
@@ -33,25 +48,30 @@ const EditNameForm = ({ setShowModal, blockId }) => {
         </div>
         <div className="delete-form-header-text">Edit Name</div>
       </div>
-      <ErrorMessage label={""} message={errorMessages.firstName} />
-      <ErrorMessage label={""} message={errorMessages.lastName} />
+
       <div className="edit-name-input-container">
-        <input
-          className="edit-form-input"
-          type="text"
-          name="firstName"
-          value={firstName}
-          placeholder="Enter your first name*"
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-        <input
-          className="edit-form-input"
-          type="text"
-          name="lastName"
-          value={lastName}
-          placeholder="Enter your last name*"
-          onChange={(e) => setLastName(e.target.value)}
-        />
+        <div className="first-name-container">
+          <input
+            className="edit-form-input"
+            type="text"
+            name="firstName"
+            value={firstName}
+            placeholder="Enter your first name*"
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+          <ErrorMessage label={""} message={errorMessages.first_name} />
+        </div>
+        <div className="last-name-container">
+          <input
+            className="edit-form-input"
+            type="text"
+            name="lastName"
+            value={lastName}
+            placeholder="Enter your last name*"
+            onChange={(e) => setLastName(e.target.value)}
+          />
+          <ErrorMessage label={""} message={errorMessages.last_name} />
+        </div>
       </div>
 
       <div className="delete-footer">
