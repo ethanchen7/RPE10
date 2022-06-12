@@ -39,7 +39,7 @@ const VolumeChart = ({ weeks }) => {
     datasets: [
       {
         label: "Average Volume",
-        data: weeks.map((week) => Math.floor(week.avg_vol / 100)),
+        data: weeks.map((week) => (week.avg_vol / 100).toFixed(1)),
         backgroundColor: ["#03dac5"],
       },
     ],

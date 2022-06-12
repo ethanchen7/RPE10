@@ -40,7 +40,7 @@ const RPEChart = ({ weeks }) => {
     datasets: [
       {
         label: "Average RPE",
-        data: weeks.map((week) => Math.floor(week.avg_rpe)),
+        data: weeks.map((week) => week.avg_rpe.toFixed(1)),
         backgroundColor: ["#fff"],
         borderColor: ["#03dac5"],
       },
