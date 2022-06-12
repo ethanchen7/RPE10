@@ -1,0 +1,27 @@
+.edit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 450px;
+  height: 290px;
+  background-color: rgb(57, 57, 57);
+  border-radius: 12px;
+}
+.edit-name-input-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.edit-form-input {
+  width: 35%;
+  height: 32px;
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+}
+
+.edit-form-input:focus {
+  outline: none;
+}

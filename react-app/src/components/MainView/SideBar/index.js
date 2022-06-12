@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../store/session";
 import logo from "../../../assets/images/rpelogo.png";
 import { MdDashboard } from "react-icons/md";
-import { BiLogOutCircle } from "react-icons/bi";
+import EditNameModal from "./EditName";
 import ReactTooltip from "react-tooltip";
 import "./index.css";
 
@@ -157,10 +157,7 @@ const SideBar = () => {
           <div className={`menu${menuToggle ? " active" : ""}`}>
             <h3>{`${sessionUser?.first_name} ${sessionUser?.last_name}`}</h3>
             <div className="sub-menu">
-              <p>
-                <i className="fa-regular fa-pen-to-square fa-lg" />
-                <span>Edit Name</span>
-              </p>
+              <EditNameModal />
               <p onClick={() => onLogout()}>
                 <i className="fa-solid fa-arrow-right-from-bracket fa-lg" />
                 <span>Logout</span>

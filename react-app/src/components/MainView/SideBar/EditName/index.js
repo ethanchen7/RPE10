@@ -9,9 +9,10 @@ const EditNameModal = () => {
 
   return (
     <>
-      <button className="block-create-btn" onClick={() => setShowModal(true)}>
-        +
-      </button>
+      <p onClick={() => setShowModal(true)}>
+        <i className="fa-regular fa-pen-to-square fa-lg" />
+        <span>Edit Name</span>
+      </p>
 
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>

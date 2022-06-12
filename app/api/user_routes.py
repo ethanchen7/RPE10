@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from app.api.week_routes import validation_errors_to_error_messages
 from app.models import db, User, Block
 from app.forms.block_form import BlockForm
+from app.forms.user_form import UserForm
 
 user_routes = Blueprint('users', __name__)
 
@@ -41,6 +42,22 @@ def user(id):
     user_dict['days'] = days
     user_dict['exercises'] = exercises
     return user_dict
+
+@user_routes.route('/<int:id>', methods=["PUT"])
+@login_required
+def user_name_change(id):
+    
+    form =UserForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        user = User.query.get(id)
+        user.first_name = form.data['first_name']
+        user.last_name = form.data['last_name']
+
+        db.session.commit()
+        return user.to_dict()
+        
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @user_routes.route('/<int:id>/block', methods=["POST"])
 @login_required
