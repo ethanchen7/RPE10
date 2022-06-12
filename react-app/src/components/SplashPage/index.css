@@ -1,9 +1,29 @@
 .splash-mac {
   height: auto;
-  max-width: 1200px;
+  max-width: 1000px;
 }
 
-.splash-iphone {
+/* .splash-iphone {
   height: auto;
   max-width: 700px;
+} */
+
+.splash-body-container {
+  position: relative;
+  margin-top: 85px;
+}
+
+.splash-body-header {
+  padding-top: 40px;
+  height: 200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.splash-body-row-1 {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
 }
