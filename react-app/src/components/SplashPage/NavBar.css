@@ -1,0 +1,80 @@
+nav {
+  display: flex;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: black;
+  color: white;
+  transition: all 0.5s;
+}
+.logo-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 50px;
+}
+.logo-container > img {
+  max-width: 110px;
+  height: auto;
+  margin-bottom: 5px;
+}
+
+.navbar-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px;
+  width: 20%;
+}
+
+.navbar-left > p {
+  padding-left: 20px;
+  font-weight: 600;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+.navbar-left > p:hover {
+  cursor: pointer;
+}
+
+.navbar-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 58%;
+}
+
+.navbar-right > button {
+  height: 40px;
+  background-color: transparent;
+  color: white;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.nav-login-btn {
+  border: none;
+  margin-right: 30px;
+  transition: 0.4s;
+}
+
+.nav-login-btn:hover {
+  cursor: pointer;
+  color: #03dac5;
+}
+
+.nav-getstarted-btn {
+  border: 1px solid white;
+  width: 110px;
+  box-shadow: 1px 1px 1px rgb(195, 195, 195), -1px -1px 1px rgb(195, 195, 195);
+  transition: 0.4s;
+}
+
+.nav-getstarted-btn:hover {
+  cursor: pointer;
+  border: 1px solid #03dac5;
+  color: #03dac5;
+}
