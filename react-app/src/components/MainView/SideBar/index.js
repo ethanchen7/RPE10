@@ -155,20 +155,17 @@ const SideBar = () => {
               .toUpperCase()}`}</p>
           </div>
           <div className={`menu${menuToggle ? " active" : ""}`}>
-            <p>{`${sessionUser?.first_name} ${sessionUser?.last_name}`}</p>
-            <ul>
-              <li>
-                <i
-                  className="fa-regular fa-pencil"
-                  style={{ marginRight: "4px", color: "white" }}
-                ></i>
+            <h3>{`${sessionUser?.first_name} ${sessionUser?.last_name}`}</h3>
+            <div className="sub-menu">
+              <p>
+                <i className="fa-regular fa-pen-to-square fa-lg" />
                 <span>Edit Name</span>
-              </li>
-              <li onClick={() => onLogout()}>
-                <BiLogOutCircle style={{ marginRight: "4px", width: "14px" }} />
+              </p>
+              <p onClick={() => onLogout()}>
+                <i className="fa-solid fa-arrow-right-from-bracket fa-lg" />
                 <span>Logout</span>
-              </li>
-            </ul>
+              </p>
+            </div>
           </div>
         </div>
       </div>
