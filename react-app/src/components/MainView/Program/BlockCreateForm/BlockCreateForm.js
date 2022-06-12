@@ -4,6 +4,7 @@ import { addBlock } from "../../../../store/block";
 import "./BlockCreateForm.css";
 
 import rpelogo from "../../../../assets/images/rpelogo.png";
+import ErrorMessage from "../../../ErrorMessage";
 
 const BlockCreateForm = ({ setShowModal }) => {
   const dispatch = useDispatch();
@@ -12,14 +13,30 @@ const BlockCreateForm = ({ setShowModal }) => {
   const blockNumbers = Object.keys(blockObjects).length;
 
   const [blockName, setBlockName] = useState("");
-  const [validationErrors, setValidationErrors] = useState([]);
+  const [errorMessages, setErrorMessages] = useState({});
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const payload = {
       name: blockName,
     };
-    dispatch(addBlock(currentUser.id, payload));
-    setShowModal(false);
+    const block_name = await dispatch(addBlock(currentUser.id, payload));
+    if (block_name.errors) {
+      console.log(block_name.errors);
+      const errors = {};
+      if (Array.isArray(block_name.errors)) {
+        block_name.errors.forEach((error) => {
+          const label = error.split(":")[0].slice(0, -1);
+          const message = error.split(":")[1].slice(1);
+          errors[label] = message;
+        });
+      } else {
+        errors.overall = block_name.errors;
+      }
+      setErrorMessages(errors);
+    } else {
+      setShowModal(false);
+    }
   };
 
   return (
@@ -31,15 +48,11 @@ const BlockCreateForm = ({ setShowModal }) => {
           <p>{`Block ${blockNumbers + 1}`}</p>
         </div>
       </div>
-      <form className="form-container" onSubmit={handleSubmit}>
-        <ul className="errors-container">
-          {validationErrors &&
-            validationErrors.map((err, i) => (
-              <li className="error" key={i}>
-                {err}
-              </li>
-            ))}
-        </ul>
+      <form
+        className="form-container"
+        onSubmit={handleSubmit}
+        style={{ marginTop: "15px" }}
+      >
         <div className="input-container">
           <input
             className="form-input"
@@ -50,7 +63,8 @@ const BlockCreateForm = ({ setShowModal }) => {
             onChange={(e) => setBlockName(e.target.value)}
           />
         </div>
-        <button className="submitBtn" type="submit">
+        <ErrorMessage label={""} message={errorMessages.name} />
+        <button className="submitBtn createBlockBtn" type="submit">
           Create
         </button>
       </form>

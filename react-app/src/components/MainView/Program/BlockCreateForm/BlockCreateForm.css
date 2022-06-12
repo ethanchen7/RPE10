@@ -86,6 +86,9 @@
   color: black;
   transition: 0.4s;
 }
+.createBlockBtn {
+  margin: 0;
+}
 
 .submitBtn:hover {
   cursor: pointer;
