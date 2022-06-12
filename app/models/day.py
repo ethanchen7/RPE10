@@ -37,7 +37,7 @@ class Day(db.Model):
             if exercise.sets != 0 or exercise.reps != 0:
                 rpe_total += exercise.rpe
         if self.exercise_count():
-            return rpe_total // self.exercise_count()
+            return rpe_total / self.exercise_count()
         return 0
 
     def to_dict(self):

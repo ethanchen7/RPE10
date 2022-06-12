@@ -33,7 +33,7 @@ class Week(db.Model):
         for day in self.days:
             rpe_total += day.avg_rpe()
         if self.day_count:
-            return (rpe_total // self.day_count)
+            return (rpe_total / self.day_count)
         return 0
 
     def to_dict(self):
