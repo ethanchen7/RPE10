@@ -13,10 +13,12 @@
 .auth-header > p {
   font-size: 22px;
   font-weight: 600;
+  cursor: pointer;
 }
 .auth-logo {
   max-width: 100px;
   height: auto;
+  cursor: pointer;
 }
 
 .auth-body {

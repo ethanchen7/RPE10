@@ -84,38 +84,47 @@ textarea:focus {
   border-radius: 6px;
   border: none;
   background-color: #a7c7ff8f;
-  color: black;
+  color: white;
   margin-bottom: 10px;
   font-weight: 600;
   transition: 0.4s;
 }
 
 .auth-form button:hover {
-  background-color: #32589b8f;
-  color: white;
+  background-color: #c8bae5;
+  color: black;
 }
 .auth-form-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   margin: auto;
-  margin-top: 10px;
+  margin-top: 3px;
   font-size: 14px;
-  color: rgb(183, 183, 225);
 }
 
 .auth-form-link span {
+  margin-left: 3px;
   color: #03dac5;
 }
 
+.auth-form-link span:hover {
+  color: #8ff7ed;
+  cursor: pointer;
+}
+
 #demo-btn {
-  color: black;
-  background-color: #03dac5;
-  border-color: #03dac5;
+  color: rgb(252, 252, 252);
+  background-color: #1e877d;
+  border-color: #1e877d;
   font-weight: 600;
   transition: 0.4s;
 }
 
 #demo-btn:hover {
-  color: rgb(252, 252, 252);
-  background-color: #1e877d;
+  color: black;
+  background-color: #03dac5;
+  border-color: #03dac5;
 }
 
 .login-signup-error-container {
@@ -134,5 +143,5 @@ textarea:focus {
 }
 
 .signupbtn {
-  margin-top: 10px;
+  margin-top: 15px;
 }

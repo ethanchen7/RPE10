@@ -98,9 +98,12 @@ const LoginForm = () => {
             Demo User
           </button>
         </div>
-        <Link to="/sign-up" className="auth-form-link">
-          Don't have an account? <span>Sign Up!</span>
-        </Link>
+        <div className="auth-form-link">
+          <p>Don't have an account?</p>
+          <Link to="/sign-up">
+            <span>Sign Up!</span>
+          </Link>
+        </div>
       </form>
     </div>
   );
