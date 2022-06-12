@@ -15,15 +15,49 @@
 
 .splash-body-header {
   padding-top: 40px;
-  height: 200px;
+  height: 150px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.splash-body-header > h1 {
+  font-size: 50px;
+  line-height: 10px;
+}
+
+.get-started-btn-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.splash-getstarted-btn {
+  height: 40px;
+  background-color: transparent;
+  color: white;
+  font-weight: 800;
+  font-size: 14px;
+  border: 1px solid white;
+  width: 110px;
+  box-shadow: 1px 1px 1px rgb(195, 195, 195), -1px -1px 1px rgb(195, 195, 195);
+  transition: 0.4s;
+}
+
+.splash-getstarted-btn:hover {
+  cursor: pointer;
+  border: 1px solid #03dac5;
+  color: #03dac5;
+}
+
 .splash-body-row-1 {
   margin-top: 30px;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+}
+
+.description-box-row-1 {
+  width: 300px;
 }
