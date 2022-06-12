@@ -77,8 +77,13 @@ const BlockCreation = () => {
           <DeleteConfirmationModal blockId={blockId} />
         </div>
         <p>
-          Please note: Exercises that are not complete (missing exercise name,
-          sets or reps) will not be displayed on the individual Block view.
+          <span style={{ fontWeight: 700 }}>Please note:</span> Exercises that
+          are not complete (missing exercise name, sets or reps) will not be
+          displayed on the individual Block view.
+        </p>
+        <p>
+          Incomplete exercises will not be factored into average volume or rpe
+          calculations.
         </p>
         <p>
           Bodyweight exercises or weights that may vary can be left as 0. Volume

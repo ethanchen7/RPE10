@@ -2,7 +2,7 @@ import { createExercise } from "./exercise";
 const SET_DAYS = "day/SET_DAYS";
 const CREATE_DAY = "day/CREATE_DAY";
 const DELETE_DAY = "day/DELETE_DAY";
-const UPDATE_DAY_VOL = "day/UPDATE_DAY_VOL";
+const UPDATE_DAY = "day/UPDATE_DAY";
 
 export const setDays = (days) => {
   return {
@@ -25,9 +25,9 @@ export const deleteDay = (day) => {
   };
 };
 
-export const updateDayVol = (day) => {
+export const updateDay = (day) => {
   return {
-    type: UPDATE_DAY_VOL,
+    type: UPDATE_DAY,
     day,
   };
 };
@@ -73,27 +73,27 @@ export const removeDay = (dayId) => async (dispatch) => {
   }
 };
 
-// export const editDayVol = (dayId) => async (dispatch) => {
-//   const response = await fetch(`/api/day/${dayId}/vol`, {
-//     method: "PUT",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(payload),
-//   });
-//   if (response.ok) {
-//     const data = await response.json();
-//     dispatch(updateDayVol(data));
-//     return data;
-//   } else if (response.status < 500) {
-//     const data = await response.json();
-//     if (data.errors) {
-//       return data.errors;
-//     }
-//   } else {
-//     return "An error occurred. Please try again.";
-//   }
-// };
+export const editDay = (dayId, payload) => async (dispatch) => {
+  const response = await fetch(`/api/day/${dayId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(updateDay(data));
+    return data;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return "An error occurred. Please try again.";
+  }
+};
 
 const initialState = {};
 
@@ -115,6 +115,11 @@ const dayReducer = (state = initialState, action) => {
       };
       delete newState[action.day.id];
       return newState;
+    case UPDATE_DAY:
+      return {
+        ...state,
+        [action.day.id]: action.day,
+      };
     default:
       return state;
   }

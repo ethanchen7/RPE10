@@ -31,10 +31,10 @@ const WeekContainer = ({ week, number }) => {
       <div className="week-table-header">
         <h3>{""}</h3>
         <h3>Day</h3>
-        <h3>Exercise Name</h3>
+        <h3>Exercise Name*</h3>
         <h3>Weight</h3>
-        <h3># of Sets</h3>
-        <h3># of Reps</h3>
+        <h3># of Sets*</h3>
+        <h3># of Reps*</h3>
         <h3>Intended RPE</h3>
       </div>
       {weekDays
