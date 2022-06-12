@@ -3,7 +3,6 @@ import DayCard from "./DayCard";
 import "./index.css";
 
 const SingleWeek = ({ currentWeek }) => {
-  const weeks = useSelector((state) => state.week);
   const allDays = useSelector((state) => state.day);
   const currentWeekDaysArr = Object.values(allDays);
   const currentWeekDays = currentWeekDaysArr.filter(

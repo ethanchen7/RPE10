@@ -1,4 +1,3 @@
-import { createExercise } from "./exercise";
 const SET_DAYS = "day/SET_DAYS";
 const CREATE_DAY = "day/CREATE_DAY";
 const DELETE_DAY = "day/DELETE_DAY";

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useParams, useLocation } from "react-router-dom";
 import SideBar from "../SideBar";
 import SingleWeek from "./SingleWeek";

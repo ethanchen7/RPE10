@@ -4,10 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../store/session";
 import logo from "../../../assets/images/rpelogo.png";
 import { MdDashboard } from "react-icons/md";
-import { TbPencil } from "react-icons/tb";
 import { BiLogOutCircle } from "react-icons/bi";
-import { AiOutlineExperiment } from "react-icons/ai";
-import { BiMessageDetail } from "react-icons/bi";
 import ReactTooltip from "react-tooltip";
 import "./index.css";
 

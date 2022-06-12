@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
 import { MdOutlineClear } from "react-icons/md";
 import { addExercise } from "../../../../store/exercise";
 import { removeDay } from "../../../../store/day";

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import AuthPage from "./components/auth/AuthPage";
-import SignUpForm from "./components/auth/SignUpForm";
 import HomePage from "./components/MainView/Dashboard";
 import SplashPage from "./components/SplashPage";
 import Program from "./components/MainView/Program";
