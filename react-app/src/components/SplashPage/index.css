@@ -40,9 +40,11 @@
   font-weight: 800;
   font-size: 14px;
   border: 1px solid white;
-  width: 110px;
+  width: 160px;
   box-shadow: 1px 1px 1px rgb(195, 195, 195), -1px -1px 1px rgb(195, 195, 195);
   transition: 0.4s;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .splash-getstarted-btn:hover {
@@ -60,4 +62,18 @@
 
 .description-box-row-1 {
   width: 300px;
+  padding-left: 15px;
+}
+.description-box-row-1 > h3:nth-child(1) {
+  margin-top: 0;
+}
+.description-box-row-1 > h3 {
+  margin-top: 40px;
+  line-height: 5px;
+}
+.description-box-row-1 > p {
+  font-size: 14px;
+  line-height: 25px;
+  text-align: justify;
+  text-justify: auto;
 }
