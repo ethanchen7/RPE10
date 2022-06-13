@@ -19,6 +19,7 @@ export const getRooms = () => async (dispatch) => {
   const response = await fetch(`/api/users/rooms`);
   if (response.ok) {
     const user = await response.json();
+    console.log(user);
     dispatch(loadRooms(user.rooms));
   }
 };

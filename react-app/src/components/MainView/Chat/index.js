@@ -11,7 +11,7 @@ let socket;
 const Chat = () => {
   const user = useSelector((state) => state.session.user);
   const allUsers = useSelector((state) => state.room.users);
-  const allRooms = useSelector((state) => state.room);
+  const allRooms = useSelector((state) => state.room.rooms);
   const rooms = Object.values(allRooms);
   const dispatch = useDispatch();
   const [messages, setMessages] = useState([]);
@@ -62,6 +62,9 @@ const Chat = () => {
           <div>
             <input placeholder="Search for someone" />
           </div>
+          {rooms.map((room) => (
+            <div>{`room with ${room.friend_id}`}</div>
+          ))}
         </div>
         <div className="chat-box-container">
           <div>
