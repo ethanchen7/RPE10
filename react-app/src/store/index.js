@@ -6,6 +6,7 @@ import week from "./week";
 import day from "./day";
 import exercise from "./exercise";
 import room from "./room";
+import chat from "./chat";
 
 const rootReducer = combineReducers({
   session,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   day,
   exercise,
   room,
+  chat,
 });
 
 let enhancer;

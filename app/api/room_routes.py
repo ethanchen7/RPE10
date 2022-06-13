@@ -50,3 +50,8 @@ def new_room():
         db.session.commit()
     
     return room.to_dict()
+
+@room_routes.route('/<int:id>/chats')
+def get_chats(id):
+    chats = Chat.query.filter(Chat.room_id == id).all()
+    return { 'chats': [chat.to_dict() for chat in chats] }

@@ -5,6 +5,7 @@ from .weeks import seed_weeks, undo_weeks
 from .days import seed_days, undo_days
 from .exercises import seed_exercises, undo_exercises
 from .rooms import seed_rooms, undo_rooms
+from .chats import seed_chats, undo_chats
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -20,6 +21,7 @@ def seed():
     seed_days()
     seed_exercises()
     seed_rooms()
+    seed_chats()
 
 
 # Creates the `flask seed undo` command
@@ -31,4 +33,5 @@ def undo():
     undo_days()
     undo_exercises()
     undo_rooms()
+    undo_chats()
     
