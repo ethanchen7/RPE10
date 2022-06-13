@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getRoomChats } from "../../../../store/chat";
+import { getRoomChats, addChat } from "../../../../store/chat";
 
 import { io } from "socket.io-client";
 
@@ -11,19 +11,25 @@ const ChatRoom = ({ selectedRoom }) => {
 
   const rooms = useSelector((state) => state.room.rooms);
   const chats = useSelector((state) => state.chat);
+  const allChats = Object.values(chats);
+  const chatArr = allChats.filter(
+    (chat) => chat.room_id === parseInt(selectedRoom)
+  );
   const user = useSelector((state) => state.session.user);
   const allUsers = useSelector((state) => state.room.users);
 
-  const [messages, setMessages] = useState([]);
+  // const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
 
   useEffect(() => {
     socket = io();
+    socket.emit("join", { room: selectedRoom });
     socket.on("chat", (chat) => {
-      setMessages((messages) => [...messages, chat]);
+      dispatch(getRoomChats(selectedRoom));
     });
 
     return () => {
+      socket.emit("leave", { room: selectedRoom });
       socket.disconnect();
     };
   }, []);
@@ -39,6 +45,12 @@ const ChatRoom = ({ selectedRoom }) => {
       room: selectedRoom,
       msg: chatInput,
     });
+    dispatch(
+      addChat({
+        room_id: selectedRoom,
+        message: chatInput,
+      })
+    );
     setChatInput("");
   };
 
@@ -46,14 +58,14 @@ const ChatRoom = ({ selectedRoom }) => {
     dispatch(getRoomChats(selectedRoom));
   }, [selectedRoom]);
 
-  if (!chats || !chats.length) {
+  if (!chatArr || !chatArr.length) {
     return null;
   }
   return (
     <>
       <div>
-        {chats.map((message, ind) => (
-          <div key={ind}>{`${message.user}: ${message.msg}`}</div>
+        {chatArr.map((chat, ind) => (
+          <div key={ind}>{`${chat.user_id}: ${chat.message}`}</div>
         ))}
       </div>
       <form onSubmit={sendChat}>
