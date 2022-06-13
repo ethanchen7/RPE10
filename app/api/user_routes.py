@@ -43,6 +43,12 @@ def user(id):
     user_dict['exercises'] = exercises
     return user_dict
 
+@user_routes.route('/rooms', methods=["GET"])
+@login_required
+def user_rooms():
+    user = User.query.get(current_user.id)
+    return user.to_dict()
+
 @user_routes.route('/<int:id>', methods=["PUT"])
 @login_required
 def user_name_change(id):

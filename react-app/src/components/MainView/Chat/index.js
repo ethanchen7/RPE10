@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import SideBar from "../SideBar";
+import { getRooms, getAllUsers } from "../../../store/room";
 import "./index.css";
 // import the socket
 import { io } from "socket.io-client";
@@ -9,9 +10,18 @@ import { io } from "socket.io-client";
 let socket;
 const Chat = () => {
   const user = useSelector((state) => state.session.user);
+  const allUsers = useSelector((state) => state.room.users);
+  const allRooms = useSelector((state) => state.room);
+  const rooms = Object.values(allRooms);
+  const dispatch = useDispatch();
   const [messages, setMessages] = useState([]);
   // use state for controlled form input
   const [chatInput, setChatInput] = useState("");
+
+  useEffect(() => {
+    dispatch(getRooms());
+    dispatch(getAllUsers());
+  }, []);
 
   useEffect(() => {
     // create websocket
@@ -36,7 +46,7 @@ const Chat = () => {
   const sendChat = (e) => {
     e.preventDefault();
     // emit a message
-    socket.emit("chat", { user: user.first_name, msg: chatInput });
+    socket.emit("chat", { user: user.first_name, room: "1", msg: chatInput });
     // clear the input field after the message is sent
     setChatInput("");
   };
