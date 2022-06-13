@@ -124,7 +124,7 @@ const SideBar = () => {
           />
         </div>
         <div className="sidebar-menu-item">
-          <NavLink to="/" exact={true} activeClassName="selected">
+          <NavLink to="/chat" exact={true} activeClassName="selected">
             <i
               className="fa-regular fa-message fa-2xl"
               style={{ color: "#a4a8a8" }}

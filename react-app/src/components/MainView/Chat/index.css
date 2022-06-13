@@ -1,0 +1,21 @@
+.chat-container {
+  position: absolute;
+  left: 120px;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+}
+
+.direct-messages-container {
+  width: 20%;
+  border-right: 1px solid gray;
+}
+
+.direct-messages-container > h1 {
+  text-align: center;
+}
+
+.chat-box-container {
+  width: 80%;
+}

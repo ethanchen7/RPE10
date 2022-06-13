@@ -7,6 +7,7 @@ import SplashPage from "./components/SplashPage";
 import Program from "./components/MainView/Program";
 import BlockCreation from "./components/MainView/Program/BlockCreation";
 import BlockDisplay from "./components/MainView/BlockDisplay";
+import Chat from "./components/MainView/Chat";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import { authenticate } from "./store/session";
 import { setBlocks } from "./store/block";
@@ -71,9 +72,9 @@ function App() {
         >
           <BlockCreation />
         </ProtectedRoute>
-        {/* <ProtectedRoute path="/" exact={true}>
-          <h1>My Home Page</h1>
-        </ProtectedRoute> */}
+        <ProtectedRoute path="/chat" exact={true} loaded={loaded}>
+          <Chat />
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
