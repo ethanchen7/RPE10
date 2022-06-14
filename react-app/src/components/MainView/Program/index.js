@@ -13,17 +13,23 @@ const Program = () => {
       <SideBar />
       <div className="page-container">
         <div className="page-container-header">
-          <h1>Select a block to edit.</h1>
+          <h1>
+            {allBlocks.length
+              ? "Select a block to edit."
+              : "Add a block to get started!"}
+          </h1>
         </div>
         <div className="program-block-container">
           <div className="program-block-grid">
-            {allBlocks?.map((blockId, id) => (
-              <BlockCard
-                block={blockObjects[blockId]}
-                number={id + 1}
-                key={`block-${id + 1}`}
-              />
-            ))}
+            {allBlocks.length
+              ? allBlocks.map((blockId, id) => (
+                  <BlockCard
+                    block={blockObjects[blockId]}
+                    number={id + 1}
+                    key={`block-${id + 1}`}
+                  />
+                ))
+              : ""}
           </div>
         </div>
       </div>
