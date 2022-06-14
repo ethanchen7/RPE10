@@ -13,14 +13,17 @@ const ChatRoom = ({ selectedRoom }) => {
 
   const rooms = useSelector((state) => state.room.rooms);
   const chats = useSelector((state) => state.chat);
-  const allChats = Object.values(chats);
-  const chatArr = allChats.filter(
-    (chat) => chat.room_id === parseInt(selectedRoom)
-  );
+  const chatArr = Object.values(chats);
+  // let chatArr;
+  // if (selectedRoom) {
+  //   chatArr = allChats.filter(
+  //     (chat) => chat.room_id === parseInt(selectedRoom)
+  //   );
+  // }
   const user = useSelector((state) => state.session.user);
   const allUsers = useSelector((state) => state.room.allUsers);
 
-  const [messages, setMessages] = useState([]);
+  // const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
 
   useEffect(() => {
@@ -35,7 +38,7 @@ const ChatRoom = ({ selectedRoom }) => {
       socket.emit("leave", { room: selectedRoom });
       socket.disconnect();
     };
-  }, []);
+  }, [selectedRoom, dispatch]);
 
   const updateChatInput = (e) => {
     setChatInput(e.target.value);
@@ -44,9 +47,10 @@ const ChatRoom = ({ selectedRoom }) => {
   const sendChat = (e) => {
     e.preventDefault();
     socket.emit("chat", {
-      user: user.first_name,
+      user: user,
       room: selectedRoom,
       msg: chatInput,
+      created_at: new Date().toLocaleTimeString(),
     });
     dispatch(
       addChat({
@@ -58,10 +62,13 @@ const ChatRoom = ({ selectedRoom }) => {
   };
 
   useEffect(() => {
-    console.log("this");
     dispatch(getRoomChats(selectedRoom));
   }, [selectedRoom]);
+
+  console.log(selectedRoom);
+  console.log(chats);
   console.log(chatArr);
+
   return (
     <>
       <div className="chats-messages-container">
@@ -89,9 +96,24 @@ const ChatRoom = ({ selectedRoom }) => {
           </div>
         ))}
         {/* {messages.map((message, ind) => (
-          <div
-            key={`${ind}-${message.msg}`}
-          >{`${message.user}: ${message.msg}`}</div>
+          <div className="message-bubble" key={ind}>
+            <div className="left-message-bubble-icon">
+              <div>{`${allUsers[message.user.id]?.first_name
+                .charAt(0)
+                .toUpperCase()}${allUsers[message.user.id]?.last_name
+                .charAt(0)
+                .toUpperCase()}`}</div>
+            </div>
+            <div className="right-message-bubble-icon">
+              <p>
+                {`${allUsers[message.user.id]?.first_name} ${
+                  allUsers[message.user.id]?.last_name
+                }`}
+                <span> {message.created_at}</span>
+              </p>
+              <p>{message.msg}</p>
+            </div>
+          </div>
         ))} */}
       </div>
       <form className="chat-input-container" onSubmit={sendChat}>

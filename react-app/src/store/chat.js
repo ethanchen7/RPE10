@@ -50,9 +50,12 @@ const initialState = {};
 const chatReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_CHATS:
+      const chatObjects = Object.values(action.chats);
+      const chats = {};
+      chatObjects.forEach((chat) => (chats[chat.id] = chat));
       return {
         ...state,
-        ...action.chats,
+        ...chats,
       };
     case CREATE_CHAT:
       return {

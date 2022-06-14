@@ -12,12 +12,12 @@ const Chat = () => {
   const rooms = Object.values(allRooms);
   const dispatch = useDispatch();
 
-  const [selectedRoom, setSelectedRoom] = useState(1);
+  const [selectedRoom, setSelectedRoom] = useState(0);
 
   useEffect(() => {
     dispatch(getRooms());
     dispatch(getAllUsers());
-    setSelectedRoom(1);
+    // setSelectedRoom(rooms.at(0)?.id);
   }, []);
 
   if (!rooms || !allUserObject) {
@@ -42,7 +42,7 @@ const Chat = () => {
             >
               <div className="room-person-icon">
                 <h3>
-                  {room.friend_id === user.id
+                  {room.friend_id === user?.id
                     ? `${allUserObject[room.user_id]?.first_name
                         .charAt(0)
                         .toUpperCase()}${allUserObject[room.user_id]?.last_name
@@ -58,9 +58,9 @@ const Chat = () => {
                 </h3>
               </div>
               <p>
-                {room.friend_id === user.id
-                  ? `${allUserObject[room.user_id].first_name} ${
-                      allUserObject[room.user_id].last_name
+                {room.friend_id === user?.id
+                  ? `${allUserObject[room.user_id]?.first_name} ${
+                      allUserObject[room.user_id]?.last_name
                     }`
                   : `${allUserObject[room.friend_id]?.first_name} ${
                       allUserObject[room.friend_id]?.last_name

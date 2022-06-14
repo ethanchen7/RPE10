@@ -7,6 +7,7 @@ socketio = SocketIO(cors_allowed_origins="*")
 
 @socketio.on('join')
 def on_join(data):
+    print('user joined ***********')
     room = data['room']
     join_room(room)
 
@@ -17,5 +18,6 @@ def on_leave(data):
 
 @socketio.on("chat")
 def handle_chat(data):
+    print('here in socket')
     room = data['room']
     emit("chat", data, broadcast=True, to=room)
