@@ -14,12 +14,7 @@ const ChatRoom = ({ selectedRoom }) => {
   const rooms = useSelector((state) => state.room.rooms);
   const chats = useSelector((state) => state.chat);
   const chatArr = Object.values(chats);
-  // let chatArr;
-  // if (selectedRoom) {
-  //   chatArr = allChats.filter(
-  //     (chat) => chat.room_id === parseInt(selectedRoom)
-  //   );
-  // }
+
   const user = useSelector((state) => state.session.user);
   const allUsers = useSelector((state) => state.room.allUsers);
 
@@ -64,10 +59,6 @@ const ChatRoom = ({ selectedRoom }) => {
   useEffect(() => {
     dispatch(getRoomChats(selectedRoom));
   }, [selectedRoom]);
-
-  console.log(selectedRoom);
-  console.log(chats);
-  console.log(chatArr);
 
   return (
     <>

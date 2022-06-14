@@ -53,5 +53,7 @@ def new_room():
 
 @room_routes.route('/<int:id>/chats')
 def get_chats(id):
+    print(id)
     chats = Chat.query.filter(Chat.room_id == id).all()
+    print(chats)
     return { 'chats': [chat.to_dict() for chat in chats] }
