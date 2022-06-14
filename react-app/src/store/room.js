@@ -32,7 +32,7 @@ export const getAllUsers = () => async (dispatch) => {
   }
 };
 
-const initialState = { rooms: {}, users: [] };
+const initialState = { rooms: {}, users: [], allUsers: {} };
 
 const roomReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -44,9 +44,14 @@ const roomReducer = (state = initialState, action) => {
         },
       };
     case LOAD_ALL_USERS:
+      const userObject = {};
+      action.users.forEach((user) => (userObject[user.id] = user));
       return {
         ...state,
         users: [...action.users],
+        allUsers: {
+          ...userObject,
+        },
       };
     default:
       return state;

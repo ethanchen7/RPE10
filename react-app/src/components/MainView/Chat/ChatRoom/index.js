@@ -18,13 +18,14 @@ const ChatRoom = ({ selectedRoom }) => {
   const user = useSelector((state) => state.session.user);
   const allUsers = useSelector((state) => state.room.users);
 
-  // const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
 
   useEffect(() => {
     socket = io();
     socket.emit("join", { room: selectedRoom });
     socket.on("chat", (chat) => {
+      // setMessages([...messages, chat]);
       dispatch(getRoomChats(selectedRoom));
     });
 
@@ -55,18 +56,28 @@ const ChatRoom = ({ selectedRoom }) => {
   };
 
   useEffect(() => {
+    console.log("this");
     dispatch(getRoomChats(selectedRoom));
   }, [selectedRoom]);
 
   if (!chatArr || !chatArr.length) {
     return null;
   }
+  console.log(chatArr);
+  console.log(messages);
   return (
     <>
       <div>
         {chatArr.map((chat, ind) => (
-          <div key={ind}>{`${chat.user_id}: ${chat.message}`}</div>
+          <div
+            key={`${chat.message}-${chat.id}-${ind}`}
+          >{`${chat.user_id}: ${chat.message}`}</div>
         ))}
+        {/* {messages.map((message, ind) => (
+          <div
+            key={`${ind}-${message.msg}`}
+          >{`${message.user}: ${message.msg}`}</div>
+        ))} */}
       </div>
       <form onSubmit={sendChat}>
         <input value={chatInput} onChange={updateChatInput} />
