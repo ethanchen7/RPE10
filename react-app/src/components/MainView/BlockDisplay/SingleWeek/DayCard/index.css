@@ -1,8 +1,14 @@
 .day-note-parent-container {
   display: flex;
-  flex-direction: row;
-  height: 250px;
+  flex-direction: column;
+  height: 270px;
   width: 700px;
+}
+
+.day-card-parent {
+  display: flex;
+  flex-direction: row;
+  height: 90%;
 }
 .day-card-container {
   width: 500px;

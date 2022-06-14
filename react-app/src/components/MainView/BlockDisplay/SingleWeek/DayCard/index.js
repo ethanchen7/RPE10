@@ -2,9 +2,11 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { editDay } from "../../../../../store/day";
 import { setDays } from "../../../../../store/day";
+import ErrorMessage from "../../../../ErrorMessage";
 import VolumeTag from "../../Tags/Volume";
 import RPETag from "../../Tags/RPE";
 import "./index.css";
+
 const DayCard = ({ day, number }) => {
   const dispatch = useDispatch();
   const session = useSelector((state) => state.session.user);
@@ -43,46 +45,50 @@ const DayCard = ({ day, number }) => {
       dispatch(setDays(data.days));
     }
   };
-
+  console.log(errorMessages);
   return (
     <div className="day-note-parent-container">
-      <div className="day-card-container">
-        <div className="day-card-left">
-          <h1>Day</h1>
-          <h1>{`${number}`}</h1>
-        </div>
-        <div className="day-card-right">
-          <div className={`day-card-exercises length-${exerciseArr.length}`}>
-            {exerciseArr.map((exercise) => {
-              if (!exercise.name || !exercise.sets || !exercise.reps) {
-                return "";
-              } else {
-                return (
-                  <>
-                    <span>{`${exercise.name}`}</span>
-                    <span>{` ${exercise.weight}lbs`}</span>
-                    <span>{` ${exercise.sets}x${exercise.reps}`}</span>
-                    <span>{` @${exercise.rpe}`}</span>
-                  </>
-                );
-              }
-            })}
+      <ErrorMessage label={""} message={errorMessages.notes} />
+      <div className="day-card-parent">
+        <div className="day-card-container">
+          <div className="day-card-left">
+            <h1>Day</h1>
+            <h1>{`${number}`}</h1>
           </div>
-          <div className="day-card-footer">
-            <VolumeTag volume={Math.floor(day.total_vol / 100)} />
-            <RPETag rpe={Math.floor(day.avg_rpe)} />
+          <div className="day-card-right">
+            <div className={`day-card-exercises length-${exerciseArr.length}`}>
+              {exerciseArr.map((exercise) => {
+                if (!exercise.name || !exercise.sets || !exercise.reps) {
+                  return "";
+                } else {
+                  return (
+                    <>
+                      <span>{`${exercise.name}`}</span>
+                      <span>{` ${exercise.weight}lbs`}</span>
+                      <span>{` ${exercise.sets}x${exercise.reps}`}</span>
+                      <span>{` @${exercise.rpe}`}</span>
+                    </>
+                  );
+                }
+              })}
+            </div>
+            <div className="day-card-footer">
+              <VolumeTag volume={Math.floor(day.total_vol / 100)} />
+              <RPETag rpe={Math.floor(day.avg_rpe)} />
+            </div>
           </div>
         </div>
-      </div>
-      <div className="day-notepad-container">
-        <textarea
-          placeholder="Any thoughts?"
-          value={notes}
-          onChange={(e) => setNotes(e.target.value)}
-          spellCheck={false}
-          autoComplete={"false"}
-          onBlur={handleNoteUpdate}
-        />
+
+        <div className="day-notepad-container">
+          <textarea
+            placeholder="Any thoughts?"
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+            spellCheck={false}
+            autoComplete={"false"}
+            onBlur={handleNoteUpdate}
+          />
+        </div>
       </div>
     </div>
   );
