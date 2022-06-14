@@ -25,10 +25,10 @@ export const editBlock = (block) => {
   };
 };
 
-export const deleteBlock = (block) => {
+export const deleteBlock = (blockId) => {
   return {
     type: DELETE_BLOCK,
-    block,
+    blockId,
   };
 };
 
@@ -105,7 +105,7 @@ export const removeBlock = (blockId) => async (dispatch) => {
   });
   if (response.ok) {
     const data = await response.json();
-    dispatch(deleteBlock(data));
+    dispatch(deleteBlock(blockId));
     return data;
   } else if (response.status < 500) {
     const data = await response.json();
@@ -140,7 +140,7 @@ const blockReducer = (state = initialState, action) => {
       const newState = {
         ...state,
       };
-      delete newState[action.block.id];
+      delete newState[action.blockId];
       return newState;
     default:
       return state;
