@@ -62,6 +62,10 @@ RPE10 is built with React / Redux on the frontend, Python / Flask on the server,
 
 # Features Highlight
 
+## Display of Performance Metrics
+
+Average volume and RPE per week are displayed on the dashboard when the user logs in. Volume is calculated as (weight * sets * reps) and is a metric used to understand the total load/stress being placed on an athlete's muscles. RPE (rate of perceived exertion) is simply an average of the RPE numbers reported per exercise. RPE is used to determine the fatigue involved with completing that exercise.
+
 ## Full CRUD of Blocks, Weeks, Days, and Exercises
 
 Athletes have access to dynamically sized tables and auto-updating fields for convenient programming. Fields can be left blank to finish later, or filled to completion and displayed on their block summary. Average volume and RPE metrics are calculated automatically through the backend upon instantiation of new exercises, days, and weeks. 
