@@ -20,7 +20,7 @@ const Chat = () => {
     setSelectedRoom(1);
   }, []);
 
-  if (!allUserObject) {
+  if (!rooms || !allUserObject) {
     return null;
   }
 
@@ -43,14 +43,16 @@ const Chat = () => {
               <div className="room-person-icon">
                 <h3>
                   {room.friend_id === user.id
-                    ? `${allUserObject[room.user_id].first_name
+                    ? `${allUserObject[room.user_id]?.first_name
                         .charAt(0)
-                        .toUpperCase()}${allUserObject[room.user_id].last_name
+                        .toUpperCase()}${allUserObject[room.user_id]?.last_name
                         .charAt(0)
                         .toUpperCase()}`
-                    : `${allUserObject[room.friend_id].first_name
+                    : `${allUserObject[room.friend_id]?.first_name
                         .charAt(0)
-                        .toUpperCase()}${allUserObject[room.friend_id].last_name
+                        .toUpperCase()}${allUserObject[
+                        room.friend_id
+                      ]?.last_name
                         .charAt(0)
                         .toUpperCase()}`}
                 </h3>
@@ -60,8 +62,8 @@ const Chat = () => {
                   ? `${allUserObject[room.user_id].first_name} ${
                       allUserObject[room.user_id].last_name
                     }`
-                  : `${allUserObject[room.friend_id].first_name} ${
-                      allUserObject[room.friend_id].last_name
+                  : `${allUserObject[room.friend_id]?.first_name} ${
+                      allUserObject[room.friend_id]?.last_name
                     }`}
               </p>
             </div>

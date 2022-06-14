@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { getRoomChats, addChat } from "../../../../store/chat";
 
 import { io } from "socket.io-client";
+import arrow from "../../../../assets/images/svgexport-26.svg";
+import "./index.css";
 
 let socket;
 
@@ -16,7 +18,7 @@ const ChatRoom = ({ selectedRoom }) => {
     (chat) => chat.room_id === parseInt(selectedRoom)
   );
   const user = useSelector((state) => state.session.user);
-  const allUsers = useSelector((state) => state.room.users);
+  const allUsers = useSelector((state) => state.room.allUsers);
 
   const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
@@ -59,19 +61,32 @@ const ChatRoom = ({ selectedRoom }) => {
     console.log("this");
     dispatch(getRoomChats(selectedRoom));
   }, [selectedRoom]);
-
-  if (!chatArr || !chatArr.length) {
-    return null;
-  }
   console.log(chatArr);
-  console.log(messages);
   return (
     <>
-      <div>
+      <div className="chats-messages-container">
         {chatArr.map((chat, ind) => (
           <div
+            className="message-bubble"
             key={`${chat.message}-${chat.id}-${ind}`}
-          >{`${chat.user_id}: ${chat.message}`}</div>
+          >
+            <div className="left-message-bubble-icon">
+              <div>{`${allUsers[chat.user_id]?.first_name
+                .charAt(0)
+                .toUpperCase()}${allUsers[chat.user_id]?.last_name
+                .charAt(0)
+                .toUpperCase()}`}</div>
+            </div>
+            <div className="right-message-bubble-icon">
+              <p>
+                {`${allUsers[chat.user_id]?.first_name} ${
+                  allUsers[chat.user_id]?.last_name
+                }`}
+                <span> {chat.created_at}</span>
+              </p>
+              <p>{chat.message}</p>
+            </div>
+          </div>
         ))}
         {/* {messages.map((message, ind) => (
           <div
@@ -79,9 +94,11 @@ const ChatRoom = ({ selectedRoom }) => {
           >{`${message.user}: ${message.msg}`}</div>
         ))} */}
       </div>
-      <form onSubmit={sendChat}>
+      <form className="chat-input-container" onSubmit={sendChat}>
         <input value={chatInput} onChange={updateChatInput} />
-        <button type="submit">Send</button>
+        <button type="submit">
+          <img src={arrow} className="filter"></img>
+        </button>
       </form>
     </>
   );
