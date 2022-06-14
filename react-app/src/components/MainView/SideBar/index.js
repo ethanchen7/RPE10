@@ -123,7 +123,7 @@ const SideBar = () => {
             effect="solid"
           />
         </div>
-        <div className="sidebar-menu-item">
+        {/* <div className="sidebar-menu-item">
           <NavLink to="/" exact={true} activeClassName="selected">
             <i
               className="fa-regular fa-message fa-2xl"
@@ -137,7 +137,7 @@ const SideBar = () => {
             type="dark"
             effect="solid"
           />
-        </div>
+        </div> */}
       </div>
 
       <div className="sidebar-footer">
