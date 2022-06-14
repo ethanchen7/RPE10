@@ -2,7 +2,7 @@
 
 ![Screen Shot 2022-06-14 at 4 19 36 PM](https://user-images.githubusercontent.com/60331384/173704886-584d146f-ba13-4786-9bcc-2c8c622ac432.png)
 
-![RPE10](https://rpe10.herokuapp.com/) is a fitness application for athletes to program their own workouts, 
+[RPE10](https://rpe10.herokuapp.com/) is a fitness application for athletes to program their own workouts and track performance metrics such as average volume and RPE (rate of perceived exertion). RPE10's goal is replace the traditional spreadsheets that are often used by coaches to communicate workout programs to their athletes.
 
 ## Getting started
 1. Clone this repository (only this branch)
