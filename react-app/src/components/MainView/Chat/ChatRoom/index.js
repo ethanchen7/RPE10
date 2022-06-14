@@ -80,7 +80,7 @@ const ChatRoom = ({ selectedRoom }) => {
                 {`${allUsers[chat.user_id]?.first_name} ${
                   allUsers[chat.user_id]?.last_name
                 }`}
-                <span> {chat.created_at}</span>
+                <span> {new Date(chat.created_at).toLocaleTimeString()}</span>
               </p>
               <p>{chat.message}</p>
             </div>
