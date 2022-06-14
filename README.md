@@ -1,6 +1,8 @@
 # RPE10
 
-This is the starter for the Flask React project.
+![Screen Shot 2022-06-14 at 4 19 36 PM](https://user-images.githubusercontent.com/60331384/173704886-584d146f-ba13-4786-9bcc-2c8c622ac432.png)
+
+![RPE10](https://rpe10.herokuapp.com/) is a fitness application for athletes to program their own workouts, 
 
 ## Getting started
 1. Clone this repository (only this branch)
