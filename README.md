@@ -18,10 +18,10 @@ RPE10 is built with React / Redux on the frontend, Python / Flask on the server,
           
 
 ## Getting started
-1. Clone this repository (only this branch)
+1. Clone this repository
 
    ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
+   git clone git@github.com:ethanchen7/RPE10.git
    ```
 
 2. Install dependencies
@@ -32,9 +32,10 @@ RPE10 is built with React / Redux on the frontend, Python / Flask on the server,
 
 3. Create a **.env** file based on the example with proper settings for your
    development environment
+   
 4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
 
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+5. Start your pipenv shell, migrate your database, seed your database, and run your flask app
 
    ```bash
    pipenv shell
@@ -52,6 +53,9 @@ RPE10 is built with React / Redux on the frontend, Python / Flask on the server,
    flask run
    ```
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+6. Open up another terminal and CD into /react-app and run the React app.
+   ```bash
+   npm start
+   ```
 
 <br>
