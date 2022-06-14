@@ -105,7 +105,6 @@ const weekReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_WEEKS:
       return {
-        ...state,
         ...action.weeks,
       };
     case CREATE_WEEK:
