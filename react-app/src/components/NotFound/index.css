@@ -1,0 +1,25 @@
+.page-not-found-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.return-home-btn {
+  background: black;
+  color: white;
+  width: 150px;
+  height: 40px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: none;
+  transition: 0.4s;
+}
+
+.return-home-btn:hover {
+  cursor: pointer;
+  background: #03dac5;
+  color: black;
+}

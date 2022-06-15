@@ -1,12 +1,27 @@
-# Flask React Project
+# RPE10
 
-This is the starter for the Flask React project.
+![Screen Shot 2022-06-14 at 4 19 36 PM](https://user-images.githubusercontent.com/60331384/173704886-584d146f-ba13-4786-9bcc-2c8c622ac432.png)
+
+[RPE10](https://rpe10.herokuapp.com/) is a fitness application for athletes to program their own workouts and track performance metrics such as average volume and RPE (rate of perceived exertion). RPE10's goal is replace the traditional spreadsheets that are often used by coaches to communicate workout programs to their athletes.
+
+# Technologies Used
+
+RPE10 is built with React / Redux on the frontend, Python / Flask on the server, and a PostgreSQL database.
+
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" height=40/>
+<img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"  height=40/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain-wordmark.svg" height=40/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" height=40/>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlalchemy/sqlalchemy-original.svg" height=40/>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" height=40/>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"  height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"  height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"  height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"  height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" height=40/>
+          
 
 ## Getting started
-1. Clone this repository (only this branch)
+1. Clone this repository
 
    ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
+   git clone git@github.com:ethanchen7/RPE10.git
    ```
 
 2. Install dependencies
@@ -17,9 +32,10 @@ This is the starter for the Flask React project.
 
 3. Create a **.env** file based on the example with proper settings for your
    development environment
+   
 4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
 
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+5. Start your pipenv shell, migrate your database, seed your database, and run your flask app
 
    ```bash
    pipenv shell
@@ -37,93 +53,46 @@ This is the starter for the Flask React project.
    flask run
    ```
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
-
-***
-
-
-*IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on alpine-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
-
-### Dev Containers (OPTIONAL for M1 Users)
-The following instructions detail an *optional* development setup for M1 Mac users having issues with the `psycopg` package.
-
-1. Make sure you have the [Microsoft Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension installed. 
-2. Make sure you have [Docker](https://www.docker.com/products/docker-desktop/) installed on your computer. 
-3. Clone the repository (only this branch)
+6. Open up another terminal and CD into /react-app and run the React app.
    ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
+   npm start
    ```
-4. Open the repo in VS Code. 
-5. Click "Open in Container" when VS Code prompts to open container in the bottom right hand corner. 
-6. **Be Patient!** The initial install will take a LONG time, it's building a container that has postgres preconfigured and even installing all your project dependencies. (For both flask and react!)
-
-   **Note:** This will take much less time on future starts because everything will be cached.
-
-7. Once everything is up, be sure to make a `.env` file based on `.env.example` in both the root directory and the *react-app* directory before running your app. You do not need a `DATABASE_URL` in the `.env` file if you are using this Docker setup for development - the URL is already set in the image (see `.devcontainer/Dockerfile` for the URL).
-
-8. Get into your pipenv, migrate your database, seed your database, and run your flask app
-
-   ```bash
-   pipenv shell
-   ```
-
-   ```bash
-   flask db upgrade
-   ```
-
-   ```bash
-   flask seed all
-   ```
-
-   ```bash
-   flask run
-   ```
-
-9. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
 
 <br>
 
-## Deploy to Heroku
-This repo comes configured with Github Actions. When you push to your main branch, Github will automatically pull your code, package and push it to Heroku, and then release the new image and run db migrations. 
+# Features Highlight
 
-1. Write your Dockerfile. In order for the Github action to work effectively, it must have a configured Dockerfile. Follow the comments found in this [Dockerfile](./Dockerfile) to write your own!
+## Display of Performance Metrics
 
-2. Create a new project on Heroku.
+![](https://media.giphy.com/media/FFbttmMRi6Xrek9gKd/giphy.gif)
 
-3. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres".
+Average volume and RPE per week are displayed on the dashboard when the user logs in. The chart is rendered through the Chart.js library, and volume and RPE are calculated as hybrid methods/properties of each Week model instance.
 
-4. Configure production environment variables. In your Heroku app settings -> config variables you should have two environment variables set:
+Volume is calculated as (weight * sets * reps) and is a metric used to understand the total load/stress being placed on an athlete's muscles. RPE (rate of perceived exertion) is simply an average of the RPE numbers reported per exercise. RPE is used to determine the fatigue involved with completing that exercise.
 
-   |    Key          |    Value    |
-   | -------------   | ----------- |
-   | `DATABASE_URL`  | Autogenerated when adding postgres to Heroku app |
-   | `SECRET_KEY`    | Random string full of entropy |
+## Full CRUD of Blocks, Weeks, Days, and Exercises
 
-5. Generate a Heroku OAuth token for your Github Action. To do so, log in to Heroku via your command line with `heroku login`. Once you are logged in, run `heroku authorizations:create`. Copy the GUID value for the Token key.
+![](https://media.giphy.com/media/vOEPBbxkySi0clP2Tm/giphy.gif)
+![](https://media.giphy.com/media/MHXtQDasQ3sad6hQ0a/giphy.gif)
 
-6. In your Github Actions Secrets you should have two environment variables set. You can set these variables via your Github repository settings -> secrets -> actions. Click "New respository secret" to create
-each of the following variables:
+Athletes have access to dynamically sized tables and auto-updating fields for convenient programming. Fields can be left blank to finish later, or filled to completion and displayed on their block summary. Average volume and RPE metrics are calculated automatically through the backend upon instantiation of new exercises, days, and weeks. 
 
-   |    Key            |    Value    |
-   | -------------     | ----------- |
-   | `HEROKU_API_KEY`  | Heroku Oauth Token (from step 6)|
-   | `HEROKU_APP_NAME` | Heroku app name    |
+## Conclusion
 
-7. Push to your `main` branch! This will trigger the Github Action to build your Docker image and deploy your application to the Heroku container registry. Please note that the Github Action will automatically upgrade your production database with `flask db upgrade`. However, it will *not* automatically seed your database. You must manually seed your production database if/when you so choose (see step 8).
+This application is the capstone project for my 24 weeks at App Academy. During my time at App Academy, I have developed the abilities to:
+ * build a complete backend server with RESTful APIs (Express, Flask)
+ * communicate and save data through databases and object relational mapping tools (PostgreSQL, Sequelize, SQLAlchemy)
+ * create user interfaces and client functionality through frontend development (Vanilla JS, Pug/Jinja, React)
+ * effectively store, manipulate, and display data to the client through state management (Redux)
 
-8. *Attention!* Please run this command *only if you wish to seed your production database*: `heroku run -a HEROKU_APP_NAME flask seed all`
+Particularly in RPE10, I was able to:
+ * experiment with charting libraries such as Chart.js and react charts
+ * calculate and store volume and RPE statistics as a property of Object instances (server methods as opposed to frontend rendering)
+ * create dynamically rendering tables that would update data onBlur (upon leaving the input fields)
+ * design entire UI/UX
 
-## Helpful commands
-|    Command            |    Purpose    |
-| -------------         | ------------- |
-| `pipenv shell`        | Open your terminal in the virtual environment and be able to run flask commands without a prefix |
-| `pipenv run`          | Run a command from the context of the virtual environment without actually entering into it. You can use this as a prefix for flask commands  |
-| `flask db upgrade`    | Check in with the database and run any needed migrations  |
-| `flask db downgrade`  | Check in with the database and revert any needed migrations  |
-| `flask seed all`      | Just a helpful syntax to run queries against the db to seed data. See the **app/seeds** folder for reference and more details |
-| `heroku login -i`      | Authenticate your heroku-cli using the command line. Drop the -i to authenticate via the browser |
-| `heroku authorizations:create` | Once authenticated, use this to generate an Oauth token |
-| `heroku run -a <app name>` | Run a command from within the deployed container on Heroku |
+## What's Next
+- [ ] Implementing websockets for a chat feature among users on the platform
+- [ ] Adding workouts to your own calendar through Google Calendar API for easy viewing on-the-go
+- [ ] Separating Coach / Athlete personas to allow coaches to have clients and program for them using RPE10
+- [ ] Mobile application

@@ -1,0 +1,47 @@
+.about-body-row-1 {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
+
+.about-header {
+  height: 80px;
+}
+
+.about-text-container {
+  width: 50%;
+}
+
+.about-text-container > p {
+  line-height: 30px;
+}
+
+.about-social-container {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+}
+.about-social-container > img {
+  max-width: 400px;
+  height: auto;
+}
+
+.about-socials {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 40px;
+}
+
+.about-socials > i {
+  margin-right: 40px;
+  transition: 0.4s;
+}
+
+.about-socials > i:hover {
+  cursor: pointer;
+  color: gray;
+}

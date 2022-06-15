@@ -2,6 +2,7 @@ const SET_EXERCISES = "exercise/SET_EXERCISES";
 const CREATE_EXERCISE = "exercise/CREATE_EXERCISE";
 const UPDATE_EXERCISE = "exercise/UPDATE_EXERCISE";
 const DELETE_EXERCISE = "exercise/DELETE_EXERCISE";
+const REMOVE_ALL_EXERCISES = "exercise/REMOVE_ALL_EXERCISES";
 
 export const setExercises = (exercises) => {
   return {
@@ -28,6 +29,12 @@ export const deleteExercise = (exercise) => {
   return {
     type: DELETE_EXERCISE,
     exercise,
+  };
+};
+
+export const removeAllExercises = () => {
+  return {
+    type: REMOVE_ALL_EXERCISES,
   };
 };
 
@@ -115,6 +122,10 @@ const exerciseReducer = (state = initialState, action) => {
       };
       delete newState[action.exercise.id];
       return newState;
+    case REMOVE_ALL_EXERCISES:
+      return {
+        ...initialState,
+      };
     default:
       return state;
   }

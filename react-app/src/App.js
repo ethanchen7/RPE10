@@ -9,6 +9,8 @@ import BlockCreation from "./components/MainView/Program/BlockCreation";
 import BlockDisplay from "./components/MainView/BlockDisplay";
 import Chat from "./components/MainView/Chat";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import About from "./components/About";
+import NotFound from "./components/NotFound";
 import { authenticate } from "./store/session";
 import { setBlocks } from "./store/block";
 import { setWeeks } from "./store/week";
@@ -53,6 +55,9 @@ function App() {
         <Route path="/" exact={true}>
           {session ? <HomePage /> : <SplashPage />}
         </Route>
+        <Route path="/about" exact={true}>
+          <About />
+        </Route>
         <Route path="/login" exact={true}>
           <AuthPage />
         </Route>
@@ -74,6 +79,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/chat" exact={true} loaded={loaded}>
           <Chat />
+        </ProtectedRoute>
+        <ProtectedRoute loaded={loaded}>
+          <NotFound />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

@@ -4,6 +4,7 @@ import { addExercise } from "../../../../store/exercise";
 import { removeDay } from "../../../../store/day";
 import "./DayContainer.css";
 import ExerciseContainer from "./ExerciseContainer";
+import ReactTooltip from "react-tooltip";
 
 const DayContainer = ({ day, number }) => {
   const dispatch = useDispatch();
@@ -37,13 +38,25 @@ const DayContainer = ({ day, number }) => {
             />
           ))
         : ""}
-      <form onSubmit={(e) => handleAddExercise(e)}>
-        <input
-          type="submit"
-          value="+ Add Exercise"
-          className="add-exercise-btn"
-        />
-      </form>
+      {dayExercises.length < 8 ? (
+        <form onSubmit={(e) => handleAddExercise(e)}>
+          <input
+            type="submit"
+            value="+ Add Exercise"
+            className="add-exercise-btn"
+          />
+        </form>
+      ) : (
+        <>
+          <button
+            className="add-exercise-btn"
+            data-tip="Very ambitious of you, but you can't add more than 8 exercises a day. :("
+          >
+            + Add Exercise
+          </button>
+          <ReactTooltip place="bottom" type="error" effect="solid" />
+        </>
+      )}
     </>
   );
 };

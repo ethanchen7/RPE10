@@ -3,6 +3,7 @@ const CREATE_BLOCK = "block/CREATE_BLOCK";
 const EDIT_BLOCK = "block/EDIT_BLOCK";
 const DELETE_BLOCK = "block/DELETE_BLOCK";
 const GET_CURRENT_BLOCK = "block/GET_CURRENT_BLOCK";
+const REMOVE_ALL_BLOCKS = "block/REMOVE_ALL_BLOCKS";
 
 export const setBlocks = (blocks) => {
   return {
@@ -25,10 +26,10 @@ export const editBlock = (block) => {
   };
 };
 
-export const deleteBlock = (block) => {
+export const deleteBlock = (blockId) => {
   return {
     type: DELETE_BLOCK,
-    block,
+    blockId,
   };
 };
 
@@ -36,6 +37,12 @@ export const getCurrentBlock = (block) => {
   return {
     type: GET_CURRENT_BLOCK,
     block,
+  };
+};
+
+export const removeAllBlocks = () => {
+  return {
+    type: REMOVE_ALL_BLOCKS,
   };
 };
 
@@ -105,7 +112,7 @@ export const removeBlock = (blockId) => async (dispatch) => {
   });
   if (response.ok) {
     const data = await response.json();
-    dispatch(deleteBlock(data));
+    dispatch(deleteBlock(blockId));
     return data;
   } else if (response.status < 500) {
     const data = await response.json();
@@ -140,8 +147,10 @@ const blockReducer = (state = initialState, action) => {
       const newState = {
         ...state,
       };
-      delete newState[action.block.id];
+      delete newState[action.blockId];
       return newState;
+    case REMOVE_ALL_BLOCKS:
+      return { ...initialState };
     default:
       return state;
   }

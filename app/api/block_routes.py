@@ -2,7 +2,6 @@ from flask import Blueprint, jsonify, request, render_template
 from flask_login import login_required, current_user
 from app.models import db, User, Block, Week
 from app.forms.block_form import BlockForm
-# from app.forms.week_form import WeekForm
 
 block_routes = Blueprint('blocks', __name__)
 
@@ -51,7 +50,7 @@ def delete_block(id):
     if block:
         db.session.delete(block)
         db.session.commit()
-        return block.to_dict()
+        return {'message': f'Block {id} was successfully deleted.'}
     
     else:
         return {'errors': 'Project not found.'}, 404

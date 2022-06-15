@@ -1,4 +1,8 @@
-// constants
+import { removeAllBlocks } from "./block";
+import { removeAllWeeks } from "./week";
+import { removeAllDays } from "./day";
+import { removeAllExercises } from "./exercise";
+
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
 const EDIT_USER = "session/EDIT_USER";
@@ -72,6 +76,10 @@ export const logout = () => async (dispatch) => {
 
   if (response.ok) {
     dispatch(removeUser());
+    dispatch(removeAllBlocks());
+    dispatch(removeAllWeeks());
+    dispatch(removeAllDays());
+    dispatch(removeAllExercises());
   }
 };
 

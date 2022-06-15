@@ -2,6 +2,7 @@ const SET_WEEKS = "week/SET_WEEKS";
 const CREATE_WEEK = "week/CREATE_WEEK";
 const DELETE_WEEK = "week/DELETE_WEEK";
 const UPDATE_WEEK = "week/UPDATE_WEEK";
+const REMOVE_ALL_WEEKS = "week/REMOVE_ALL_WEEKS";
 
 export const setWeeks = (weeks) => {
   return {
@@ -28,6 +29,12 @@ export const updateWeek = (week) => {
   return {
     type: UPDATE_WEEK,
     week,
+  };
+};
+
+export const removeAllWeeks = () => {
+  return {
+    type: REMOVE_ALL_WEEKS,
   };
 };
 
@@ -98,7 +105,6 @@ const weekReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_WEEKS:
       return {
-        ...state,
         ...action.weeks,
       };
     case CREATE_WEEK:
@@ -112,6 +118,10 @@ const weekReducer = (state = initialState, action) => {
       };
       delete newState[action.weekId];
       return newState;
+    case REMOVE_ALL_WEEKS:
+      return {
+        ...initialState,
+      };
     default:
       return state;
   }

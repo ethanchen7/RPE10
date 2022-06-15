@@ -2,6 +2,7 @@ const SET_DAYS = "day/SET_DAYS";
 const CREATE_DAY = "day/CREATE_DAY";
 const DELETE_DAY = "day/DELETE_DAY";
 const UPDATE_DAY = "day/UPDATE_DAY";
+const REMOVE_ALL_DAYS = "day/REMOVE_ALL_DAYS";
 
 export const setDays = (days) => {
   return {
@@ -28,6 +29,12 @@ export const updateDay = (day) => {
   return {
     type: UPDATE_DAY,
     day,
+  };
+};
+
+export const removeAllDays = () => {
+  return {
+    type: REMOVE_ALL_DAYS,
   };
 };
 
@@ -86,8 +93,8 @@ export const editDay = (dayId, payload) => async (dispatch) => {
     return data;
   } else if (response.status < 500) {
     const data = await response.json();
-    if (data.errors) {
-      return data.errors;
+    if (data) {
+      return data;
     }
   } else {
     return "An error occurred. Please try again.";
@@ -118,6 +125,10 @@ const dayReducer = (state = initialState, action) => {
       return {
         ...state,
         [action.day.id]: action.day,
+      };
+    case REMOVE_ALL_DAYS:
+      return {
+        ...initialState,
       };
     default:
       return state;

@@ -28,7 +28,7 @@ const Dashboard = () => {
       <SideBar />
       <div className="page-container dash">
         <div className="dashboard-header">
-          <h1>Welcome Demo Athlete!</h1>
+          <h1>{`Welcome ${session.first_name} ${session.last_name}!`}</h1>
           <p>Here are your training stats:</p>
         </div>
         <div style={{ width: "1000px" }}>
