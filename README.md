@@ -93,4 +93,5 @@ Particularly in RPE10, I was able to:
 
 ## What's Next
 - [ ] Implementing websockets for a chat feature among users on the platform
-- [ ] Creating Coach / Athlete views to complete the coach programming purpose
+- [ ] Adding workouts to your own calendar through Google Calendar API
+- [ ] Separating Coach / Athlete personas to allow coaches to have clients and program for them using RPE10
