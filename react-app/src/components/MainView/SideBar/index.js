@@ -46,6 +46,10 @@ const SideBar = () => {
     }
   };
 
+  const handleLogoClick = () => {
+    history.push("/");
+  };
+
   const onLogout = async (e) => {
     history.push("/");
     await dispatch(logout());
@@ -53,7 +57,7 @@ const SideBar = () => {
 
   return (
     <div className="sidebar-container">
-      <div className="sidebar-logo-container">
+      <div className="sidebar-logo-container" onClick={handleLogoClick}>
         <img src={logo} alt="logo" />
       </div>
       <div className="sidebar-menu main">
