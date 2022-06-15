@@ -47,7 +47,7 @@ app.register_blueprint(exercise_routes, url_prefix="/api/exercise")
 app.register_blueprint(room_routes, url_prefix="/api/room")
 app.register_blueprint(chat_routes, url_prefix="/api/chat")
 db.init_app(app)
-Migrate(app, db)
+Migrate(app, db, compare_type=True)
 
 # Application Security
 CORS(app)

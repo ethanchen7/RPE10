@@ -41,23 +41,44 @@ const ChatRoom = ({ selectedRoom }) => {
 
   const sendChat = (e) => {
     e.preventDefault();
+    let timestamp = "";
+    const newTime = new Date();
+    const datestamp = newTime.toLocaleDateString();
+    const time = newTime.toLocaleTimeString().split(" ");
+    const hourMin = time[0].split(":");
+    timestamp +=
+      datestamp +
+      " at " +
+      hourMin[0] +
+      ":" +
+      hourMin[1] +
+      time[1].toLowerCase();
     socket.emit("chat", {
       user: user,
       room: selectedRoom,
       msg: chatInput,
-      created_at: new Date().toLocaleTimeString(),
+      created_at: timestamp,
     });
     dispatch(
       addChat({
         room_id: selectedRoom,
         message: chatInput,
+        created_at: timestamp,
       })
     );
     setChatInput("");
   };
 
+  const scroll = () => {
+    const chatContainer = document.querySelector(".chats-messages-container");
+    if (chatContainer) {
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+  };
+
   useEffect(() => {
     dispatch(getRoomChats(selectedRoom));
+    scroll();
   }, [selectedRoom]);
 
   return (
@@ -65,7 +86,7 @@ const ChatRoom = ({ selectedRoom }) => {
       <div className="chats-messages-container">
         {chatArr.map((chat, ind) => (
           <div
-            className="message-bubble"
+            className="message-bubble right"
             key={`${chat.message}-${chat.id}-${ind}`}
           >
             <div className="left-message-bubble-icon">
@@ -80,36 +101,24 @@ const ChatRoom = ({ selectedRoom }) => {
                 {`${allUsers[chat.user_id]?.first_name} ${
                   allUsers[chat.user_id]?.last_name
                 }`}
-                <span> {new Date(chat.created_at).toLocaleTimeString()}</span>
+                <span> {chat.created_at}</span>
               </p>
               <p>{chat.message}</p>
             </div>
           </div>
         ))}
-        {/* {messages.map((message, ind) => (
-          <div className="message-bubble" key={ind}>
-            <div className="left-message-bubble-icon">
-              <div>{`${allUsers[message.user.id]?.first_name
-                .charAt(0)
-                .toUpperCase()}${allUsers[message.user.id]?.last_name
-                .charAt(0)
-                .toUpperCase()}`}</div>
-            </div>
-            <div className="right-message-bubble-icon">
-              <p>
-                {`${allUsers[message.user.id]?.first_name} ${
-                  allUsers[message.user.id]?.last_name
-                }`}
-                <span> {message.created_at}</span>
-              </p>
-              <p>{message.msg}</p>
-            </div>
-          </div>
-        ))} */}
       </div>
-      <form className="chat-input-container" onSubmit={sendChat}>
+      <form
+        className={`chat-input-container${
+          selectedRoom === 0 ? " disabled" : ""
+        }`}
+        onSubmit={sendChat}
+      >
         <input value={chatInput} onChange={updateChatInput} />
-        <button type="submit">
+        <button
+          type="submit"
+          className={`${selectedRoom === 0 ? " disabled" : ""}`}
+        >
           <img src={arrow} className="filter"></img>
         </button>
       </form>

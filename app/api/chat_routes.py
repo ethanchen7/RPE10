@@ -23,9 +23,9 @@ def create_chat():
     if form.validate_on_submit():
         chat = Chat(
             user_id=current_user.get_id(),
-            room_id=form['room_id'].data,
-            message=form['message'].data,
-            created_at=datetime.now()
+            room_id=form.data['room_id'],
+            message=form.data['message'],
+            created_at=form.data['created_at']
         )
         db.session.add(chat)
         db.session.commit()
