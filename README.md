@@ -73,3 +73,11 @@ Volume is calculated as (weight * sets * reps) and is a metric used to understan
 ## Full CRUD of Blocks, Weeks, Days, and Exercises
 
 Athletes have access to dynamically sized tables and auto-updating fields for convenient programming. Fields can be left blank to finish later, or filled to completion and displayed on their block summary. Average volume and RPE metrics are calculated automatically through the backend upon instantiation of new exercises, days, and weeks. 
+
+## Conclusion
+
+This application is the capstone project for my 24 weeks at App Academy. During my time at App Academy, I have developed the abilities to:
+ * build a complete backend server with RESTful APIs (Express, Flask)
+ * communicate and save data through databases and object relational mapping tools (PostgreSQL, Sequelize, SQLAlchemy)
+ * create user interfaces and client functionality through frontend development (Vanilla JS, Pug/Jinja, React)
+ * effectively store, manipulate, and display data to the client through state management (Redux)
