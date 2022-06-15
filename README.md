@@ -72,6 +72,8 @@ Volume is calculated as (weight * sets * reps) and is a metric used to understan
 
 ## Full CRUD of Blocks, Weeks, Days, and Exercises
 
+![](https://media.giphy.com/media/vOEPBbxkySi0clP2Tm/giphy.gif)
+
 Athletes have access to dynamically sized tables and auto-updating fields for convenient programming. Fields can be left blank to finish later, or filled to completion and displayed on their block summary. Average volume and RPE metrics are calculated automatically through the backend upon instantiation of new exercises, days, and weeks. 
 
 ## Conclusion
