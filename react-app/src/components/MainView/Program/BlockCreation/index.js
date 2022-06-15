@@ -6,7 +6,7 @@ import WeekContainer from "./WeekContainer";
 import DeleteConfirmationModal from "../DeleteBlock";
 import { addWeek } from "../../../../store/week";
 import { putBlock } from "../../../../store/block";
-import { removeBlock } from "../../../../store/block";
+import ErrorMessage from "../../../ErrorMessage";
 // import { BsPencil } from "react-icons/bs";
 import "./index.css";
 
@@ -29,6 +29,7 @@ const BlockCreation = () => {
   const [blockName, setBlockName] = useState(
     currentBlock ? currentBlock.name : ""
   );
+  const [errorMessages, setErrorMessages] = useState({});
 
   useEffect(() => {
     if (currentBlock) {
@@ -54,13 +55,31 @@ const BlockCreation = () => {
     dispatch(addWeek(blockId));
   };
 
-  const handleUpdateBlock = () => {
+  const handleUpdateBlock = async () => {
     const payload = {
       name: blockName,
     };
-    dispatch(putBlock(blockId, payload));
+    const update = await dispatch(putBlock(blockId, payload));
+    if (update.errors) {
+      console.log("hereeee");
+      console.log(update.errors);
+      const errors = {};
+      if (Array.isArray(update.errors)) {
+        update.errors.forEach((error) => {
+          const label = error.split(":")[0].slice(0, -1);
+          const message = error.split(":")[1].slice(1);
+          errors[label] = message;
+        });
+      } else {
+        errors.overall = update.errors;
+      }
+      setErrorMessages(errors);
+      console.log(errorMessages);
+    } else {
+      setErrorMessages({});
+    }
   };
-  console.log(blockWeeks);
+
   return (
     <>
       <SideBar />
@@ -76,6 +95,12 @@ const BlockCreation = () => {
           />
           <DeleteConfirmationModal blockId={blockId} />
         </div>
+        {errorMessages ? (
+          <ErrorMessage label={""} message={errorMessages.name} />
+        ) : (
+          ""
+        )}
+
         <p>
           <span style={{ fontWeight: 700 }}>Please note:</span> Exercises that
           are not complete (missing exercise name, sets or reps) will not be
