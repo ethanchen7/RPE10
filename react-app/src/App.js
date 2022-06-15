@@ -9,6 +9,7 @@ import BlockCreation from "./components/MainView/Program/BlockCreation";
 import BlockDisplay from "./components/MainView/BlockDisplay";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import About from "./components/About";
+import NotFound from "./components/NotFound";
 import { authenticate } from "./store/session";
 import { setBlocks } from "./store/block";
 import { setWeeks } from "./store/week";
@@ -75,9 +76,9 @@ function App() {
         >
           <BlockCreation />
         </ProtectedRoute>
-        {/* <ProtectedRoute path="/" exact={true}>
-          <h1>My Home Page</h1>
-        </ProtectedRoute> */}
+        <ProtectedRoute loaded={loaded}>
+          <NotFound />
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
