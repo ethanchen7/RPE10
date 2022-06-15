@@ -6,7 +6,7 @@ const About = () => {
     <div>
       <NavBar />
       <div className="splash-body-container">
-        <div className="splash-body-header">
+        <div className="splash-body-header about-header">
           <h1>About</h1>
         </div>
 

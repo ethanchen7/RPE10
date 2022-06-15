@@ -7,6 +7,10 @@
   align-items: center;
 }
 
+.about-header {
+  height: 80px;
+}
+
 .about-text-container {
   width: 50%;
 }
