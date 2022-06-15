@@ -114,6 +114,10 @@ const BlockCreation = () => {
           Bodyweight exercises or weights that may vary can be left as 0. Volume
           calculations will be normalized for such exercises.
         </p>
+        <p>
+          Fill in each input field as you go, values will be saved automatically
+          (including the block name).
+        </p>
         <button
           className="add-week-btn"
           onClick={handleAddWeek}
