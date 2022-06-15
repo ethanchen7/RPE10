@@ -73,6 +73,7 @@ Volume is calculated as (weight * sets * reps) and is a metric used to understan
 ## Full CRUD of Blocks, Weeks, Days, and Exercises
 
 ![](https://media.giphy.com/media/vOEPBbxkySi0clP2Tm/giphy.gif)
+![](https://media.giphy.com/media/pO3EDbAZRwZ9wFS5E2/giphy.gif)
 
 Athletes have access to dynamically sized tables and auto-updating fields for convenient programming. Fields can be left blank to finish later, or filled to completion and displayed on their block summary. Average volume and RPE metrics are calculated automatically through the backend upon instantiation of new exercises, days, and weeks. 
 
@@ -89,4 +90,6 @@ Particularly in RPE10, I was able to:
  * calculate and store volume and RPE statistics as a property of Object instances (server methods as opposed to frontend rendering)
  * create dynamically rendering tables that would update data onBlur (upon leaving the input fields)
  * design entire UI/UX
+
+## What's Next
 
