@@ -1,19 +1,26 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import rpelogo from "../../assets/images/rpelogo.png";
 import "./NavBar.css";
 
 const NavBar = () => {
+  const history = useHistory();
+  const handleLogoClick = () => {
+    history.push("/");
+  };
   return (
     <nav className="nav-bar-container">
-      <div className="logo-container">
+      <div className="logo-container" onClick={handleLogoClick}>
         <img src={rpelogo} />
         <h3>RPE10</h3>
       </div>
       <div className="navbar-left">
-        <p>Features</p>
-        <p>About</p>
+        <a href="https://www.linkedin.com/in/ethan-chen-3b7070127/">LinkedIn</a>
+        <a href="https://github.com/ethanchen7/">Github</a>
+        <NavLink to="/about" exact={true} activeClassName="active">
+          About
+        </NavLink>
       </div>
       <div className="navbar-right">
         <button className="nav-login-btn">

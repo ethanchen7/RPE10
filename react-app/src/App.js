@@ -8,6 +8,7 @@ import Program from "./components/MainView/Program";
 import BlockCreation from "./components/MainView/Program/BlockCreation";
 import BlockDisplay from "./components/MainView/BlockDisplay";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import About from "./components/About";
 import { authenticate } from "./store/session";
 import { setBlocks } from "./store/block";
 import { setWeeks } from "./store/week";
@@ -51,6 +52,9 @@ function App() {
       <Switch>
         <Route path="/" exact={true}>
           {session ? <HomePage /> : <SplashPage />}
+        </Route>
+        <Route path="/about" exact={true}>
+          <About />
         </Route>
         <Route path="/login" exact={true}>
           <AuthPage />
