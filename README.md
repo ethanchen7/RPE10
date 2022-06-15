@@ -81,3 +81,10 @@ This application is the capstone project for my 24 weeks at App Academy. During 
  * communicate and save data through databases and object relational mapping tools (PostgreSQL, Sequelize, SQLAlchemy)
  * create user interfaces and client functionality through frontend development (Vanilla JS, Pug/Jinja, React)
  * effectively store, manipulate, and display data to the client through state management (Redux)
+
+Particularly in RPE10, I was able to:
+ * experiment with charting libraries such as Chart.js and react charts
+ * calculate and store volume and RPE statistics as a property of Object instances (server methods as opposed to frontend rendering)
+ * create dynamically rendering tables that would update data onBlur (upon leaving the input fields)
+ * design entire UI/UX
+
