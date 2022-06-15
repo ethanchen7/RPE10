@@ -36,12 +36,12 @@
   margin-left: 40px;
 }
 
-.about-socials > i {
+.about-socials > a {
   margin-right: 40px;
   transition: 0.4s;
 }
 
-.about-socials > i:hover {
+.about-socials > a:hover {
   cursor: pointer;
   color: gray;
 }

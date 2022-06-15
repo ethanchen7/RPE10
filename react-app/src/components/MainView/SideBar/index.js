@@ -88,7 +88,7 @@ const SideBar = () => {
             className="fa-solid fa-bars-progress fa-2xl"
             style={{ color: "#a4a8a8" }}
             id="block-toggler-icon"
-            data-tip="Blocks"
+            data-tip={`Blocks${blocks.length ? "" : " (currently no blocks)"}`}
           ></i>
           <ReactTooltip
             className="tool-tip-cls"
@@ -97,7 +97,7 @@ const SideBar = () => {
             effect="solid"
           />
         </div>
-        {blocks ? (
+        {blocks.length ? (
           <div className={`blocks-nav-container${openBlock ? " open" : ""}`}>
             {blocks.map((block, idx) => (
               <Link
