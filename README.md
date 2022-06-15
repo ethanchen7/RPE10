@@ -92,4 +92,5 @@ Particularly in RPE10, I was able to:
  * design entire UI/UX
 
 ## What's Next
-
+- [ ] Implementing websockets for a chat feature among users on the platform
+- [ ] Creating Coach / Athlete views to complete the coach programming purpose
