@@ -25,8 +25,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   height: 100px;
   transition: 0.2s;
+  width: 100%;
 }
 
 .room-person-container:hover {
@@ -34,9 +36,19 @@
   cursor: pointer;
 }
 
-.room-person-container > p {
+.room-person {
+  display: flex;
+  flex-direction: row;
   font-weight: 600;
-  margin-left: 20px;
+  margin-left: 10px;
+  align-items: center;
+}
+.room-person > p {
+  margin-left: 10px;
+}
+.fa-xmark {
+  position: absolute;
+  left: 18%;
 }
 
 .room-person-icon {
@@ -47,7 +59,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 20px;
 }
 
 .room-person-icon > h3 {

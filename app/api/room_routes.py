@@ -51,6 +51,10 @@ def new_room():
     
     return room.to_dict()
 
+@room_routes.route('/<int:id>', methods=["DELETE"])
+def delete_room(id):
+    room = Room.query.get(id)
+
 @room_routes.route('/<int:id>/chats')
 def get_chats(id):
     print(id)
