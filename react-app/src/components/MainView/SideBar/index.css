@@ -7,7 +7,7 @@
   border-radius: 0px;
   background: rgb(0, 0, 0);
   box-shadow: 0px 0px 1px #a4a8a8, 0px 0px 2px #515353;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .sidebar-logo-container {

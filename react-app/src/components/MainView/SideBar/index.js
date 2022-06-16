@@ -67,6 +67,7 @@ const SideBar = () => {
             exact={true}
             activeClassName="selected"
             data-tip="Dashboard"
+            data-for="dashboard-tool-tip"
           >
             <MdDashboard
               style={{ width: "32px", height: "auto", color: "#a4a8a8" }}
@@ -77,6 +78,7 @@ const SideBar = () => {
             place="right"
             type="dark"
             effect="solid"
+            id="dashboard-tool-tip"
           />
         </div>
         <div
