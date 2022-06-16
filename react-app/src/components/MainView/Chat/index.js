@@ -70,6 +70,11 @@ const Chat = () => {
           ))}
         </div>
         <div className="chat-box-container">
+          {selectedRoom === 0 ? (
+            <h1>Select or search for someone to chat with.</h1>
+          ) : (
+            ""
+          )}
           <ChatRoom selectedRoom={selectedRoom} />
         </div>
       </div>
