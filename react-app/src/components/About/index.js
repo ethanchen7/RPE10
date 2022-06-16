@@ -48,12 +48,12 @@ const About = () => {
           <div className="about-social-container">
             <img src={ethan} />
             <div className="about-socials">
-              <i className="fa-brands fa-github fa-10x">
-                <a href="https://github.com/ethanchen7/"></a>
-              </i>
-              <i className="fa-brands fa-linkedin fa-10x">
-                <a href="https://www.linkedin.com/in/ethan-chen-3b7070127/"></a>
-              </i>
+              <a href="https://github.com/ethanchen7/">
+                <i className="fa-brands fa-github fa-10x"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/ethan-chen-3b7070127/">
+                <i className="fa-brands fa-linkedin fa-10x"></i>
+              </a>
             </div>
           </div>
         </div>
