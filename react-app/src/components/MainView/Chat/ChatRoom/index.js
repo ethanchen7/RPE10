@@ -89,7 +89,11 @@ const ChatRoom = ({ selectedRoom }) => {
             className="message-bubble right"
             key={`${chat.message}-${chat.id}-${ind}`}
           >
-            <div className="left-message-bubble-icon">
+            <div
+              className={`left-message-bubble-icon ${
+                chat.user_id === user.id ? "self" : ""
+              }`}
+            >
               <div>{`${allUsers[chat.user_id]?.first_name
                 .charAt(0)
                 .toUpperCase()}${allUsers[chat.user_id]?.last_name
@@ -119,7 +123,7 @@ const ChatRoom = ({ selectedRoom }) => {
           type="submit"
           className={`${selectedRoom === 0 ? " disabled" : ""}`}
         >
-          <img src={arrow} className="filter"></img>
+          <i className="fa-regular fa-paper-plane fa-2xl"></i>
         </button>
       </form>
     </>
