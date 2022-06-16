@@ -25,7 +25,7 @@ const NotFound = () => {
   };
   return (
     <div className="page-not-found-container">
-      <h1> 404 </h1>
+      <h1>404</h1>
       <h1>
         {" "}
         Page Not Found <i className="fa-regular fa-face-frown fa-xl"></i>
