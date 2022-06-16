@@ -1,5 +1,6 @@
 const LOAD_ROOMS = "room/LOAD_ROOMS";
 const LOAD_ALL_USERS = "room/LOAD_ALL_USERS";
+const CREATE_ROOM = "room/CREATE_ROOM";
 
 export const loadRooms = (rooms) => {
   return {
@@ -12,6 +13,13 @@ export const loadAllUsers = (users) => {
   return {
     type: LOAD_ALL_USERS,
     users,
+  };
+};
+
+export const createRoom = (room) => {
+  return {
+    type: CREATE_ROOM,
+    room,
   };
 };
 
@@ -29,6 +37,28 @@ export const getAllUsers = () => async (dispatch) => {
   if (response.ok) {
     const users = await response.json();
     dispatch(loadAllUsers(users.users));
+  }
+};
+
+export const addRoom = (payload) => async (dispatch) => {
+  const response = await fetch("/api/room/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(createRoom(data));
+    return data;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data;
+    }
+  } else {
+    return "An error occurred. Please try again.";
   }
 };
 
@@ -51,6 +81,14 @@ const roomReducer = (state = initialState, action) => {
         users: [...action.users],
         allUsers: {
           ...userObject,
+        },
+      };
+    case CREATE_ROOM:
+      return {
+        ...state,
+        rooms: {
+          ...state.rooms,
+          [action.room.id]: action.room,
         },
       };
     default:

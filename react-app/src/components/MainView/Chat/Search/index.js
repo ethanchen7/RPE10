@@ -1,15 +1,21 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addRoom } from "../../../../store/room";
 import "./index.css";
-const Search = () => {
+const Search = ({ existingUsers }) => {
+  const dispatch = useDispatch();
   const allUsers = useSelector((state) => state.room.allUsers);
+  const session = useSelector((state) => state.session.user);
   const users = Object.values(allUsers);
+  const availableUsers = users.filter(
+    (user) => user.id !== session.id && !existingUsers.has(user.id)
+  );
   const [searchInput, setSearchInput] = useState("");
   const [filteredUsers, setFilteredUsers] = useState([]);
 
   const handleFilter = (e) => {
     setSearchInput(e.target.value.toLowerCase());
-    const newFilter = users.filter((user) =>
+    const newFilter = availableUsers.filter((user) =>
       user.email.includes(searchInput.toLowerCase())
     );
     if (searchInput === "") {
@@ -20,7 +26,11 @@ const Search = () => {
   };
 
   const handleUserSelect = (e) => {
-    return "";
+    const payload = {
+      friend_id: e.target.id,
+    };
+    dispatch(addRoom(payload));
+    setSearchInput("");
   };
 
   return (

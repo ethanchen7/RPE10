@@ -11,6 +11,11 @@ const Chat = () => {
   const allUserObject = useSelector((state) => state.room.allUsers);
   const allRooms = useSelector((state) => state.room.rooms);
   const rooms = Object.values(allRooms);
+  const existingUsers = new Set();
+  rooms.forEach((room) => {
+    existingUsers.add(room.friend_id);
+    existingUsers.add(room.user_id);
+  });
   const dispatch = useDispatch();
 
   const [selectedRoom, setSelectedRoom] = useState(0);
@@ -31,7 +36,7 @@ const Chat = () => {
       <div className="chat-container">
         <div className="direct-messages-container">
           <h1>Messages</h1>
-          <Search />
+          <Search existingUsers={existingUsers} />
           {rooms?.map((room) => (
             <div
               className="room-person-container"

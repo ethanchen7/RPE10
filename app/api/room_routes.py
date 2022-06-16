@@ -37,7 +37,7 @@ def get_room(id):
 @room_routes.route('/', methods=["POST"])
 def new_room():
     form = RoomForm()
-    form['csrf_token'].data = request.cookies('csrf_token')
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         user_id = current_user.id
         friend_id = form.data['friend_id']
