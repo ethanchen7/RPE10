@@ -130,6 +130,7 @@ const SideBar = () => {
           />
         </div>
         <div className="sidebar-menu-item">
+          {/* add back in later */}
           {/* <NavLink to="/" exact={true} activeClassName="selected">
             <i
               className="fa-regular fa-message fa-2xl"
