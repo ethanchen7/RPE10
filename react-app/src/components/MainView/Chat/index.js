@@ -4,6 +4,7 @@ import SideBar from "../SideBar";
 import { getRooms, getAllUsers } from "../../../store/room";
 import ChatRoom from "./ChatRoom";
 import "./index.css";
+import Search from "./Search";
 
 const Chat = () => {
   const user = useSelector((state) => state.session.user);
@@ -30,10 +31,7 @@ const Chat = () => {
       <div className="chat-container">
         <div className="direct-messages-container">
           <h1>Messages</h1>
-          {/* Search Box Component */}
-          <div className="person-search-container">
-            <input placeholder="Search for someone" />
-          </div>
+          <Search />
           {rooms?.map((room) => (
             <div
               className="room-person-container"

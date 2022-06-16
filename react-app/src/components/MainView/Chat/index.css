@@ -19,25 +19,6 @@
   text-align: center;
 }
 
-.person-search-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.person-search-container > input {
-  width: 80%;
-  padding: 15px;
-  background-color: rgb(34, 34, 34);
-  border: none;
-  color: white;
-  border-radius: 10px;
-}
-
-.person-search-container > input:focus {
-  outline: none;
-}
-
 .room-person-container {
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
