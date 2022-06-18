@@ -64,7 +64,7 @@ RPE10 is built with React / Redux on the frontend, Python / Flask on the server,
 
 ## Display of Performance Metrics
 
-![](https://media.giphy.com/media/FFbttmMRi6Xrek9gKd/giphy.gif)
+![Screen Recording 2022-06-15 at 10 04 45 AM](https://user-images.githubusercontent.com/60331384/174458732-ca767222-af40-4537-bd7f-a78eff07b74b.gif)
 
 Average volume and RPE per week are displayed on the dashboard when the user logs in. The chart is rendered through the Chart.js library, and volume and RPE are calculated as hybrid methods/properties of each Week model instance.
 
