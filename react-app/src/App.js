@@ -7,6 +7,7 @@ import SplashPage from "./components/SplashPage";
 import Program from "./components/MainView/Program";
 import BlockCreation from "./components/MainView/Program/BlockCreation";
 import BlockDisplay from "./components/MainView/BlockDisplay";
+import Chat from "./components/MainView/Chat";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import About from "./components/About";
 import NotFound from "./components/NotFound";
@@ -75,6 +76,9 @@ function App() {
           loaded={loaded}
         >
           <BlockCreation />
+        </ProtectedRoute>
+        <ProtectedRoute path="/chat" exact={true} loaded={loaded}>
+          <Chat />
         </ProtectedRoute>
         <ProtectedRoute loaded={loaded}>
           <NotFound />

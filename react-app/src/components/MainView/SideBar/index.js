@@ -130,8 +130,7 @@ const SideBar = () => {
           />
         </div>
         <div className="sidebar-menu-item">
-          {/* add back in later */}
-          {/* <NavLink to="/" exact={true} activeClassName="selected">
+          <NavLink to="/chat" exact={true} activeClassName="selected">
             <i
               className="fa-regular fa-message fa-2xl"
               style={{ color: "#a4a8a8" }}
@@ -143,7 +142,7 @@ const SideBar = () => {
             place="right"
             type="dark"
             effect="solid"
-          /> */}
+          />
         </div>
       </div>
 

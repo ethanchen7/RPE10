@@ -1,0 +1,126 @@
+.chat-input-container {
+  position: fixed;
+  bottom: 0;
+  height: 70px;
+  box-sizing: border-box;
+  width: 60%;
+  border-top: 1px solid gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-input-container > input {
+  width: 80%;
+  height: 20px;
+  border-radius: 10px;
+  background-color: rgb(34, 34, 34);
+  border: none;
+  color: white;
+  padding: 15px;
+}
+
+.disabled > input {
+  pointer-events: none;
+}
+
+.disabled > button {
+  pointer-events: none;
+}
+
+.chat-input-container > input:focus {
+  outline: none;
+}
+
+.chat-input-container > button {
+  background-color: transparent;
+  border: none;
+}
+
+.chat-input-container > button > img:hover {
+  cursor: pointer;
+}
+
+.filter {
+  filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg)
+    brightness(118%) contrast(119%);
+}
+
+.chats-messages-container {
+  height: 90%;
+  width: 80%;
+
+  overflow-y: scroll;
+  padding: 10px 30px 30px 30px;
+}
+
+.container > div:last-child {
+  scroll-snap-align: end;
+}
+
+.chats-messages-container::-webkit-scrollbar {
+  background-color: transparent;
+}
+.chats-messages-container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.chats-messages-container::-webkit-scrollbar-thumb {
+  background-color: #5c7680;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+.message-bubble {
+  width: 60%;
+  min-height: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.left-message-bubble-icon {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(65, 65, 65);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.self {
+  background-color: rgb(30, 71, 90);
+}
+.right-message-bubble-icon {
+  width: 90%;
+  word-break: break-word;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+}
+.right-message-bubble-icon > p:nth-child(1) {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.right-message-bubble-icon > p:nth-child(1) > span {
+  font-size: 11px;
+  font-weight: 400;
+  margin-left: 10px;
+}
+
+.right-message-bubble-icon > p:nth-child(2) {
+  font-size: 14px;
+}
+
+.fa-paper-plane {
+  color: #03dac5;
+  transition: 0.4s;
+}
+
+.fa-paper-plane:hover {
+  color: #94fff4;
+  cursor: pointer;
+}

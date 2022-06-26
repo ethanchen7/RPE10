@@ -12,12 +12,17 @@ from .api.block_routes import block_routes
 from .api.week_routes import week_routes
 from .api.day_routes import day_routes
 from .api.exercise_routes import exercise_routes
+from .api.room_routes import room_routes
+from .api.chat_routes import chat_routes
 
 from .seeds import seed_commands
+
+from .socket import socketio
 
 from .config import Config
 
 app = Flask(__name__)
+socketio.init_app(app)
 
 # Setup login manager
 login = LoginManager(app)
@@ -39,8 +44,10 @@ app.register_blueprint(block_routes, url_prefix="/api/block")
 app.register_blueprint(week_routes, url_prefix="/api/week")
 app.register_blueprint(day_routes, url_prefix="/api/day")
 app.register_blueprint(exercise_routes, url_prefix="/api/exercise")
+app.register_blueprint(room_routes, url_prefix="/api/room")
+app.register_blueprint(chat_routes, url_prefix="/api/chat")
 db.init_app(app)
-Migrate(app, db)
+Migrate(app, db, compare_type=True)
 
 # Application Security
 CORS(app)
@@ -78,3 +85,6 @@ def react_root(path):
     if path == 'favicon.ico':
         return app.send_static_file('favicon.ico')
     return app.send_static_file('index.html')
+
+if __name__ == '__main__':
+    socketio.run(app)

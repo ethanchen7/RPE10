@@ -1,0 +1,71 @@
+.chat-container {
+  position: absolute;
+  left: 120px;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  box-sizing: border-box;
+}
+
+.direct-messages-container {
+  width: 20%;
+  border-right: 1px solid gray;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.direct-messages-container > h1 {
+  text-align: center;
+}
+
+.room-person-container {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  transition: 0.2s;
+  width: 100%;
+}
+
+.room-person-container:hover {
+  background-color: rgb(37, 37, 37);
+  cursor: pointer;
+}
+
+.room-person {
+  display: flex;
+  flex-direction: row;
+  font-weight: 600;
+  margin-left: 10px;
+  align-items: center;
+}
+.room-person > p {
+  margin-left: 10px;
+}
+.fa-xmark {
+  position: absolute;
+  left: 18%;
+}
+
+.room-person-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #027374;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.room-person-icon > h3 {
+  font-size: 20px;
+  letter-spacing: -0.001em;
+}
+
+.chat-box-container {
+  width: 80%;
+}

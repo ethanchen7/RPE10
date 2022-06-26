@@ -13,7 +13,9 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     blocks = db.relationship("Block", back_populates="user")
-    rooms = db.relationship("Room", back_populates="user")
+    rooms = db.relationship("Room", \
+        primaryjoin="or_(User.id==Room.user_id, User.id==Room.friend_id)", \
+        viewonly=True)
     chats = db.relationship("Chat", back_populates="user")
 
     @property
