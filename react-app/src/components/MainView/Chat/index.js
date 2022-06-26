@@ -80,10 +80,10 @@ const Chat = () => {
                   </p>
                 </div>
               </div>
-              <i
+              {/* <i
                 className="fa-solid fa-xmark fa-lg"
                 onClick={handleDeleteRoom}
-              ></i>
+              ></i> */}
             </>
           ))}
         </div>
