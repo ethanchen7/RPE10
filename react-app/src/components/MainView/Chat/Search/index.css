@@ -6,7 +6,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .search > input {
@@ -29,13 +29,12 @@
   background-color: rgb(34, 34, 34);
   border: 1px solid black;
   border-top: 0;
-  left: 1.2%;
-  top: 10.6%;
   border-radius: 10px;
   overflow: hidden;
   overflow-y: auto;
   position: absolute;
   z-index: 200;
+  margin-left: 1%;
 }
 
 .dataResult::-webkit-scrollbar {

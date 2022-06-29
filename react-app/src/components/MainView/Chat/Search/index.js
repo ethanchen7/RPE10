@@ -42,24 +42,23 @@ const Search = ({ existingUsers }) => {
             value={searchInput}
             onChange={handleFilter}
           />
-
-          {searchInput.length != 0 && (
-            <div className="dataResult">
-              {filteredUsers.slice(0, 8).map((user) => {
-                return (
-                  <div
-                    className="member-selection"
-                    key={`${user.id}`}
-                    id={user.id}
-                    onClick={handleUserSelect}
-                  >
-                    {user?.first_name} {user?.last_name}
-                  </div>
-                );
-              })}
-            </div>
-          )}
         </div>
+        {searchInput.length != 0 && (
+          <div className="dataResult">
+            {filteredUsers.slice(0, 8).map((user) => {
+              return (
+                <div
+                  className="member-selection"
+                  key={`${user.id}`}
+                  id={user.id}
+                  onClick={handleUserSelect}
+                >
+                  {user?.first_name} {user?.last_name}
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </>
   );
