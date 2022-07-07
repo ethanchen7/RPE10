@@ -92,7 +92,7 @@ Particularly in RPE10, I was able to:
  * design entire UI/UX
 
 ## What's Next
-- [ ] Implementing websockets for a chat feature among users on the platform
+- [x] Implementing websockets for a chat feature among users on the platform
 - [ ] Adding workouts to your own calendar through Google Calendar API for easy viewing on-the-go
 - [ ] Separating Coach / Athlete personas to allow coaches to have clients and program for them using RPE10
 - [ ] Find nearby gyms with Google Maps API
