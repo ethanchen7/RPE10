@@ -86,6 +86,7 @@ This application is the capstone project for my 24 weeks at App Academy. During 
  * effectively store, manipulate, and display data to the client through state management (Redux)
 
 Particularly in RPE10, I was able to:
+ * implement a chat feature through Flask socket.io
  * experiment with charting libraries such as Chart.js and react charts
  * calculate and store volume and RPE statistics as a property of Object instances (server methods as opposed to frontend rendering)
  * create dynamically rendering tables that would update data onBlur (upon leaving the input fields)
