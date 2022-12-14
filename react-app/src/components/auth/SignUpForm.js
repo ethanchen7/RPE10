@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import { signUp } from "../../store/session";
 import ErrorMessage from "../ErrorMessage";
-// may need an add to all users into redux for chat
 
 const SignUpForm = () => {
   const [errorMessages, setErrorMessages] = useState({});
@@ -20,7 +19,6 @@ const SignUpForm = () => {
     if (password === repeatPassword) {
       const data = await dispatch(signUp(firstName, lastName, email, password));
       if (data.errors) {
-        console.log(data.errors);
         const errors = {};
         if (Array.isArray(data.errors)) {
           data.errors.forEach((error) => {

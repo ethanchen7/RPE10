@@ -45,7 +45,7 @@ const DayCard = ({ day, number }) => {
       dispatch(setDays(data.days));
     }
   };
-  console.log(errorMessages);
+
   return (
     <div className="day-note-parent-container">
       <ErrorMessage label={""} message={errorMessages.notes} />

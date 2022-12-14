@@ -1,6 +1,8 @@
-const LOAD_ROOMS = "room/LOAD_ROOMS";
-const LOAD_ALL_USERS = "room/LOAD_ALL_USERS";
-const CREATE_ROOM = "room/CREATE_ROOM";
+const prefix = "room/";
+
+const LOAD_ROOMS = prefix + "LOAD_ROOMS";
+const LOAD_ALL_USERS = prefix + "LOAD_ALL_USERS";
+const CREATE_ROOM = prefix + "CREATE_ROOM";
 
 export const loadRooms = (rooms) => {
   return {
@@ -27,7 +29,6 @@ export const getRooms = () => async (dispatch) => {
   const response = await fetch(`/api/users/rooms`);
   if (response.ok) {
     const user = await response.json();
-    console.log(user);
     dispatch(loadRooms(user.rooms));
   }
 };

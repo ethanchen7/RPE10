@@ -1,8 +1,10 @@
-const SET_DAYS = "day/SET_DAYS";
-const CREATE_DAY = "day/CREATE_DAY";
-const DELETE_DAY = "day/DELETE_DAY";
-const UPDATE_DAY = "day/UPDATE_DAY";
-const REMOVE_ALL_DAYS = "day/REMOVE_ALL_DAYS";
+const prefix = "day/";
+
+const SET_DAYS = prefix + "SET_DAYS";
+const CREATE_DAY = prefix + "CREATE_DAY";
+const DELETE_DAY = prefix + "DELETE_DAY";
+const UPDATE_DAY = prefix + "UPDATE_DAY";
+const REMOVE_ALL_DAYS = prefix + "REMOVE_ALL_DAYS";
 
 export const setDays = (days) => {
   return {
