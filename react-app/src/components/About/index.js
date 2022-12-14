@@ -46,7 +46,7 @@ const About = () => {
         </div>
         <div className="about-body-row-1">
           <div className="about-social-container">
-            <img src={ethan} />
+            <img src={ethan} alt={"ethan-img"} />
             <div className="about-socials">
               <a href="https://github.com/ethanchen7/">
                 <i className="fa-brands fa-github fa-10x"></i>

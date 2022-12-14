@@ -10,7 +10,6 @@ import rpelogo from "../../../../assets/images/rpelogo.png";
 const EditNameForm = ({ setShowModal, blockId }) => {
   const session = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
-  const history = useHistory();
   const [firstName, setFirstName] = useState(session.first_name);
   const [lastName, setLastName] = useState(session.last_name);
   const [errorMessages, setErrorMessages] = useState({});
@@ -23,7 +22,6 @@ const EditNameForm = ({ setShowModal, blockId }) => {
     };
     const update = await dispatch(editName(payload));
     if (update.errors) {
-      console.log(update.errors);
       const errors = {};
       if (Array.isArray(update.errors)) {
         update.errors.forEach((error) => {

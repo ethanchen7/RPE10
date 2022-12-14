@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import LogoutButton from "../auth/LogoutButton";
 import rpelogo from "../../assets/images/rpelogo.png";
 import "./NavBar.css";
 

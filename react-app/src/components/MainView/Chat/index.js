@@ -23,12 +23,7 @@ const Chat = () => {
   useEffect(() => {
     dispatch(getRooms());
     dispatch(getAllUsers());
-    // setSelectedRoom(rooms.at(0)?.id);
   }, []);
-
-  const handleDeleteRoom = () => {
-    console.log("clicked");
-  };
 
   if (!rooms || !allUserObject) {
     return null;
@@ -80,19 +75,10 @@ const Chat = () => {
                   </p>
                 </div>
               </div>
-              {/* <i
-                className="fa-solid fa-xmark fa-lg"
-                onClick={handleDeleteRoom}
-              ></i> */}
             </>
           ))}
         </div>
         <div className="chat-box-container">
-          {/* {selectedRoom === 0 ? (
-            <h1>Select or search for someone to chat with.</h1>
-          ) : (
-            ""
-          )} */}
           <ChatRoom selectedRoom={selectedRoom} />
         </div>
       </div>
