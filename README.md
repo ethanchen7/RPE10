@@ -2,7 +2,7 @@
 
 ![Screen Shot 2022-06-14 at 4 19 36 PM](https://user-images.githubusercontent.com/60331384/173704886-584d146f-ba13-4786-9bcc-2c8c622ac432.png)
 
-[RPE10](https://rpe10.herokuapp.com/) is a fitness application for athletes to program their own workouts and track performance metrics such as average volume and RPE (rate of perceived exertion). RPE10's goal is replace the traditional spreadsheets that are often used by coaches to communicate workout programs to their athletes.
+[RPE10](https://rpe10.onrender.com) is a fitness application for athletes to program their own workouts and track performance metrics such as average volume and RPE (rate of perceived exertion). RPE10's goal is replace the traditional spreadsheets that are often used by coaches to communicate workout programs to their athletes.
 
 # Technologies Used
 
@@ -86,13 +86,14 @@ This application is the capstone project for my 24 weeks at App Academy. During 
  * effectively store, manipulate, and display data to the client through state management (Redux)
 
 Particularly in RPE10, I was able to:
+ * implement a chat feature through Flask socket.io
  * experiment with charting libraries such as Chart.js and react charts
  * calculate and store volume and RPE statistics as a property of Object instances (server methods as opposed to frontend rendering)
  * create dynamically rendering tables that would update data onBlur (upon leaving the input fields)
  * design entire UI/UX
 
 ## What's Next
-- [ ] Implementing websockets for a chat feature among users on the platform
+- [x] Implementing websockets for a chat feature among users on the platform
 - [ ] Adding workouts to your own calendar through Google Calendar API for easy viewing on-the-go
 - [ ] Separating Coach / Athlete personas to allow coaches to have clients and program for them using RPE10
 - [ ] Find nearby gyms with Google Maps API
