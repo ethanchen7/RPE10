@@ -7,7 +7,6 @@ import DeleteConfirmationModal from "../DeleteBlock";
 import { addWeek } from "../../../../store/week";
 import { putBlock } from "../../../../store/block";
 import ErrorMessage from "../../../ErrorMessage";
-// import { BsPencil } from "react-icons/bs";
 import "./index.css";
 
 const BlockCreation = () => {
@@ -61,8 +60,6 @@ const BlockCreation = () => {
     };
     const update = await dispatch(putBlock(blockId, payload));
     if (update.errors) {
-      console.log("hereeee");
-      console.log(update.errors);
       const errors = {};
       if (Array.isArray(update.errors)) {
         update.errors.forEach((error) => {
@@ -74,7 +71,6 @@ const BlockCreation = () => {
         errors.overall = update.errors;
       }
       setErrorMessages(errors);
-      console.log(errorMessages);
     } else {
       setErrorMessages({});
     }

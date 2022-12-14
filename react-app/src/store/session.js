@@ -3,9 +3,11 @@ import { removeAllWeeks } from "./week";
 import { removeAllDays } from "./day";
 import { removeAllExercises } from "./exercise";
 
-const SET_USER = "session/SET_USER";
-const REMOVE_USER = "session/REMOVE_USER";
-const EDIT_USER = "session/EDIT_USER";
+const prefix = "session/";
+
+const SET_USER = prefix + "session/SET_USER";
+const REMOVE_USER = prefix + "session/REMOVE_USER";
+const EDIT_USER = prefix + "session/EDIT_USER";
 
 const setUser = (user) => ({
   type: SET_USER,

@@ -22,7 +22,6 @@ const BlockCreateForm = ({ setShowModal }) => {
     };
     const block_name = await dispatch(addBlock(currentUser.id, payload));
     if (block_name.errors) {
-      console.log(block_name.errors);
       const errors = {};
       if (Array.isArray(block_name.errors)) {
         block_name.errors.forEach((error) => {

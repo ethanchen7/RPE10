@@ -21,7 +21,7 @@ from .socket import socketio
 
 from .config import Config
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 socketio.init_app(app)
 
 # Setup login manager

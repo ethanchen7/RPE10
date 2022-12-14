@@ -1,5 +1,7 @@
-const LOAD_CHATS = "chat/LOAD_CHATS";
-const CREATE_CHAT = "chat/CREATE_CHAT";
+const prefix = "chat/";
+
+const LOAD_CHATS = prefix + "LOAD_CHATS";
+const CREATE_CHAT = prefix + "CREATE_CHAT";
 
 export const loadChats = (chats) => {
   return {
@@ -16,7 +18,6 @@ export const createChat = (chat) => {
 };
 
 export const getRoomChats = (roomId) => async (dispatch) => {
-  console.log(roomId);
   const response = await fetch(`/api/room/${roomId}/chats`);
   if (response.ok) {
     const room = await response.json();
@@ -51,7 +52,6 @@ const initialState = {};
 const chatReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_CHATS:
-      console.log(action.chats);
       const chatObjects = Object.values(action.chats);
       const chats = {};
       chatObjects.forEach((chat) => (chats[chat.id] = chat));

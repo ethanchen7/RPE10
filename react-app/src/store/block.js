@@ -1,9 +1,11 @@
-const SET_BLOCKS = "block/SET_BLOCKS";
-const CREATE_BLOCK = "block/CREATE_BLOCK";
-const EDIT_BLOCK = "block/EDIT_BLOCK";
-const DELETE_BLOCK = "block/DELETE_BLOCK";
-const GET_CURRENT_BLOCK = "block/GET_CURRENT_BLOCK";
-const REMOVE_ALL_BLOCKS = "block/REMOVE_ALL_BLOCKS";
+const prefix = "block/";
+
+const SET_BLOCKS = prefix + "SET_BLOCKS";
+const CREATE_BLOCK = prefix + "CREATE_BLOCK";
+const EDIT_BLOCK = prefix + "EDIT_BLOCK";
+const DELETE_BLOCK = prefix + "DELETE_BLOCK";
+const GET_CURRENT_BLOCK = prefix + "GET_CURRENT_BLOCK";
+const REMOVE_ALL_BLOCKS = prefix + "REMOVE_ALL_BLOCKS";
 
 export const setBlocks = (blocks) => {
   return {

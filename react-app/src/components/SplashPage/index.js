@@ -1,7 +1,5 @@
 import { NavLink } from "react-router-dom";
 import NavBar from "./NavBar";
-import mac from "../../assets/images/rpe10-splash-mac.png";
-import iphone from "../../assets/images/transparentiphone.png";
 import together from "../../assets/images/together.png";
 import "./index.css";
 
@@ -22,7 +20,7 @@ const SplashPage = () => {
           </button>
         </div>
         <div className="splash-body-row-1">
-          <img src={together} className="splash-mac" />
+          <img src={together} className="splash-mac" alt={"macbook-img"} />
           <div className="description-box-row-1">
             <h3>Workout Programming</h3>
             <p>
@@ -47,8 +45,6 @@ const SplashPage = () => {
             </p>
           </div>
         </div>
-
-        {/* <img src={iphone} className="splash-iphone" /> */}
       </div>
     </div>
   );

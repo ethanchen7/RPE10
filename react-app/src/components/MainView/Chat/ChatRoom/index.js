@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { getRoomChats, addChat } from "../../../../store/chat";
 
 import { io } from "socket.io-client";
-import arrow from "../../../../assets/images/svgexport-26.svg";
 import "./index.css";
 
 let socket;
@@ -11,21 +10,18 @@ let socket;
 const ChatRoom = ({ selectedRoom }) => {
   const dispatch = useDispatch();
 
-  const rooms = useSelector((state) => state.room.rooms);
   const chats = useSelector((state) => state.chat);
   const chatArr = Object.values(chats);
 
   const user = useSelector((state) => state.session.user);
   const allUsers = useSelector((state) => state.room.allUsers);
 
-  // const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
 
   useEffect(() => {
     socket = io();
     socket.emit("join", { room: selectedRoom });
     socket.on("chat", (chat) => {
-      // setMessages([...messages, chat]);
       dispatch(getRoomChats(selectedRoom));
     });
 

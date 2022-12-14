@@ -1,8 +1,10 @@
-const SET_EXERCISES = "exercise/SET_EXERCISES";
-const CREATE_EXERCISE = "exercise/CREATE_EXERCISE";
-const UPDATE_EXERCISE = "exercise/UPDATE_EXERCISE";
-const DELETE_EXERCISE = "exercise/DELETE_EXERCISE";
-const REMOVE_ALL_EXERCISES = "exercise/REMOVE_ALL_EXERCISES";
+const prefix = "exercise/";
+
+const SET_EXERCISES = prefix + "SET_EXERCISES";
+const CREATE_EXERCISE = prefix + "CREATE_EXERCISE";
+const UPDATE_EXERCISE = prefix + "UPDATE_EXERCISE";
+const DELETE_EXERCISE = prefix + "DELETE_EXERCISE";
+const REMOVE_ALL_EXERCISES = prefix + "REMOVE_ALL_EXERCISES";
 
 export const setExercises = (exercises) => {
   return {
@@ -111,7 +113,6 @@ const exerciseReducer = (state = initialState, action) => {
         [action.exercise.id]: action.exercise,
       };
     case UPDATE_EXERCISE:
-      console.log(action.exercise);
       return {
         ...state,
         [action.exercise.id]: action.exercise,
